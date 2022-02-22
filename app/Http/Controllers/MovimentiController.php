@@ -106,6 +106,7 @@ class MovimentiController extends Controller
             ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
             ->join('tags','movimentis.mov_fk_tags','=','tags.id')
             ->selectRaw('mov_data AS Data,cat_name AS Categoria,tag_name AS Tag,mov_descrizione AS Descrizione,mov_importo AS Importo')
+            ->orderBy('Data','asc')
             ->get();
         foreach ($movimenti as $movimento)
         {
