@@ -152,7 +152,6 @@ class MovimentiController extends Controller
         $mov=DB::table('movimentis')
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
         ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-        // ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
         ->where('movimentis.id','=',$id)
         ->get();
         $categorie=DB::table('categories')
@@ -197,7 +196,9 @@ class MovimentiController extends Controller
     
     public function apiList()
     {
-        $movments=DB::table('movimentis')->orderBy('mov_data','desc')->get();
+        $movments = DB::table('movimentis')
+            ->orderBy('mov_data','desc')
+            ->get();
         return json_encode($movments);
     }
     
