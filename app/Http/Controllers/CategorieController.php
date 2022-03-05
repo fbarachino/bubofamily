@@ -37,7 +37,7 @@ class CategorieController extends Controller
         return view('conti.categorie.update',
             [
                 'categorie'=> $categorie,
-            ];
+            ]);
     }
     
     public function updatePostCategorie(Request $request)
