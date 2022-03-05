@@ -39,6 +39,8 @@ Route::get('/', function () {
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
     Route::post('categorie', [CategorieController::class,'insCategorie']);
     Route::get('catdelete', [CategorieController::class,'deleteCategorie']);
+    Route::get('catmodify', [CategorieController::class,'updateCategorie']);
+    Route::post('catmodify', [CategorieController::class,'updatePostCategorie']);
     
     Route::get('tags', [TagController::class,'listTags'])->name('tags');
     Route::post('tags', [TagController::class,'insTags']);

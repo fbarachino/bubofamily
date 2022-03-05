@@ -28,6 +28,28 @@ class CategorieController extends Controller
         ->delete();
         return redirect(route('categorie'));  
     }
+    public function updateCategorie(Request $request)
+    {
+        $id=$request['id'];
+        $mov=DB::table('categories')
+        ->where('categories.id','=',$id)
+        ->get();
+        return view('conti.categorie.update',
+            [
+                'categorie'=> $categorie,
+            ];
+    }
+    
+    public function updatePostCategorie(Request $request)
+    {
+        DB::table('categories')
+        ->where('id','=', $request['id'])
+        ->update([
+            'cat_name' => $request['cat_name'],
+        ]);
+        return redirect(route('categorie'));
+    }
+    
     
     public function apiList()
     {
