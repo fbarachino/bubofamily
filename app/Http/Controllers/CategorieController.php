@@ -31,7 +31,7 @@ class CategorieController extends Controller
     public function updateCategorie(Request $request)
     {
         $id=$request['id'];
-        $mov=DB::table('categories')
+        $categorie=DB::table('categories')
         ->where('categories.id','=',$id)
         ->get();
         return view('conti.categorie.update',
