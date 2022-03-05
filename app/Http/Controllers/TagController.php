@@ -24,6 +24,28 @@ class TagController extends Controller
         return view('components.calendar');
     }
     
+    public function updateTag(Request $request)
+    {
+        $id=$request['id'];
+        $tags=DB::table('tags')
+        ->where('tags.id','=',$id)
+        ->get();
+        return view('conti.tags.update',
+            [
+                'tags'=> $tags,
+            ]);
+    }
+    
+    public function updatePostTag(Request $request)
+    {
+        DB::table('tags')
+        ->where('id','=', $request['id'])
+        ->update([
+            'cat_name' => $request['tag_name'],
+        ]);
+        return redirect(route('tags'));
+    }
+    
     public function apiList()
     {
         $tags=DB::table('tags')->orderBy('tag_name')->get();
