@@ -41,7 +41,7 @@ class TagController extends Controller
         DB::table('tags')
         ->where('id','=', $request['id'])
         ->update([
-            'cat_name' => $request['tag_name'],
+            'tag_name' => $request['tag_name'],
         ]);
         return redirect(route('tags'));
     }
