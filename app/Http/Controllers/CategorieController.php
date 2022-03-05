@@ -26,9 +26,7 @@ class CategorieController extends Controller
         DB::table('categories')
         ->where('id','=', $request['id'])
         ->delete();
-        
-        return redirect(route('categorie'));
-        
+        return redirect(route('categorie'));  
     }
     
     public function apiList()

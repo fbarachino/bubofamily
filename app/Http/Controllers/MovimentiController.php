@@ -122,27 +122,47 @@ class MovimentiController extends Controller
             // return dd($movimenti);
     }
     
-    public function resocontoMovimenti()
+    public function resocontoMovimenti(Request $request)
     {
         // SELECT Sum(movimentis.mov_importo) as resoconto, categories.cat_name FROM movimentis JOIN categories ON movimentis.mov_fk_categoria = categories.id GROUP BY categories.id;
+        // aggiunto per definizione del periodo di resoconto.
+        if(!$request['Year'])
+        {
+            $year=date('Y');
+        }
+        else {
+            $year=$request['Year'];
+        }
+        
+        if (!$request['Month'])
+        {
+            $month=date('m');
+        }
+        else {
+            $month=$request['Month'];
+        }
+        
         $reportSpesa = DB::table('movimentis')
             ->selectRaw('ABS(Sum(movimentis.mov_importo)) as resoconto, categories.cat_name')
             ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
             ->where('mov_importo','<',0)
-            ->whereYear('mov_data',date('Y'))
+            ->whereYear('mov_data',$year)
+            ->whereMonth('mov_data',$month)
             ->groupBy('cat_name')
             ->get();
-            $reportEntrate = DB::table('movimentis')
+        
+        $reportEntrate = DB::table('movimentis')
             ->selectRaw('ABS(Sum(movimentis.mov_importo)) as resoconto, categories.cat_name')
             ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
             ->where('mov_importo','>',0)
             ->whereYear('mov_data',date('Y'))
+            ->whereMonth('mov_data',date('m'))
             ->groupBy('cat_name')
             ->get();
+        
         return view('components.charts',[
             'dataSpesa'=>$reportSpesa,
-            'dataEntrate'=>$reportEntrate,
-            
+            'dataEntrate'=>$reportEntrate,    
         ]);
     }
     
@@ -150,16 +170,16 @@ class MovimentiController extends Controller
     {
         $id=$request['id'];
         $mov=DB::table('movimentis')
-        ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-        ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-        ->where('movimentis.id','=',$id)
-        ->get();
+            ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
+            ->join('tags','movimentis.mov_fk_tags','=','tags.id')
+            ->where('movimentis.id','=',$id)
+            ->get();
         $categorie=DB::table('categories')
-        ->orderBy('cat_name')
-        ->get();
+            ->orderBy('cat_name')
+            ->get();
         $tags=DB::table('tags')
-        ->orderBy('tag_name')
-        ->get();
+            ->orderBy('tag_name')
+            ->get();
         return view('conti.movimenti.update',
             [
                 'categorie'=> $categorie,
@@ -179,7 +199,6 @@ class MovimentiController extends Controller
                 'mov_importo'=>$request['mov_importo'],
                 'mov_fk_tags'=>$request['mov_fk_tags'],
                 'mov_inserito_da'=>$request['userid'],
-                
             ]);
         return redirect(route('movimenti'));
     }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a669213562786481db52e95cf7c82be2",
+    "content-hash": "a4647119c1cdf9d566876ae0272f6a00",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -1362,29 +1362,29 @@
         },
         {
             "name": "laravel-notification-channels/telegram",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-notification-channels/telegram.git",
-                "reference": "bc578efbd9cc08ec24830b64b8011992dfabb073"
+                "reference": "63f6727c3f9953e11ee9a690c29ce0db456d69a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/telegram/zipball/bc578efbd9cc08ec24830b64b8011992dfabb073",
-                "reference": "bc578efbd9cc08ec24830b64b8011992dfabb073",
+                "url": "https://api.github.com/repos/laravel-notification-channels/telegram/zipball/63f6727c3f9953e11ee9a690c29ce0db456d69a1",
+                "reference": "63f6727c3f9953e11ee9a690c29ce0db456d69a1",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/guzzle": "^6.2 || ^7.0",
-                "illuminate/contracts": "^5.5 || ^6.0 || ^7.0 || ^8.0",
-                "illuminate/notifications": "^5.5 || ^6.0 || ^7.0 || ^8.0",
-                "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0",
-                "php": "^7.2 || ^8.0"
+                "guzzlehttp/guzzle": "^7.0",
+                "illuminate/contracts": "8.45 - 9",
+                "illuminate/notifications": "8.45 - 9",
+                "illuminate/support": "8.45 - 9",
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "mockery/mockery": "^1.3",
-                "phpunit/phpunit": "^7.0 || ^8.5.21 || ^9.0"
+                "mockery/mockery": "^1.4",
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
@@ -1406,7 +1406,7 @@
             "authors": [
                 {
                     "name": "Irfaq Syed",
-                    "email": "syed@lukonet.com",
+                    "email": "github@lukonet.net",
                     "homepage": "https://lukonet.com",
                     "role": "Developer"
                 }
@@ -1422,9 +1422,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel-notification-channels/telegram/issues",
-                "source": "https://github.com/laravel-notification-channels/telegram/tree/1.0.0"
+                "source": "https://github.com/laravel-notification-channels/telegram/tree/2.0.0"
             },
-            "time": "2021-12-10T22:33:41+00:00"
+            "time": "2022-02-10T19:29:50+00:00"
         },
         {
             "name": "laravel/framework",
