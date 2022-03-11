@@ -6,6 +6,7 @@ use App\Http\Controllers\ContatoreEnElController;
 use App\Http\Controllers\ContatoreGasController;
 use App\Http\Controllers\MovimentiController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\FullCalenderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::get('/', function () {
     Route::post('movmodify',[MovimentiController::class,'updatePostMovimenti']);
     Route::get('movdelete',[MovimentiController::class,'deleteMovimenti']);
     
+    Route::get('fullcalender', [FullCalenderController::class, 'index']);
+    Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
     
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
     Route::post('categorie', [CategorieController::class,'insCategorie']);
