@@ -155,8 +155,8 @@ class MovimentiController extends Controller
             ->selectRaw('ABS(Sum(movimentis.mov_importo)) as resoconto, categories.cat_name')
             ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
             ->where('mov_importo','>',0)
-            ->whereYear('mov_data',date('Y'))
-            ->whereMonth('mov_data',date('m'))
+            ->whereYear('mov_data',$year)
+            ->whereMonth('mov_data',$month)
             ->groupBy('cat_name')
             ->get();
         
