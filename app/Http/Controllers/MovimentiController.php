@@ -143,21 +143,21 @@ class MovimentiController extends Controller
         }
         
         $reportSpesa = DB::table('movimentis')
-            ->selectRaw('ABS(Sum(movimentis.mov_importo)) as resoconto, categories.cat_name')
+            ->selectRaw('ABS(Sum(movimentis.mov_importo)) as resoconto, categories.cat_name,categories.id')
             ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
             ->where('mov_importo','<',0)
             ->whereYear('mov_data',$year)
             ->whereMonth('mov_data',$month)
-            ->groupBy('cat_name')
+            ->groupBy('cat_name','categories.id')
             ->get();
         
         $reportEntrate = DB::table('movimentis')
-            ->selectRaw('ABS(Sum(movimentis.mov_importo)) as resoconto, categories.cat_name')
+            ->selectRaw('ABS(Sum(movimentis.mov_importo)) as resoconto, categories.cat_name,categories.id')
             ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
             ->where('mov_importo','>',0)
             ->whereYear('mov_data',$year)
             ->whereMonth('mov_data',$month)
-            ->groupBy('cat_name')
+            ->groupBy('cat_name','categories.id')
             ->get();
         
         return view('components.charts',[
@@ -210,6 +210,20 @@ class MovimentiController extends Controller
         ->delete();
         return redirect(route('movimenti'));
         
+    }
+    
+    public function listMovPerCateg(Request $request)
+    {
+        $mov=DB::table('movimentis')
+        ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
+        ->join('tags','movimentis.mov_fk_tags','=','tags.id')
+        ->where('movimentis.mov_fk_categoria','=',$request['cat'])
+        ->whereMonth('mov_data','=',$request['month'])
+        ->get();
+        return view('conti.movimenti.list',
+            [
+                'movimenti'=> $mov,     
+            ]);
     }
     
     

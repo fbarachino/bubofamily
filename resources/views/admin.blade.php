@@ -10,16 +10,16 @@
         <title>BuBo Family - made with <3 - </title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- MetisMenu CSS -->
-        <link href="../css/metisMenu.min.css" rel="stylesheet">
+        <link href="/css/metisMenu.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="../css/startmin.css" rel="stylesheet">
+        <link href="/css/startmin.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
-        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified CSS 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 -->
@@ -108,20 +108,20 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="../js/jquery.min.js"></script>
+        <script src="/js/jquery.min.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="../js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
 
         <!-- Metis Menu Plugin JavaScript -->
-        <script src="../js/metisMenu.min.js"></script>
+        <script src="/js/metisMenu.min.js"></script>
         
         <!-- DataTables JavaScript -->
-        <script src="../js/dataTables/jquery.dataTables.min.js"></script>
-        <script src="../js/dataTables/dataTables.bootstrap.min.js"></script>
+        <script src="/js/dataTables/jquery.dataTables.min.js"></script>
+        <script src="/js/dataTables/dataTables.bootstrap.min.js"></script>
 
         <!-- Custom Theme JavaScript -->
-        <script src="../js/startmin.js"></script>
+        <script src="/js/startmin.js"></script>
 	@section('script')
 	@show
     </body>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\CondominioController;
 use App\Http\Controllers\ContatoreEnElController;
 use App\Http\Controllers\ContatoreGasController;
 use App\Http\Controllers\MovimentiController;
@@ -36,8 +37,7 @@ Route::get('/', function () {
     Route::post('movmodify',[MovimentiController::class,'updatePostMovimenti']);
     Route::get('movdelete',[MovimentiController::class,'deleteMovimenti']);
     
-    Route::get('fullcalender', [FullCalenderController::class, 'index']);
-    Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+    
     
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
     Route::post('categorie', [CategorieController::class,'insCategorie']);
@@ -55,3 +55,10 @@ Route::get('/', function () {
     
     Route::get('lettureenel', [ContatoreEnElController::class,'listLettureEnel'])->name('enel');
     Route::post('lettureenel', [ContatoreEnElController::class,'insLettureEnel']);
+    
+    Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
+    
+    /// TEST routes
+    Route::get('fullcalender', [FullCalenderController::class, 'index']);
+    Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+    Route::get('condominio',[CondominioController::class,'testPdf']);
