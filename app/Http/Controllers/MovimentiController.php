@@ -232,6 +232,7 @@ class MovimentiController extends Controller
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
         ->join('tags','movimentis.mov_fk_tags','=','tags.id')
         ->where('movimentis.mov_fk_categoria','=',$request['cat'])
+        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
         //->whereMonth('mov_data','=',$request['month'])
         ->get();
         return view('conti.movimenti.list',
