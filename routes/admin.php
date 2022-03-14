@@ -57,7 +57,7 @@ Route::get('/', function () {
     Route::post('lettureenel', [ContatoreEnElController::class,'insLettureEnel']);
     
     Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
-    
+    Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);
     Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);

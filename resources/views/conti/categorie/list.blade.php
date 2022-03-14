@@ -37,7 +37,7 @@
     		<tbody>
     		@foreach($categorie as $categoria)
     		<tr>
-    			<td>{{ $categoria->cat_name; }}</td>
+    			<td><a href="movimenti/report/movimentibycat?cat={{ $categoria->id }}">{{ $categoria->cat_name; }}</a></td>
     			<td>
             				<a class="btn btn-primary" href="/admin/catmodify?id={{ $categoria->id; }}"><i class="fa fa-pencil-square-o fw"></i></a>&nbsp;
             				<a class="btn btn-danger" href="/admin/catdelete?id={{ $categoria->id; }}"><i class="fa fa-trash-o fa-fw"></i></a>&nbsp;
