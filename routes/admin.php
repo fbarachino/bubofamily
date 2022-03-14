@@ -5,6 +5,7 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\CondominioController;
 use App\Http\Controllers\ContatoreEnElController;
 use App\Http\Controllers\ContatoreGasController;
+use App\Http\Controllers\DocumentiController;
 use App\Http\Controllers\MovimentiController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\FullCalenderController;
@@ -58,6 +59,9 @@ Route::get('/', function () {
     
     Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
     Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);
+    Route::get('movdocs', [DocumentiController::class,'fileForm'])->name('documenti');
+    Route::post('movdocs', [DocumentiController::class,'storeFile']);
+    
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);
     Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
