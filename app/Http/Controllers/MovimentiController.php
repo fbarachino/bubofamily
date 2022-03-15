@@ -23,11 +23,20 @@ class MovimentiController extends Controller
     public static function listMovimenti(){
         $categorie=DB::table('categories')->orderBy('cat_name')->get();
         $tags=DB::table('tags')->orderBy('tag_name')->get();
-        $movimenti=DB::table('movimentis')
+       /*
+         * $movimenti=DB::table('movimentis')
             ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
             ->join('tags','movimentis.mov_fk_tags','=','tags.id')
             ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
+            ->get();*/
+         $movimenti=DB::table('movimentis')
+            ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
+            ->join('tags','movimentis.mov_fk_tags','=','tags.id')
+            ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
+            ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
+            ->groupBy('movimentis.id')
             ->get();
+         
         
         return view('conti.movimenti.list',[
             'categorie'=>$categorie,
@@ -50,10 +59,13 @@ class MovimentiController extends Controller
             'mov_inserito_da'=>$request['userid'],
         ]);
         $mov=DB::table('movimentis')
-            ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-            ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-            ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
-            ->get();
+        ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
+        ->join('tags','movimentis.mov_fk_tags','=','tags.id')
+        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
+        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
+        ->groupBy('movimentis.id')
+        ->get();
+        
         $categorie=DB::table('categories')
             ->orderBy('cat_name')
             ->get();
@@ -80,10 +92,12 @@ class MovimentiController extends Controller
                 'mov_fk_tags'=>$request['mov_fk_tags'],
                 'mov_inserito_da'=>$request['userid'],
             ]);
-        $mov=DB::table('movimentis')
+        $mov==DB::table('movimentis')
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
         ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
+        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
+        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
+        ->groupBy('movimentis.id')
         ->get();
         $categorie=DB::table('categories')
         ->orderBy('cat_name')
@@ -219,7 +233,9 @@ class MovimentiController extends Controller
         ->join('tags','movimentis.mov_fk_tags','=','tags.id')
         ->where('movimentis.mov_fk_categoria','=',$request['cat'])
         ->whereMonth('mov_data','=',$request['month'])
-        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
+        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
+        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
+        ->groupBy('movimentis.id')
         ->get();
         return view('conti.movimenti.list',
             [
@@ -233,7 +249,9 @@ class MovimentiController extends Controller
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
         ->join('tags','movimentis.mov_fk_tags','=','tags.id')
         ->where('movimentis.mov_fk_categoria','=',$request['cat'])
-        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
+        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
+        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
+        ->groupBy('movimentis.id')
         //->whereMonth('mov_data','=',$request['month'])
         ->get();
         return view('conti.movimenti.list',

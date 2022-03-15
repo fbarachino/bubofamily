@@ -36,6 +36,8 @@
             				<a class="btn btn-primary" href="/admin/movmodify?id={{ $movimento->id; }}"><i class="fa fa-pencil-square-o fw"></i></a>&nbsp;
             				<a class="btn btn-danger" href="/admin/movdelete?id={{ $movimento->id; }}"><i class="fa fa-trash-o fa-fw"></i></a>&nbsp;
             				<a class="btn btn-warning" href="/admin/movdocs?id={{ $movimento->id; }}"><i class="fa fa-files-o fa-fw"></i></a>&nbsp;
+            				<!-- Definisce quanti documenti sono presenti per il record -->
+            				( {{ $movimento->quanti ?? ''; }} )
             			</td>
             		</tr>
             		@endforeach

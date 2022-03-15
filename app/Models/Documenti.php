@@ -9,5 +9,11 @@ class Documenti extends Model
 {
     use HasFactory;
     
+    public static function countDocument($id){
+        $quanti=DB::table('documentis')
+        ->where('movimenti_id','=',$id)
+        ->count();
+        return $quanti;
+    }
 
 }
