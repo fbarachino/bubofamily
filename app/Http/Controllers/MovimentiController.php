@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 //use Rap2hpoutre\FastExcel\FastExcel;
 use Rap2hpoutre\FastExcel\FastExcel;
+use Illuminate\Support\Arr;
 
 class MovimentiController extends Controller
 {
@@ -254,6 +255,56 @@ class MovimentiController extends Controller
             ]);
     }
     
+    public function reportCategorieAnno($anno=0)
+    {
+        if ($anno <= 1970)
+        {
+            $anno = date('Y');    
+        }
+        
+        $mesi=['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+        $categorie=DB::table('categories')->orderBy('cat_name')->get();
+        
+        foreach ($categorie as $categoria)
+        {
+            $id=$categoria->id;
+            $ncategoria=$categoria->cat_name;
+            for ($i=1;$i<=12;$i++)
+            {
+                // $SQL="SELECT SUM(mov_importo) as totale, WHERE Year(mov_data)=".$anno." AND Month(mov_data)=".$i." AND mov_fk_categoria=".$categoria->id;
+                $movrow=DB::table('movimentis')
+                   
+                    ->whereMonth('mov_data','=',$i)
+                    ->whereYear('mov_data','=',$anno)
+                   
+                    ->where('mov_fk_categoria','=',$id)
+                    ->sum('mov_importo');
+                   
+                    $coll[] = ['totale' => $movrow];
+                /*
+                foreach ($movrow as $mov)
+                {
+                   echo($mov->mov_importo);
+                   $coll[] = ['totale' => $movrow];
+                       
+                      //  ','categoria'=>$ncategoria,
+                       // 'categoria_id'=>$id,
+                      //  'mese'=>$i                    
+                    //  ]);
+                    
+                }*/
+               
+            }
+            
+        }
+       // dd($movrow);
+         /*dd(array_chunk($coll, 12));*/
+         return view('conti.report.catanno',[
+                'categorie'=>$categorie,
+                'mesi'=>$mesi,
+                'matrice'=>array_chunk($coll, 12)
+        ]);
+    }
     
     public function apiList()
     {
