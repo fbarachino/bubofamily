@@ -31,7 +31,7 @@ class MovimentiController extends Controller
             ->join('tags','movimentis.mov_fk_tags','=','tags.id')
             ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
             ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
-            ->groupBy('movimentis.id','mov_data')
+            ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
             ->get();
          
         
