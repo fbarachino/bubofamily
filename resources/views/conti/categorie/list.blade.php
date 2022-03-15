@@ -56,6 +56,7 @@
  <!-- /.col-lg-12 -->
 
 @endsection
+
 @section('script')
 <script>
             $(document).ready(function() {

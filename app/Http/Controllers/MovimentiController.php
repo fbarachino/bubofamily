@@ -10,7 +10,6 @@ use Rap2hpoutre\FastExcel\FastExcel;
 class MovimentiController extends Controller
 {
     // Gestione dei movimenti
-    
     public static function newMovimenti() {
         $categorie=DB::table('categories')->orderBy('cat_name')->get();
         $tags=DB::table('tags')->orderBy('tag_name')->get();
@@ -23,9 +22,7 @@ class MovimentiController extends Controller
     public static function listMovimenti(){
         $categorie=DB::table('categories')->orderBy('cat_name')->get();
         $tags=DB::table('tags')->orderBy('tag_name')->get();
-       /*
-         * Query per visualizzare anche il totale dei documenti presenti per il record
-         * */
+       /* Query per visualizzare anche il totale dei documenti presenti per il record */
          $movimenti=DB::table('movimentis')
             ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
             ->join('tags','movimentis.mov_fk_tags','=','tags.id')
