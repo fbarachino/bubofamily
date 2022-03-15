@@ -53,13 +53,13 @@
 @endsection
 @section('script')
 <script>
-            $(document).ready(function() {
-                $('#listamovimenti').DataTable({
-                        "responsive": true,
-                        "order": [[0,"desc"]]                       	
-                });
-            });
-        </script>
+    $(document).ready(function() {
+        $('#listamovimenti').DataTable({
+                "responsive": true,
+                "order": [[0,"desc"]]                       	
+        });
+    });
+</script>
 @endsection
 
             
