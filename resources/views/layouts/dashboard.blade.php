@@ -1,6 +1,11 @@
 @extends('admin')
 @section('content')
 <div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Riepilogo</h1>
+	</div>
+</div>
+<div class="row">
 <!-- WIDGET Bilancio -->
 	<div class="col-lg-3 col-md-6">
         <div class="panel panel-primary">
