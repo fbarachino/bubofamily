@@ -283,7 +283,8 @@ class MovimentiController extends Controller
          return view('conti.report.catanno',[
                 'categorie'=>$categorie,
                 'mesi'=>$mesi,
-                'matrice'=>array_chunk($coll, 12)
+                'matrice'=>array_chunk($coll, 12),
+                'anno'=>$anno
         ]);
     }
     
