@@ -65,7 +65,8 @@
 <script>
     $(document).ready(function() {
         $('#listrapporto').DataTable({
-                responsive: true
+                responsive: true,
+                paging: false
         });
     });
 </script>
