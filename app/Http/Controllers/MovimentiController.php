@@ -40,7 +40,16 @@ class MovimentiController extends Controller
         ]);
     }
     
-
+    public static function dashboard()
+    {
+        $bilancio=DB::table('movimentis')->whereYear('mov_data','=',date('Y'))->sum('mov_importo');
+        
+        
+        return view('layouts.dashboard',[
+            'bilancio'=>$bilancio,
+            
+        ]);
+    }
     
     public static function insMovimentiSpesa(Request $request)
     {
@@ -269,10 +278,8 @@ class MovimentiController extends Controller
             for ($i=1;$i<=12;$i++)
             {
                 $movrow=DB::table('movimentis')
-                   
                     ->whereMonth('mov_data','=',$i)
                     ->whereYear('mov_data','=',$anno)
-                   
                     ->where('mov_fk_categoria','=',$id)
                     ->sum('mov_importo');
                    

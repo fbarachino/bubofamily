@@ -21,9 +21,8 @@ use App\Http\Controllers\FullCalenderController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin');
-});
+Route::get('/', [MovimentiController::class,'dashboard']);
+
 
     Route::get('logout', function(){ Auth::logout(); return redirect('login'); })->name('logout');
 

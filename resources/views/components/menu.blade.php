@@ -1,5 +1,5 @@
 <li>
-    <a href="#"><i class="fa fa-dashboard fa-fw"></i>Riepilogo</a>
+    <a href="/admin"><i class="fa fa-dashboard fa-fw"></i>Riepilogo</a>
 </li>
 <li>
     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Spese/Incassi<span class="fa arrow"></span></a>
@@ -41,10 +41,12 @@
 
     <ul class="nav nav-second-level">
             <li>
-                <a href="{{ route('gas'); }}">GAS</a>
+            	<a href="{{ route('gas'); }}"><i class="fa fa-fire  fa-fw"></i>GAS</a>
+                
             </li>
              <li>
-                <a href="{{ route('enel'); }}">Energia Elettrica</a>
+             	<a href="{{ route('enel'); }}"><i class="fa fa-flash  fa-fw"></i>Energia Elettrica</a>
+                
             </li>
         </ul>
 </li>
