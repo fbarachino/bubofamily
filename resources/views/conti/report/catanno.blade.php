@@ -8,6 +8,11 @@
 </div>
 <div class="row">
 	<div class="col">
+	<a href="{{ route('budgetxls');}}" class="btn btn-primary">Esporta in .ods</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
     	<div class="panel panel-default">
             <div class="panel-heading">
                 Rapporto spese per categoria nell'arco dell'anno {{ $anno ?? '' }}

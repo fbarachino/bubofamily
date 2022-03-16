@@ -37,7 +37,8 @@ Route::get('/', function () {
     Route::get('movmodify',[MovimentiController::class,'updateMovimenti']);
     Route::post('movmodify',[MovimentiController::class,'updatePostMovimenti']);
     Route::get('movdelete',[MovimentiController::class,'deleteMovimenti']);
-    
+    Route::get('reportbudget',[MovimentiController::class,'reportCategorieAnno'])->name('budget');
+    Route::get('reportbudgetxls',[MovimentiController::class,'reportCategorieAnnoXLS'])->name('budgetxls');
     
     
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
@@ -66,5 +67,5 @@ Route::get('/', function () {
     Route::get('fullcalender', [FullCalenderController::class, 'index']);
     Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
     Route::get('condominio',[CondominioController::class,'testPdf']);
-    Route::get('reportbudget',[MovimentiController::class,'reportCategorieAnno']);
+
     

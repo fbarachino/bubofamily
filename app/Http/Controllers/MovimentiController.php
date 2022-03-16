@@ -87,7 +87,7 @@ class MovimentiController extends Controller
                 'mov_fk_tags'=>$request['mov_fk_tags'],
                 'mov_inserito_da'=>$request['userid'],
             ]);
-        $mov==DB::table('movimentis')
+        $mov=DB::table('movimentis')
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
         ->join('tags','movimentis.mov_fk_tags','=','tags.id')
         ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
@@ -133,8 +133,6 @@ class MovimentiController extends Controller
     
     public function resocontoMovimenti(Request $request)
     {
-        // SELECT Sum(movimentis.mov_importo) as resoconto, categories.cat_name FROM movimentis JOIN categories ON movimentis.mov_fk_categoria = categories.id GROUP BY categories.id;
-        // aggiunto per definizione del periodo di resoconto.
         if(!$request['Year'])
         {
             $year=date('Y');
@@ -247,7 +245,6 @@ class MovimentiController extends Controller
         ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
         ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
         ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
-        //->whereMonth('mov_data','=',$request['month'])
         ->get();
         return view('conti.movimenti.list',
             [
@@ -255,7 +252,7 @@ class MovimentiController extends Controller
             ]);
     }
     
-    public function reportCategorieAnno($anno=0)
+    public function reportCategorieAnno($anno = 0)
     {
         if ($anno <= 1970)
         {
@@ -271,7 +268,6 @@ class MovimentiController extends Controller
             $ncategoria=$categoria->cat_name;
             for ($i=1;$i<=12;$i++)
             {
-                // $SQL="SELECT SUM(mov_importo) as totale, WHERE Year(mov_data)=".$anno." AND Month(mov_data)=".$i." AND mov_fk_categoria=".$categoria->id;
                 $movrow=DB::table('movimentis')
                    
                     ->whereMonth('mov_data','=',$i)
@@ -281,29 +277,45 @@ class MovimentiController extends Controller
                     ->sum('mov_importo');
                    
                     $coll[] = ['totale' => $movrow];
-                /*
-                foreach ($movrow as $mov)
-                {
-                   echo($mov->mov_importo);
-                   $coll[] = ['totale' => $movrow];
-                       
-                      //  ','categoria'=>$ncategoria,
-                       // 'categoria_id'=>$id,
-                      //  'mese'=>$i                    
-                    //  ]);
-                    
-                }*/
-               
-            }
+               }
             
         }
-       // dd($movrow);
-         /*dd(array_chunk($coll, 12));*/
          return view('conti.report.catanno',[
                 'categorie'=>$categorie,
                 'mesi'=>$mesi,
                 'matrice'=>array_chunk($coll, 12)
         ]);
+    }
+    
+    public function reportCategorieAnnoXLS($anno = 0)
+    {
+        if ($anno <= 1970)
+        {
+            $anno = date('Y');
+        }
+        
+        $intestazione=['Categoria','Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+        $categorie=DB::table('categories')->orderBy('cat_name')->get();
+        
+        foreach ($categorie as $categoria)
+        {
+            $id=$categoria->id;
+            $ncategoria=$categoria->cat_name;
+            for ($i=1;$i<=12;$i++)
+            {
+                $movrow=DB::table('movimentis')
+                ->whereMonth('mov_data','=',$i)
+                ->whereYear('mov_data','=',$anno)
+                ->where('mov_fk_categoria','=',$id)
+                ->sum('mov_importo');
+                
+                $coll[] = $movrow;
+            }
+
+            $row[]=array_combine($intestazione,array_merge(array($ncategoria),$coll));
+            unset($coll); 
+        }
+     return (new FastExcel($row))->download('report_al_'.date('d-m-Y').'.ods');   
     }
     
     public function apiList()

@@ -28,6 +28,9 @@
             <a href="{{ route('resoconto'); }}">Resoconto Movimenti</a>
         </li>
         <li>
+            <a href="{{ route('budget'); }}">Report Annuale Movimenti</a>
+        </li>
+        <li>
             <a href="{{ route('export'); }}"><i class="fa fa-file-o  fa-fw"></i>Esporta tutti i movimenti</a>
         </li>
     </ul>
