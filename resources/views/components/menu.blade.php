@@ -2,7 +2,7 @@
     <a href="/admin"><i class="fa fa-dashboard fa-fw"></i>Riepilogo</a>
 </li>
 <li>
-    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Spese/Incassi<span class="fa arrow"></span></a>
+    <a href="#"><i class="fa fa-money fa-fw"></i>Spese/Incassi<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
             <a href="{{ route('movimenti'); }}">Lista Movimenti</a>
@@ -37,7 +37,7 @@
     <!-- /.nav-second-level -->
 </li>
 <li>
-    <a href="#"><i class="fa fa-table fa-fw"></i> Letture contatori<span class="fa arrow"></span></a>
+    <a href="#"><i class="fa fa-industry fa-fw"></i> Consumi <span class="fa arrow"></span></a>
 
     <ul class="nav nav-second-level">
             <li>
@@ -108,7 +108,7 @@
     <!-- /.nav-second-level -->
 <!--</li>-->
 <li>
-    <a href="#"><i class="fa fa-files-o fa-fw"></i>Amministrazione<span class="fa arrow"></span></a>
+    <a href="#"><i class="fa fa-gears fa-fw"></i>Amministrazione<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
         <li>
             <a class="active" href="#">Utenti</a>

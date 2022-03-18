@@ -133,10 +133,11 @@ class MovimentiController extends Controller
                 'Categoria'=>$movimento->Categoria,
                 'Tag'=>$movimento->Tag,
                 'Descrizione'=>$movimento->Descrizione,
-                'Importo'=>$movimento->Importo
+                //'Importo'=>str_replace(".",",",$movimento->Importo),
+                'Importo'=>$movimento->Importo,
             ];
         }
-            return (new FastExcel($lista))->download('movimenti_al_'.date('d-m-Y').'.ods');
+            return (new FastExcel($lista))->download('movimenti_al_'.date('d-m-Y').'.xls');
             // return dd($movimenti);
     }
     
@@ -282,6 +283,8 @@ class MovimentiController extends Controller
                     ->whereYear('mov_data','=',$anno)
                     ->where('mov_fk_categoria','=',$id)
                     ->sum('mov_importo');
+                
+                    
                    
                     $coll[] = ['totale' => $movrow];
                }
@@ -317,13 +320,14 @@ class MovimentiController extends Controller
                 ->where('mov_fk_categoria','=',$id)
                 ->sum('mov_importo');
                 
+                //$coll[] = str_replace(".",",",$movrow);
                 $coll[] = $movrow;
             }
 
             $row[]=array_combine($intestazione,array_merge(array($ncategoria),$coll));
             unset($coll); 
         }
-     return (new FastExcel($row))->download('report_al_'.date('d-m-Y').'.ods');   
+     return (new FastExcel($row))->download('report_al_'.date('d-m-Y').'.xls');   
     }
     
     public function apiList()
