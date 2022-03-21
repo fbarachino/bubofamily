@@ -43,7 +43,7 @@
             			{
             		@endphp
             		
-            		<td>{{ $matrice[$cat][$index] }}</td>
+            		<td><a href="movimenti/report/movimenti_categoria?cat={{$categoria->id}}&month={{$index+1}}">{{ $matrice[$cat][$index] }}</a></td>
             		@php
             				$index++;
             			}
