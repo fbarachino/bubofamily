@@ -25,6 +25,7 @@
             			@foreach($mesi as $mese)
             			<td>{{ $mese }}</td>
             			@endforeach
+            			<td><b>Totale</b></td>
             		</tr>
             	</thead>  
             	<tbody>
@@ -42,13 +43,16 @@
             			{
             		@endphp
             		
-            		<td>{{ $matrice[$cat][$index]['totale'] }}</td>
+            		<td>{{ $matrice[$cat][$index] }}</td>
             		@php
             				$index++;
             			}
-            			$cat++;
             		@endphp
             		
+            		<td align="right"><b>{{ number_format($totale[$cat],2,'.','') }}</b></td>
+            		@php
+            			$cat++;
+            		@endphp
             		</tr>
             		
             	@endforeach

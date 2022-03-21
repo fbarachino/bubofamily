@@ -285,15 +285,22 @@ class MovimentiController extends Controller
                     ->sum('mov_importo');
                 
                     
-                   
-                    $coll[] = ['totale' => $movrow];
+                    $coll[]=$movrow;
+                    $collx[]=$movrow;
+                    //$coll[] = ['totale' => $movrow];
+                    // $coll[]=array_push(array_sum($coll['totale']));
+                    
+                    // $coll[]=array_push($coll,$totale);
                }
-            
+            $totale[]=array_sum($collx);
+            unset($collx);
         }
-         return view('conti.report.catanno',[
+         /*dd($totale);*/
+        return view('conti.report.catanno',[
                 'categorie'=>$categorie,
                 'mesi'=>$mesi,
                 'matrice'=>array_chunk($coll, 12),
+                'totale'=>$totale,
                 'anno'=>$anno
         ]);
     }
@@ -322,8 +329,9 @@ class MovimentiController extends Controller
                 
                 //$coll[] = str_replace(".",",",$movrow);
                 $coll[] = $movrow;
+               
             }
-
+            
             $row[]=array_combine($intestazione,array_merge(array($ncategoria),$coll));
             unset($coll); 
         }
