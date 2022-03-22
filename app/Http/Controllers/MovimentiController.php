@@ -338,6 +338,23 @@ class MovimentiController extends Controller
      return (new FastExcel($row))->download('report_al_'.date('d-m-Y').'.xls');   
     }
     
+    public function filterByTag(Request $tag)
+    {
+        $mov=DB::table('movimentis')
+        ->where('mov_fk_tags','=',$tag['tag'])
+        ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
+        ->join('tags','movimentis.mov_fk_tags','=','tags.id')
+        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
+        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
+        ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
+        ->get();
+        return view('conti.movimenti.list',
+            [
+                'movimenti'=> $mov,
+            ]);
+    }
+    
+    
     public function apiList()
     {
         $movments = DB::table('movimentis')

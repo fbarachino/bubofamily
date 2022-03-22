@@ -56,6 +56,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     
     Route::get('lettureenel', [ContatoreEnElController::class,'listLettureEnel'])->name('enel');
     Route::post('lettureenel', [ContatoreEnElController::class,'insLettureEnel']);
+    Route::get('movimenti/filter/tags',[MovimentiController::class,'filterByTag']);
     
     Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
     Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);

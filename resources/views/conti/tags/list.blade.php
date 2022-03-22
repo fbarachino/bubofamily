@@ -26,7 +26,7 @@
     	<tbody>
     	@foreach($tags as $tag)
     	<tr>
-    		<td>{{ $tag->tag_name; }}</td>
+    		<td><a href="movimenti/filter/tags?tag={{ $tag->id }}">{{ $tag->tag_name; }}</a></td>
     		<td>
 				<a class="btn btn-primary" href="/admin/tagmodify?id={{ $tag->id; }}"><i class="fa fa-pencil-square-o fw"></i></a>&nbsp;
 				<a class="btn btn-danger" href="/admin/tagdelete?id={{ $tag->id; }}"><i class="fa fa-trash-o fa-fw"></i></a>&nbsp;
