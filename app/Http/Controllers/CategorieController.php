@@ -54,6 +54,6 @@ class CategorieController extends Controller
     public function apiList()
     {
         $categorie=DB::table('categories')->orderBy('cat_name')->get();
-        return json_encode($categorie);
+        return response()->json($categorie);
     }
 }

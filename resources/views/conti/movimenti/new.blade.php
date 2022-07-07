@@ -50,7 +50,7 @@
                 		<select name="mov_fk_tags" class="form-control" id="tags">
                 			@foreach($tags as $tag)
                 			<option value="{{ $tag->id; }}">{{ $tag->tag_name }}</option>
-                			@endforeach 
+                			@endforeach
                 		</select>
                 		</div>
                     </div>
