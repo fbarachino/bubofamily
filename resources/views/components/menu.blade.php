@@ -50,6 +50,20 @@
             </li>
         </ul>
 </li>
+<li>
+    <a href="#"><i class="fa fa-car fa-fw"></i> Automobili <span class="fa arrow"></span></a>
+
+    <ul class="nav nav-second-level">
+            <li>
+            	<a href="{{ route('auto_list'); }}"><i class="fa fa-list  fa-fw"></i>Gestione</a>
+                
+            </li>
+             <li>
+             	<a href="#"><i class="fa fa-flash  fa-fw"></i>Non definito</a>
+                
+            </li>
+        </ul>
+</li>
 <!--  <li>
     <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
 </li>

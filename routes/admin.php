@@ -63,6 +63,9 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('movdocs', [DocumentiController::class,'fileForm'])->name('documenti');
     Route::post('movdocs', [DocumentiController::class,'storeFile']);
     
+    # Automobili
+    Route::get('auto', [AutoController::class, 'index'])->name('auto_list');
+    
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);
     Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
