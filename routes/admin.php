@@ -9,7 +9,7 @@ use App\Http\Controllers\DocumentiController;
 use App\Http\Controllers\MovimentiController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\FullCalenderController;
-
+use App\Http\Controllers\AutoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,6 +65,8 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     
     # Automobili
     Route::get('auto', [AutoController::class, 'index'])->name('auto_list');
+    Route::get('auto/new', [AutoController::class, 'newAuto'])->name('auto_new');
+    Route::post('auto/new', [AutoController::class, 'saveAuto'])->name('auto_save');
     
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);
