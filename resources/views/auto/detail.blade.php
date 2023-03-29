@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Lista Automobili</h1>
+                            <h1 class="page-header">Dettaglio Automobili</h1>
                         </div>
 </div>                          
 	<div class="container">
@@ -12,7 +12,7 @@
  	<div class="col-lg-12">
     	<div class="panel panel-default">
         	<div class="panel-heading">
-                Lista delle automobili
+                Dettaglio auto {{ $dettagli->targa }}
             </div>
             <div class="panel-body">  	
     	<div class="table-responsive">
@@ -23,20 +23,30 @@
     				<th>Marca</th>
     				<th>Modello</th>
     				<th>Targa</th>
+    				<th>Alimentazione</th>
+    				<th>Cilindrata</th>
+    				<th>Cavalli Fisc.</th>
+    				<th>Num.Telaio</th>
+    				<th>Num. Motore</th>
+    				<th>Data acquisto</th>
+    				<th>Note</th>
     			</tr>
     		</thead>
     		<tbody>
-    		@foreach($automobili ?? '' as $automobile)
+    		
     		<tr>
-    			<td><a href="auto/detail?id={{ $automobile->id }}">{{ $automobile->marca; }}</a></td>
-    			<td>{{ $automobile->modello; }}</td>
-    			<td>{{ $automobile->targa; }}</td>
-    			<td>
-    				<a class="btn btn-primary" href="auto/modify?id={{ $automobile->id; }}"><i class="fa fa-pencil-square-o fw"></i></a>&nbsp;
-    				<a class="btn btn-danger" href="auto/delete?id={{ $automobile->id; }}"><i class="fa fa-trash-o fa-fw"></i></a>&nbsp;
-            	</td>
+    			<td>{{ $dettagli->marca; }}</td>
+    			<td>{{ $dettagli->modello; }}</td>
+    			<td>{{ $dettagli->targa; }}</td>
+    			<td>{{ $dettagli->alimentazione; }}</td>
+    			<td>{{ $dettagli->cilindrata; }}</td>
+    			<td>{{ $dettagli->cvfiscali; }}</td>
+    			<td>{{ $dettagli->ntelaio; }}</td>
+    			<td>{{ $dettagli->nmotore; }}</td>
+    			<td>{{ $dettagli->data_acquisto; }}</td>
+    			<td>{{ $dettagli->note; }}</td>
     		</tr>
-    		@endforeach
+    		
     		</tbody>
     		
     		</table>

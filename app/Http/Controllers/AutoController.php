@@ -52,10 +52,19 @@ class AutoController extends Controller
         
     }
     
+    public function delAuto(Request $id)
+    {
+        DB::table('autos')->delete($id['id']);
+        return redirect(route('auto_list'));
+    }
+    
     public function getAutoDetails(request $id)
     {
-        
         // Ritorna i dettagli dell'auto
+        $dettagli=DB::table('autos')->find($id['id']);
+        return view('auto.detail',[
+            'dettagli' => $dettagli,
+        ]);
     }
     
     public function getTCOAuto(request $id)
