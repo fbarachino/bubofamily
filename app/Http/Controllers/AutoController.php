@@ -26,7 +26,7 @@ class AutoController extends Controller
     
     public function saveAuto(Request $request)
     {
-        // inserisce l'auto nel database e torna alla lista
+        // inserisce l'auto nel database e torna alla lista o ad un nuovo inserimento in base
         // dd($request);
       
         DB::table('autos')->insert([
@@ -44,10 +44,10 @@ class AutoController extends Controller
         
         if ($request['another']=='on')
         {
-            route('auto_new');
+            return redirect(route('auto_new'));
         }
         else {
-           route('auto_list');
+            return redirect(route('auto_list'));
         }
         
     }
