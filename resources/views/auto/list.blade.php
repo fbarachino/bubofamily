@@ -7,6 +7,11 @@
 </div>                          
 	<div class="container">
     	<!-- Content here -->
+    	<div class="row">
+            <div class="col-sx-12">
+            	<a class="btn btn-primary" href="auto/new"><i class="fa fa-pencil-square-o fw"></i></a>
+            </div>
+            </div>	
     	
 <div class="row">
  	<div class="col-lg-12">
@@ -14,7 +19,8 @@
         	<div class="panel-heading">
                 Lista delle automobili
             </div>
-            <div class="panel-body">  	
+            <div class="panel-body"> 
+            
     	<div class="table-responsive">
            <table class="table table-striped table-bordered table-hover" id="automobili">
     		
