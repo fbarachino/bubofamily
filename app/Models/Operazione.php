@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Models\Auto;
+use App\Models\Categorie;
 
 class Operazione extends Model
 {
@@ -24,6 +26,41 @@ class Operazione extends Model
                 'type'=>$data['type']
             ]
             );
+        if (isset($data['inMovimenti']))
+        {
+            
+            $automobile=Auto::getAutoById($data['auto']);
+            $auto=' '.$automobile['marca'].' '.$automobile['modello'].' '.$automobile['targa'];
+            $categoria=Categorie::getIdCategoriaByName('Automobili');
+            $causale="Automobili: ".strtoUpper($data['type']).' ';
+            
+            if(isset($data['descrizione']))
+            {
+                $causale.=$data['descrizione'].$auto;
+            }
+            if(isset($data['centrorevisione']))
+            {
+                $causale.= $data['centrorevisione'].$auto;
+            }
+            if(isset($data['litri']))
+            {
+                $causale.=$auto.' litri:'.$data['litri'].' Euro/litro:'.$data['eurolitro'];
+            }
+            
+            DB::table('movimentis')->insert([
+                'mov_data'=>$data['data'],
+                'mov_descrizione'=>'Automobili: '.strtoUpper($data['type']).' '.$auto,
+                'mov_importo'=>'-'.$data['importo'],
+                'mov_fk_categoria'=> $categoria,
+                
+            ]);
+        }
         return $id;
+    }
+    
+    public static function getOperazioni($autoId)
+    {
+        // Ritorna la lista delle operazioni effettuate sull'auto
+        
     }
 }
