@@ -71,6 +71,8 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('auto/delete', [AutoController::class, 'delAuto']);
     Route::get('auto/detail', [AutoController::class, 'getAutoDetails']);
     Route::get('auto/rifornimento', [AutoController::class, 'rifornimentoAuto'])->name('auto_rifornimento');
+    Route::post('auto/rifornimento', [AutoController::class, 'saveRifornimento']);
+    
     
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);

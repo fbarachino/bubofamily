@@ -48,6 +48,8 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
+                        <input type="hidden" name="type" value="rifornimento">
+                        <input type="hidden" name="auto" value="{{ $dettagli->id; }}">
                         	<button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>

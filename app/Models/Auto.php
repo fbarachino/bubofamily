@@ -11,17 +11,17 @@ class Auto extends Model
 {
     use HasFactory;
     
-    public function getAutoById($id)
+    public static function  getAutoById($id)
     {
         return $dettagli=DB::table('autos')->find($id);
     }
     
-    public function getAutoList()
+    public static function getAutoList()
     {
         return $lista=DB::table('autos')->select(['targa','marca','modello','id'])->get();
     }
     
-    public function saveAuto($request)
+    public static function saveAuto($request)
     {
         DB::table('autos')->insert([
             'targa'=>$request['targa'],
@@ -37,7 +37,7 @@ class Auto extends Model
         ]);
     }
     
-    public function delAuto($id)
+    public static function delAuto($id)
     {
         DB::table('autos')->delete($id['id']);
     }

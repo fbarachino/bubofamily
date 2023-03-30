@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Auto;
+use App\Models\Operazione;
+use App\Models\Rifornimento;
 use Illuminate\Http\Request;
 
 
@@ -62,5 +64,12 @@ class AutoController extends Controller
     public function rifornimentoAuto(Request $id)
     {
         return view('auto.rifornimento',['id'=>$id['id'],'dettagli'=>Auto::getAutoById($id['id'])]);        
+    }
+    
+    public function saveRifornimento(Request $request)
+    {
+        $id=Operazione::saveOperazione($request);
+        Rifornimento::saveRifornimento($id,$request);
+        return redirect(route('auto_list'));
     }
 }
