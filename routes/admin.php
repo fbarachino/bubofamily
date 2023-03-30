@@ -72,7 +72,12 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('auto/detail', [AutoController::class, 'getAutoDetails']);
     Route::get('auto/rifornimento', [AutoController::class, 'rifornimentoAuto'])->name('auto_rifornimento');
     Route::post('auto/rifornimento', [AutoController::class, 'saveRifornimento']);
-    
+    Route::get('auto/revisione', [AutoController::class, 'revisioneAuto']);
+    Route::post('auto/revisione', [AutoController::class, 'saveRevisione']);
+    Route::get('auto/manutenzione', [AutoController::class, 'manutenzioneAuto']);
+    Route::post('auto/manutenzione', [AutoController::class, 'saveManutenzione']);
+    Route::get('auto/accessori', [AutoController::class, 'accessoriAuto']);
+    Route::post('auto/accessori', [AutoController::class, 'saveAccessori']);
     
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);

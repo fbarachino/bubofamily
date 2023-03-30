@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Registrazione rifornimento</h1>
+        <h1 class="page-header">Registrazione Accessori/Acquisti</h1>
     </div>
 </div>                          
 <div class="container">    	
@@ -10,7 +10,7 @@
  	<div class="col-lg-12">
     	<div class="panel panel-default">
         	<div class="panel-heading">
-                Rifornimento auto {{ $dettagli->marca;}} {{ $dettagli->modello; }} {{ $dettagli->targa; }}
+                Accessori/Acquisti auto {{ $dettagli->marca;}} {{ $dettagli->modello; }} {{ $dettagli->targa; }}
             </div>
             <div class="panel-body">  	
     			<!-- Form -->
@@ -26,29 +26,19 @@
                     		<input type="text" class="form-control" id="km" name="km">
                     	</div>
                     </div>
-                     <div class="row">
-                        <div class="col-xs-6">
-                    		<label for="eurolitro" class="form-label">Costo al litro</label>
-                    		<input type="text" class="form-control" id="eurolitro" name="eurolitro">
-                    	</div>
-                    	<div class="col-xs-6">
-                    		<label for="litri" class="form-label">Litri</label>
-                    		<input type="text" class="form-control" id="litri" name="litri">
-                    	</div>
-                    </div>
                     <div class="row">
                         <div class="col-xs-6">
                     		<label for="importo" class="form-label">Importo totale</label>
                     		<input type="text" class="form-control" id="importo" name="importo">
                     	</div>
                     	<div class="col-xs-6">
-                    		<label for="distributore" class="form-label">Distributore</label>
-                    		<input type="text" class="form-control" id="distributore" name="distributore">
+                    		<label for="descrizione" class="form-label">Descrizione</label>
+                    		<input type="text" class="form-control" id="descrizione" name="descrizione">
                     	</div> 
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                        <input type="hidden" name="type" value="rifornimento">
+                        <input type="hidden" name="type" value="accessori">
                         <input type="hidden" name="auto" value="{{ $dettagli->id; }}">
                         	<button type="submit" class="btn btn-primary">Submit</button>
                         </div>

@@ -17,7 +17,7 @@ class CreateOperazionesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('fk_auto_id');
-            $table->foreign('fk_auto_id')->references('id')->on('autos');
+            $table->foreign('fk_auto_id')->references('id')->on('autos')->cascadeOnDelete();
             $table->date('data');
             $table->bigInteger('km');
             $table->double('importo',10,2);

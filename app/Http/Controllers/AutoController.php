@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Accessori;
 use App\Models\Auto;
+use App\Models\Manutenzione;
 use App\Models\Operazione;
+use App\Models\Revisione;
 use App\Models\Rifornimento;
 use Illuminate\Http\Request;
 
@@ -66,10 +69,46 @@ class AutoController extends Controller
         return view('auto.rifornimento',['id'=>$id['id'],'dettagli'=>Auto::getAutoById($id['id'])]);        
     }
     
+    public function manutenzioneAuto(Request $id)
+    {
+        return view('auto.manutenzione',['id'=>$id['id'],'dettagli'=>Auto::getAutoById($id['id'])]);
+    }
+    
+    public function revisioneAuto(Request $id)
+    {
+        return view('auto.revisione',['id'=>$id['id'],'dettagli'=>Auto::getAutoById($id['id'])]);
+    }
+    
+    public function accessoriAuto(Request $id)
+    {
+        return view('auto.accessori',['id'=>$id['id'],'dettagli'=>Auto::getAutoById($id['id'])]);
+    }
+    
     public function saveRifornimento(Request $request)
     {
         $id=Operazione::saveOperazione($request);
         Rifornimento::saveRifornimento($id,$request);
+        return redirect(route('auto_list'));
+    }
+    
+    public function saveManutenzione(Request $request)
+    {
+        $id=Operazione::saveOperazione($request);
+        Manutenzione::saveManutenzione($id,$request);
+        return redirect(route('auto_list'));
+    }
+    
+    public function saveAccessori(Request $request)
+    {
+        $id=Operazione::saveOperazione($request);
+        Accessori::saveAccessori($id,$request);
+        return redirect(route('auto_list'));
+    }
+    
+    public function saveRevisione(Request $request)
+    {
+        $id=Operazione::saveOperazione($request);
+        Revisione::saveRevisione($id,$request);
         return redirect(route('auto_list'));
     }
 }

@@ -16,6 +16,9 @@ class CreateManutenzionesTable extends Migration
         Schema::create('manutenziones', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->longText('descrizione');
+            $table->unsignedBigInteger('fk_operazione_id');
+            $table->foreign('fk_operazione_id')->references('id')->on('operaziones')->cascadeOnDelete();
         });
     }
 

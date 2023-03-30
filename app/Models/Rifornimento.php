@@ -17,7 +17,7 @@ class Rifornimento extends Model
             'eurolitro'=>$data['eurolitro'],
             'litri'=>$data['litri'],
             'distributore'=>$data['distributore'],
-            'operazione_id'=>$id
+            'fk_operazione_id'=>$id
         ]);
     }
 }

@@ -19,8 +19,8 @@ class CreateRifornimentosTable extends Migration
             $table->double('eurolitro',10,2);
             $table->double('litri',10,2);
             $table->string('distributore',255);
-            $table->unsignedBigInteger('fk_operazione');
-            $table->foreign('fk_operazione')->references('id')->on('operaziones');
+            $table->unsignedBigInteger('fk_operazione_id');
+            $table->foreign('fk_operazione_id')->references('id')->on('operaziones')->cascadeOnDelete();
         });
     }
 

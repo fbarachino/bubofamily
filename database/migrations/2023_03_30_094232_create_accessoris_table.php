@@ -16,6 +16,9 @@ class CreateAccessorisTable extends Migration
         Schema::create('accessoris', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('fk_operazione_id');
+            $table->foreign('fk_operazione_id')->references('id')->on('operaziones')->cascadeOnDelete();
+            $table->longText('descrizione');
         });
     }
 

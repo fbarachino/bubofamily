@@ -29,6 +29,8 @@
     				<th>Marca</th>
     				<th>Modello</th>
     				<th>Targa</th>
+    				<th>Operazioni</th>
+    				<th>Edit</th>
     			</tr>
     		</thead>
     		<tbody>
@@ -37,6 +39,12 @@
     			<td><a href="auto/detail?id={{ $automobile->id }}">{{ $automobile->marca; }}</a></td>
     			<td>{{ $automobile->modello; }}</td>
     			<td>{{ $automobile->targa; }}</td>
+    			<td>
+    				<a class="btn btn-primary" href="auto/rifornimento?id={{ $automobile->id; }}">Rifornimento</a>&nbsp;
+    				<a class="btn btn-primary" href="auto/revisione?id={{ $automobile->id; }}">Revisione</a>&nbsp;
+    				<a class="btn btn-primary" href="auto/manutenzione?id={{ $automobile->id; }}">Manutenzione</a>&nbsp;
+    				<a class="btn btn-primary" href="auto/accessori?id={{ $automobile->id; }}">Accessori</a>&nbsp;
+    			</td>
     			<td>
     				<a class="btn btn-primary" href="auto/modify?id={{ $automobile->id; }}"><i class="fa fa-pencil-square-o fw"></i></a>&nbsp;
     				<a class="btn btn-danger" href="auto/delete?id={{ $automobile->id; }}"><i class="fa fa-trash-o fa-fw"></i></a>&nbsp;

@@ -16,31 +16,65 @@
     			<!-- Form -->
     			<form action="" method="POST">
                 	@csrf
-                	<div class="mb-3">
-                		<label for="marca" class="form-label">Marca</label>
-                		<input type="text" class="form-control" id="marca" name="marca">
-         				<label for="modello" class="form-label">Modello</label>
-                		<input type="text" class="form-control" id="modello" name="modello">
-                		<label for="targa" class="form-label">Targa</label>
-                		<input type="text" class="form-control" id="targa" name="targa">
-                		<label for="alimentazione" class="form-label">Alimentazione</label>
-                		<input type="text" class="form-control" id="alimentazione" name="alimentazione">
-                		<label for="cilindrata" class="form-label">Cilindrata</label>
-                		<input type="text" class="form-control" id="cilindrata" name="cilindrata">
-                		<label for="cvfiscali" class="form-label">Cavalli Fiscali</label>
-                		<input type="text" class="form-control" id="cvfiscali" name="cvfiscali">
-                		<label for="ntelaio" class="form-label">Num. Telaio</label>
-                		<input type="text" class="form-control" id="ntelaio" name="ntelaio">
-                		<label for="nmotore" class="form-label">Num. Motore</label>
-                		<input type="text" class="form-control" id="nmotore" name="nmotore">
-                		<label for="data_acquisto" class="form-label">Data di Acquisto</label>
-                		<input type="text" class="form-control" id="data_acquisto" name="data_acquisto">
-                		<label for="note" class="form-label">Note</label>
-                		<input type="text" class="form-control" id="note" name="note">
-                		<label for="another" class="form-label">Inserisci un altro</label>
-                		<input type="checkbox" class="form-control" id="another" name="another">
-                	</div> 
-                    	<button type="submit" class="btn btn-primary">Submit</button>
+                	<div class="row">
+                    	<div class="col-xs-6">
+                    		<label for="marca" class="form-label">Marca</label>
+                    		<input type="text" class="form-control" id="marca" name="marca">
+                    	</div>
+                    	<div class="col-xs-6">
+             				<label for="modello" class="form-label">Modello</label>
+                    		<input type="text" class="form-control" id="modello" name="modello">
+                    	</div>
+                	</div>
+                	<div class="row">
+                    	<div class="col-xs-6">
+                    		<label for="targa" class="form-label">Targa</label>
+                    		<input type="text" class="form-control" id="targa" name="targa">
+                    	</div>
+                    	<div class="col-xs-6">
+                    		<label for="alimentazione" class="form-label">Alimentazione</label>
+                    		<input type="text" class="form-control" id="alimentazione" name="alimentazione">
+                    	</div>
+                	</div>
+                	<div class="row">
+                    	<div class="col-xs-6">
+                    		<label for="cilindrata" class="form-label">Cilindrata</label>
+                    		<input type="text" class="form-control" id="cilindrata" name="cilindrata">
+                    	</div>
+                    	<div class="col-xs-6">
+                    		<label for="cvfiscali" class="form-label">Cavalli Fiscali</label>
+                    		<input type="text" class="form-control" id="cvfiscali" name="cvfiscali">
+                    	</div>
+                	</div>
+                	<div class="row">
+                    	<div class="col-xs-6">
+                    		<label for="ntelaio" class="form-label">Num. Telaio</label>
+                    		<input type="text" class="form-control" id="ntelaio" name="ntelaio">
+                    	</div>
+                    	<div class="col-xs-6">
+                    		<label for="nmotore" class="form-label">Num. Motore</label>
+                    		<input type="text" class="form-control" id="nmotore" name="nmotore">
+                    	</div>
+                	</div>
+                	<div class="row">
+                    	<div class="col-xs-6">
+                    		<label for="data_acquisto" class="form-label">Data di Acquisto</label>
+                    		<input type="date" class="form-control" id="data_acquisto" name="data_acquisto">
+                    	</div>
+                    	<div class="col-xs-6">
+                    		<label for="note" class="form-label">Note</label>
+                    		<input type="text" class="form-control" id="note" name="note">
+                    	</div>
+                	</div>
+                	<div class="row">
+                    	<div class="col-xs-6">
+                    		<label for="another" class="form-label">Inserisci un altro</label>
+                    		<input type="checkbox" class="form-control" id="another" name="another">
+                    	</div>
+                    	<div class="col-xs-6">
+                        	<button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
             	</form>
     			<!-- /Form -->
     		</div>

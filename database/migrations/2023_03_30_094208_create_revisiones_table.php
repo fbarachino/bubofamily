@@ -16,6 +16,12 @@ class CreateRevisionesTable extends Migration
         Schema::create('revisiones', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('fk_operazione_id');
+            $table->foreign('fk_operazione_id')->references('id')->on('operaziones')->cascadeOnDelete();
+            $table->longText('descrizione');
+            $table->string('centrorevisione',255);
+            $table->boolean('superata');
+            $table->date('dataproxrevisione');
         });
     }
 
