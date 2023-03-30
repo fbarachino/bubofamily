@@ -70,6 +70,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('auto/new', [AutoController::class, 'saveAuto'])->name('auto_save');
     Route::get('auto/delete', [AutoController::class, 'delAuto']);
     Route::get('auto/detail', [AutoController::class, 'getAutoDetails']);
+    Route::get('auto/rifornimento', [AutoController::class, 'rifornimentoAuto'])->name('auto_rifornimento');
     
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);

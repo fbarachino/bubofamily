@@ -3,19 +3,17 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Auto;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 
 class AutoController extends Controller
 {
     //
-    public static function index()
+    public function index()
     {
         // lista le auto inserite nel gestionale
-        $lista=DB::table('autos')->select(['targa','marca','modello','id'])->get();
-        // dd($lista); // debug
-        return view('auto.list',['title'=>'Automobile', 'automobili'=>$lista]);
+        return view('auto.list',['title'=>'Automobile', 'automobili'=>Auto::getAutoList()]);
     }
     
     public function newAuto()
@@ -26,49 +24,43 @@ class AutoController extends Controller
     
     public function saveAuto(Request $request)
     {
-        // inserisce l'auto nel database e torna alla lista o ad un nuovo inserimento in base
-        // dd($request);
-      
-        DB::table('autos')->insert([
-            'targa'=>$request['targa'],
-            'marca'=>$request['marca'],
-            'modello'=>$request['modello'],
-            'cilindrata'=>$request['cilindrata'],
-            'cvfiscali'=>$request['cvfiscali'],
-            'alimentazione'=>$request['alimentazione'],
-            'ntelaio'=>$request['ntelaio'],
-            'nmotore'=>$request['nmotore'],
-            'data_acquisto'=>$request['data_acquisto'],
-            'note'=>$request['note'],
-        ]);
-        
+        // Salva una nuova auto
+        Auto::saveAuto($request);  
         if ($request['another']=='on')
         {
             return redirect(route('auto_new'));
         }
-        else {
+        else 
+        {
             return redirect(route('auto_list'));
         }
-        
     }
     
     public function delAuto(Request $id)
     {
-        DB::table('autos')->delete($id['id']);
+        Auto::delAuto($id);
         return redirect(route('auto_list'));
     }
     
     public function getAutoDetails(request $id)
     {
         // Ritorna i dettagli dell'auto
-        $dettagli=DB::table('autos')->find($id['id']);
         return view('auto.detail',[
-            'dettagli' => $dettagli,
+            'dettagli' => Auto::getAutoById($id['id']),
         ]);
     }
     
+   
+    
     public function getTCOAuto(request $id)
     {
-        
+        // Ritorna la somma di tutti i costi sostenuti per l'auto
+    }
+    
+    
+    
+    public function rifornimentoAuto(Request $id)
+    {
+        return view('auto.rifornimento',['id'=>$id['id'],'dettagli'=>Auto::getAutoById($id['id'])]);        
     }
 }
