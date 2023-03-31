@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class TagController extends Controller
 {
     public static function listTags(){
-        $tags = DB::table('tags')->orderBy('tag_name')->get();
+        $tags = tag::getList();
         return view('conti.tags.list',['tags'=>$tags]);
     }
     
     public static function insTags(Request $request)
     {
-        DB::table('tags')->insert(['tag_name'=> $request['tag_name']]);
-        $tags = DB::table('tags')->orderBy('tag_name')->get();
+        tag::inserisci($request);
+        $tags = tag::getList();
         return view('conti.tags.list',['tags'=>$tags]);
     }
     
@@ -27,9 +28,7 @@ class TagController extends Controller
     public function updateTag(Request $request)
     {
         $id=$request['id'];
-        $tags=DB::table('tags')
-        ->where('tags.id','=',$id)
-        ->get();
+        $tags=tag::getById($id);
         return view('conti.tags.update',
             [
                 'tags'=> $tags,
@@ -38,17 +37,13 @@ class TagController extends Controller
     
     public function updatePostTag(Request $request)
     {
-        DB::table('tags')
-        ->where('id','=', $request['id'])
-        ->update([
-            'tag_name' => $request['tag_name'],
-        ]);
+        tag::updateById($request);
         return redirect(route('tags'));
     }
     
     public function apiList()
     {
-        $tags=DB::table('tags')->orderBy('tag_name')->get();
+        $tags=tag::getList();
         return json_encode($tags);
     }
 }

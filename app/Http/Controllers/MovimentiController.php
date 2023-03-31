@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
+use App\Models\Movimenti;
+use App\Models\tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-//use Rap2hpoutre\FastExcel\FastExcel;
 use Rap2hpoutre\FastExcel\FastExcel;
-use Illuminate\Support\Arr;
 
 class MovimentiController extends Controller
 {
     // Gestione dei movimenti
     public static function newMovimenti() {
-        $categorie=DB::table('categories')->orderBy('cat_name')->get();
-        $tags=DB::table('tags')->orderBy('tag_name')->get();
+        $categorie=Categorie::list();
+        $tags=tag::getList();
         return view('conti.movimenti.new',[
             'categorie'=>$categorie,
             'tags'=>$tags,
@@ -21,16 +22,10 @@ class MovimentiController extends Controller
     }
     
     public static function listMovimenti(){
-        $categorie=DB::table('categories')->orderBy('cat_name')->get();
-        $tags=DB::table('tags')->orderBy('tag_name')->get();
+        $categorie=Categorie::list();
+        $tags=tag::getList();
        /* Query per visualizzare anche il totale dei documenti presenti per il record */
-         $movimenti=DB::table('movimentis')
-            ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-            ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-            ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
-            ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
-            ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
-            ->get();
+        $movimenti=Movimenti::getList();
          
         
         return view('conti.movimenti.list',[
@@ -42,40 +37,18 @@ class MovimentiController extends Controller
     
     public static function dashboard()
     {
-        $bilancio=DB::table('movimentis')->whereYear('mov_data','=',date('Y'))->sum('mov_importo');
-        
-        
+        $bilancio=Movimenti::getSaldo(date('Y'));        
         return view('layouts.dashboard',[
             'bilancio'=>$bilancio,
-            
         ]);
     }
     
     public static function insMovimentiSpesa(Request $request)
     {
-        DB::table('movimentis')->insert(
-        [
-            'mov_data'=>$request['mov_data'],
-            'mov_fk_categoria'=>$request['mov_fk_categoria'],
-            'mov_descrizione'=>$request['mov_descrizione'],
-            'mov_importo'=>'-'.$request['mov_importo'],
-            'mov_fk_tags'=>$request['mov_fk_tags'],
-            'mov_inserito_da'=>$request['userid'],
-        ]);
-        $mov=DB::table('movimentis')
-        ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-        ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
-        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
-        ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
-        ->get();
-        
-        $categorie=DB::table('categories')
-            ->orderBy('cat_name')
-            ->get();
-        $tags=DB::table('tags')
-            ->orderBy('tag_name')
-            ->get();
+        Movimenti::insSpesa($request);
+        $mov=Movimenti::getList();        
+        $categorie=Categorie::list();
+        $tags=tag::getList();
         return view('conti.movimenti.list',
             [
                 'categorie'=> $categorie,
@@ -87,28 +60,10 @@ class MovimentiController extends Controller
     }
     public static function insMovimentiEntrata(Request $request)
     {
-        DB::table('movimentis')->insert(
-            [
-                'mov_data'=>$request['mov_data'],
-                'mov_fk_categoria'=>$request['mov_fk_categoria'],
-                'mov_descrizione'=>$request['mov_descrizione'],
-                'mov_importo'=>$request['mov_importo'],
-                'mov_fk_tags'=>$request['mov_fk_tags'],
-                'mov_inserito_da'=>$request['userid'],
-            ]);
-        $mov=DB::table('movimentis')
-        ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-        ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
-        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
-        ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
-        ->get();
-        $categorie=DB::table('categories')
-        ->orderBy('cat_name')
-        ->get();
-        $tags=DB::table('tags')
-        ->orderBy('tag_name')
-        ->get();
+        Movimenti::insEntrata($request);
+        $mov=Movimenti::getList();
+        $categorie=Categorie::list();
+        $tags=tag::getList();
         return view('conti.movimenti.list',
             [
                 'categorie'=> $categorie,
@@ -120,12 +75,7 @@ class MovimentiController extends Controller
     }
     public function exportMovimenti()
     {
-        $movimenti = DB::table('movimentis')
-            ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-            ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-            ->selectRaw('mov_data AS Data,cat_name AS Categoria,tag_name AS Tag,mov_descrizione AS Descrizione,mov_importo AS Importo')
-            ->orderBy('Data','asc')
-            ->get();
+        $movimenti = Movimenti::export();
         foreach ($movimenti as $movimento)
         {
             $lista[]=[
@@ -133,7 +83,6 @@ class MovimentiController extends Controller
                 'Categoria'=>$movimento->Categoria,
                 'Tag'=>$movimento->Tag,
                 'Descrizione'=>$movimento->Descrizione,
-                //'Importo'=>str_replace(".",",",$movimento->Importo),
                 'Importo'=>$movimento->Importo,
             ];
         }
@@ -159,23 +108,8 @@ class MovimentiController extends Controller
             $month=$request['Month'];
         }
         
-        $reportSpesa = DB::table('movimentis')
-            ->selectRaw('ABS(Sum(movimentis.mov_importo)) as resoconto, categories.cat_name,categories.id')
-            ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-            ->where('mov_importo','<',0)
-            ->whereYear('mov_data',$year)
-            ->whereMonth('mov_data',$month)
-            ->groupBy('cat_name','categories.id')
-            ->get();
-        
-        $reportEntrate = DB::table('movimentis')
-            ->selectRaw('ABS(Sum(movimentis.mov_importo)) as resoconto, categories.cat_name,categories.id')
-            ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-            ->where('mov_importo','>',0)
-            ->whereYear('mov_data',$year)
-            ->whereMonth('mov_data',$month)
-            ->groupBy('cat_name','categories.id')
-            ->get();
+        $reportSpesa = Movimenti::reportSpesa($year, $month);
+        $reportEntrate = Movimenti::reportEntrate($year,$month);
         
         return view('components.charts',[
             'dataSpesa'=>$reportSpesa,
@@ -186,17 +120,9 @@ class MovimentiController extends Controller
     public function updateMovimenti(Request $request)
     {
         $id=$request['id'];
-        $mov=DB::table('movimentis')
-            ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-            ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-            ->where('movimentis.id','=',$id)
-            ->get();
-        $categorie=DB::table('categories')
-            ->orderBy('cat_name')
-            ->get();
-        $tags=DB::table('tags')
-            ->orderBy('tag_name')
-            ->get();
+        $mov=Movimenti::getMovimentoById($id);
+        $categorie=Categorie::list();
+        $tags=tag::getList();
         return view('conti.movimenti.update',
             [
                 'categorie'=> $categorie,
@@ -207,39 +133,20 @@ class MovimentiController extends Controller
     
     public function updatePostMovimenti(Request $request)
     {
-        DB::table('movimentis')
-            ->where('id','=', $request['id'])
-            ->update([
-                'mov_data' => $request['mov_data'],
-                'mov_fk_categoria'=>$request['mov_fk_categoria'],
-                'mov_descrizione'=>$request['mov_descrizione'],
-                'mov_importo'=>$request['mov_importo'],
-                'mov_fk_tags'=>$request['mov_fk_tags'],
-                'mov_inserito_da'=>$request['userid'],
-            ]);
+        Movimenti::updateMovimenti($request);
         return redirect(route('movimenti'));
     }
     
     public function deleteMovimenti(Request $request)
     {
-        DB::table('movimentis')
-        ->where('id','=', $request['id'])
-        ->delete();
+        Movimenti::deleteMovimento($request['id']);
         return redirect(route('movimenti'));
         
     }
     
     public function listMovPerCateg(Request $request)
     {
-        $mov=DB::table('movimentis')
-        ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-        ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-        ->where('movimentis.mov_fk_categoria','=',$request['cat'])
-        ->whereMonth('mov_data','=',$request['month'])
-        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
-        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
-        ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
-        ->get();
+        $mov=Movimenti::listByCatMonth($request['month'], $request['cat']);
         return view('conti.movimenti.list',
             [
                 'movimenti'=> $mov,     
@@ -248,14 +155,7 @@ class MovimentiController extends Controller
     
     public function listMovByCat(Request $request)
     {
-        $mov=DB::table('movimentis')
-        ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-        ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-        ->where('movimentis.mov_fk_categoria','=',$request['cat'])
-        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
-        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
-        ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
-        ->get();
+        $mov=Movimenti::listByCategory($request['cat']);
         return view('conti.movimenti.list',
             [
                 'movimenti'=> $mov,
@@ -270,7 +170,7 @@ class MovimentiController extends Controller
         }
         
         $mesi=['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
-        $categorie=DB::table('categories')->orderBy('cat_name')->get();
+        $categorie=Categorie::list();
         
         foreach ($categorie as $categoria)
         {
@@ -340,14 +240,7 @@ class MovimentiController extends Controller
     
     public function filterByTag(Request $tag)
     {
-        $mov=DB::table('movimentis')
-        ->where('mov_fk_tags','=',$tag['tag'])
-        ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
-        ->join('tags','movimentis.mov_fk_tags','=','tags.id')
-        ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
-        ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
-        ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
-        ->get();
+        $mov=Movimenti::getByTag($tag['tag']);
         return view('conti.movimenti.list',
             [
                 'movimenti'=> $mov,
@@ -357,9 +250,7 @@ class MovimentiController extends Controller
     
     public function apiList()
     {
-        $movments = DB::table('movimentis')
-            ->orderBy('mov_data','desc')
-            ->get();
+        $movments = Movimenti::getList();
         return json_encode($movments);
     }
     

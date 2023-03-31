@@ -21,9 +21,7 @@ class Event extends Model
   
 
     protected $fillable = [
-
         'title', 'start', 'end'
-
     ];
 
 }
