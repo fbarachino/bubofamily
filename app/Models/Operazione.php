@@ -61,6 +61,13 @@ class Operazione extends Model
     public static function getOperazioni($autoId)
     {
         // Ritorna la lista delle operazioni effettuate sull'auto
-        
+        $data=DB::table('operaziones')
+        ->leftJoin('accessoris','operaziones.id','=','accessoris.fk_operazione_id')
+        ->leftJoin('manutenziones','operaziones.id','=','manutenziones.fk_operazione_id')
+        ->leftJoin('rifornimentos', 'operaziones.id','=','rifornimentos.fk_operazione_id')
+        ->leftJoin('revisiones','operaziones.id','=','revisiones.fk_operazione_id')
+        ->where('fk_auto_id','=',$autoId)
+        ->get();
+        return $data;
     }
 }

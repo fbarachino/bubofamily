@@ -111,4 +111,10 @@ class AutoController extends Controller
         Revisione::saveRevisione($id,$request);
         return redirect(route('auto_list'));
     }
+    
+    public function getOperazioni(Request $request)
+    {
+        $operazioni=Operazione::getOperazioni($request['id']);
+        dd($operazioni);
+    }
 }

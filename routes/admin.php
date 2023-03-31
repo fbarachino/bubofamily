@@ -78,6 +78,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('auto/manutenzione', [AutoController::class, 'saveManutenzione']);
     Route::get('auto/accessori', [AutoController::class, 'accessoriAuto']);
     Route::post('auto/accessori', [AutoController::class, 'saveAccessori']);
+    Route::get('auto/operazioni', [AutoController::class, 'getOperazioni']);
     
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);
