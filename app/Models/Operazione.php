@@ -30,7 +30,7 @@ class Operazione extends Model
         {
             
             $automobile=Auto::getAutoById($data['auto']);
-            $auto=' '.$automobile['marca'].' '.$automobile['modello'].' '.$automobile['targa'];
+            $auto=' '.$automobile->marca.' '.$automobile->modello.' '.$automobile->targa;
             $categoria=Categorie::getIdCategoriaByName('Automobili');
             $causale="Automobili: ".strtoUpper($data['type']).' ';
             
@@ -49,9 +49,11 @@ class Operazione extends Model
             
             DB::table('movimentis')->insert([
                 'mov_data'=>$data['data'],
-                'mov_descrizione'=>'Automobili: '.strtoUpper($data['type']).' '.$auto,
+                'mov_descrizione'=>$causale,
                 'mov_importo'=>'-'.$data['importo'],
-                'mov_fk_categoria'=> $categoria,
+                'mov_fk_categoria'=> 1,
+                'mov_inserito_da'=>1,
+                'mov_fk_tags'=>1,
                 
             ]);
         }

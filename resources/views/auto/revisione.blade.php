@@ -54,8 +54,14 @@
                     	</div>
                     </div>
                     <div class="row">
+                        <div class="col-xs-6">
+                    		<label for="inMovimenti" class="form-label">Inserire nei movimenti?</label>
+                    		<input type="checkbox" id="inMovimenti" name="inMovimenti">
+                    	</div>
+                    </div>
+                    <div class="row">
                         <div class="col-xs-12">
-                        <input type="hidden" name="type" value="accessori">
+                        <input type="hidden" name="type" value="revisione">
                         <input type="hidden" name="auto" value="{{ $dettagli->id; }}">
                         	<button type="submit" class="btn btn-primary">Submit</button>
                         </div>

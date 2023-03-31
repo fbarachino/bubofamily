@@ -4,36 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Categorie;
 
 class CategorieController extends Controller
 {
     // Gestione delle categorie di movimento
+    // TODO: sistemare la gestione dei dati nel Model Categorie
     
     public static function listCategorie(){
-        $categorie=DB::table('categories')->orderBy('cat_name')->get();
-        return view('conti.categorie.list',['categorie'=>$categorie]);
+        
+        return view('conti.categorie.list',['categorie'=>Categorie::list()]);
     }
     
     public static function insCategorie(Request $request)
     {
-        DB::table('categories')->insert(['cat_name'=> $request['cat_name']]);
-        $categorie=DB::table('categories')->orderBy('cat_name')->get();
-        return view('conti.categorie.list',['categorie'=>$categorie]);
+        Categorie::inserisci($request['cat_name']);
+        return view('conti.categorie.list',['categorie'=>Categorie::list()]);
     }
     
     public function deleteCategorie(Request $request)
     {
-        DB::table('categories')
-        ->where('id','=', $request['id'])
-        ->delete();
+        
+        Categorie::deleteById($request['id']);
         return redirect(route('categorie'));  
     }
     public function updateCategorie(Request $request)
     {
         $id=$request['id'];
-        $categorie=DB::table('categories')
-        ->where('categories.id','=',$id)
-        ->get();
+        
+        $categorie = Categorie::getById($id);
         return view('conti.categorie.update',
             [
                 'categorie'=> $categorie,
@@ -42,18 +41,14 @@ class CategorieController extends Controller
     
     public function updatePostCategorie(Request $request)
     {
-        DB::table('categories')
-        ->where('id','=', $request['id'])
-        ->update([
-            'cat_name' => $request['cat_name'],
-        ]);
+        Categorie::updateNameById($request['id'],$request['cat_name']);
         return redirect(route('categorie'));
     }
     
     
     public function apiList()
     {
-        $categorie=DB::table('categories')->orderBy('cat_name')->get();
+        $categorie=Categorie::list();
         return response()->json($categorie);
     }
 }

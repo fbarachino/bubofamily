@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Documenti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,15 +12,8 @@ class DocumentiController extends Controller
     public function storeFile(Request $req){
         if ($req->hasFile('filename'))
         {
-            $movimento_id=$req->input('id');
-            $filename=$req->file('filename')->store('Documenti');
-            DB::table('documentis')
-            ->insert([
-                'movimenti_id'=>$movimento_id,
-                'descrizione'=>$req->input('descrizione'),
-                'filename'=>$filename,
-            ]);
-            return redirect(route('documenti',['id'=>$movimento_id,]));
+            Documenti::store($req);
+            return redirect(route('documenti',['id'=>$req->input('id'),]));
         }
         else 
         {
@@ -28,9 +22,7 @@ class DocumentiController extends Controller
     }
     
     public function fileForm(Request $request){
-        $documenti = DB::table('documentis')
-            ->where('movimenti_id','=',$request->input('id'))
-            ->get();
+        $documenti = Documenti::getList($request->input('id'));  
         return view('conti.documenti.insert', [
             'id'=>$request->input('id'),
             'documenti'=>$documenti
