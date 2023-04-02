@@ -17,4 +17,8 @@ class Manutenzione extends Model
             'descrizione'=>$data['descrizione'],
         ]);
     }
+    
+    public static function getElementsbyOperazione($data) {
+        return DB::table('manutenziones')->where('fk_operazione_id','=',$data)->get();
+    }
 }

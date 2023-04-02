@@ -20,4 +20,8 @@ class Revisione extends Model
             'dataproxrevisione'=>$data['dataproxrevisione'],
         ]);
     }
+    
+    public static function getElementsbyOperazione($data) {
+        return DB::table('revisiones')->where('fk_operazione_id','=',$data)->get();
+    }
 }

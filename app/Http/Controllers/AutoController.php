@@ -50,9 +50,10 @@ class AutoController extends Controller
     public function getAutoDetails(request $id)
     {
         // Ritorna i dettagli dell'auto
-        return view('auto.detail',[
-            'dettagli' => Auto::getAutoById($id['id']),
-        ]);
+        /*return view('auto.detail',[
+            'dettagli' => Auto::getAutoById($id['id']),]);*/
+        return Operazione::getOperazioni($id['id']);
+        
     }
     
    

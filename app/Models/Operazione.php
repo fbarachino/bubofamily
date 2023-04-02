@@ -61,13 +61,30 @@ class Operazione extends Model
     public static function getOperazioni($autoId)
     {
         // Ritorna la lista delle operazioni effettuate sull'auto
+        $automobile=Auto::getAutoById($autoId);
         $data=DB::table('operaziones')
-        ->leftJoin('accessoris','operaziones.id','=','accessoris.fk_operazione_id')
-        ->leftJoin('manutenziones','operaziones.id','=','manutenziones.fk_operazione_id')
-        ->leftJoin('rifornimentos', 'operaziones.id','=','rifornimentos.fk_operazione_id')
-        ->leftJoin('revisiones','operaziones.id','=','revisiones.fk_operazione_id')
         ->where('fk_auto_id','=',$autoId)
+        ->orderBy('km')
         ->get();
-        return $data;
+        foreach ($data as $dato)
+        {
+            $accessori[$dato->id]=Accessori::getElementsbyOperazione($dato->id);
+            $manutenzione[$dato->id]=Manutenzione::getElementsbyOperazione($dato->id);
+            $revisione[$dato->id]=Revisione::getElementsbyOperazione($dato->id);
+            $rifornimento[$dato->id]=Rifornimento::getElementsbyOperazione($dato->id);
+            if(isset($dato->km)){$km=$dato->km;}else{$km=0;}
+        }
+        // Debug
+       /* dd($rifornimento);*/
+       return view('auto.detail',[
+            'dettagli'=>$automobile,
+            'km'=>$km,
+            
+            'operazione'=>$data,
+            'accessori'=>$accessori,
+            'manutenzione'=>$manutenzione,
+            'revisione'=>$revisione,
+            'rifornimento'=>$rifornimento,
+        ]);
     }
 }

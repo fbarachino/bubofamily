@@ -20,4 +20,8 @@ class Rifornimento extends Model
             'fk_operazione_id'=>$id
         ]);
     }
+    
+    public static function getElementsbyOperazione($data) {
+        return DB::table('rifornimentos')->where('fk_operazione_id','=',$data)->get();
+    }
 }

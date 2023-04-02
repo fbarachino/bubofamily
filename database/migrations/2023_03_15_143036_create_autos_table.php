@@ -22,10 +22,10 @@ class CreateAutosTable extends Migration
             $table->string('cilindrata',10);
             $table->string('alimentazione',10);
             $table->string('cvfiscali',10);
-            $table->string('ntelaio',10);
-            $table->string('nmotore',10);
+            $table->string('ntelaio',30);
+            $table->string('nmotore',30)->nullable();
             $table->date('data_acquisto');
-            $table->text('note');
+            $table->text('note')->nullable();
         });
     }
 
