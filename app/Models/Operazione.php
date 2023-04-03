@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+//use Barryvdh\DomPDF\Facade\Pdf;
+use Sfneal\ViewExport\Pdf\PdfExportService;
+
 
 class Operazione extends Model
 {
@@ -72,7 +75,12 @@ class Operazione extends Model
             $manutenzione[$dato->id]=Manutenzione::getElementsbyOperazione($dato->id);
             $revisione[$dato->id]=Revisione::getElementsbyOperazione($dato->id);
             $rifornimento[$dato->id]=Rifornimento::getElementsbyOperazione($dato->id);
-            if(isset($dato->km)){$km=$dato->km;}else{$km=0;}
+            if(isset($dato->km))
+            {
+                $km=$dato->km;
+            }else{
+                $km=0;
+            }
         }
         // Debug
        /* dd($rifornimento);*/
@@ -86,5 +94,38 @@ class Operazione extends Model
             'revisione'=>$revisione,
             'rifornimento'=>$rifornimento,
         ]);
+    }
+    
+    public static function exportPdfOperazioni($autoId)
+    {
+        $automobile=Auto::getAutoById($autoId);
+        $data=DB::table('operaziones')
+        ->where('fk_auto_id','=',$autoId)
+        ->orderBy('km')
+        ->get();
+        foreach ($data as $dato)
+        {
+            $accessori[$dato->id]=Accessori::getElementsbyOperazione($dato->id);
+            $manutenzione[$dato->id]=Manutenzione::getElementsbyOperazione($dato->id);
+            $revisione[$dato->id]=Revisione::getElementsbyOperazione($dato->id);
+            $rifornimento[$dato->id]=Rifornimento::getElementsbyOperazione($dato->id);
+            if(isset($dato->km))
+            {
+                $km=$dato->km;
+            }else{
+                $km=0;
+            }
+        }
+        $view= view('auto.detailpdf',[
+            'dettagli'=>$automobile,
+            'km'=>$km,
+            
+            'operazione'=>$data,
+            'accessori'=>$accessori,
+            'manutenzione'=>$manutenzione,
+            'revisione'=>$revisione,
+            'rifornimento'=>$rifornimento,
+        ]);
+        return $pdf=PdfExportService::fromView($view)->handle()->download();   
     }
 }

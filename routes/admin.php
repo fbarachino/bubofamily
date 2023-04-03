@@ -79,6 +79,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('auto/accessori', [AutoController::class, 'accessoriAuto']);
     Route::post('auto/accessori', [AutoController::class, 'saveAccessori']);
     Route::get('auto/operazioni', [AutoController::class, 'getOperazioni']);
+    Route::get('auto/operazioni/pdf', [AutoController::class, 'exportPdfOperazioni']);
     
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);

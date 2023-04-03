@@ -1,73 +1,82 @@
-@extends('admin')
-@section('content')
-<div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">{{ $dettagli->marca; }} {{ $dettagli->modello; }} targa: {{ $dettagli->targa; }}</h1>
-                        </div>
-</div>                          
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;600&display=swap" rel="stylesheet">
+<style lang="text/css">
+body{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+th{
+    text-align: left;
+}
+td{
+    font-size: 11px;
+     border:1px, solid, #000000;
+}
+
+table{
+    border:1px, solid, #000000;
+}
+#panel_heading{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18px;
+}
+
+
+
+</style>
+</head>
+<body>       
 	<div class="container">
     	<!-- Content here -->
     	
-<div class="row">
- 	<div class="col-lg-12">
- 	<a class="btn btn-primary" href="operazioni/pdf?id={{ $dettagli->id; }}">Esporta PDF</a>
- 	</div>
- 	</div>
+	<span class="titolo"><h1>Scheda {{ $dettagli->marca; }} {{ $dettagli->modello; }} - {{ $dettagli->targa; }}</h1></span>
  	<div class="row">
  	<div class="col-lg-12">
     	<div class="panel panel-default">
         	<div class="panel-heading">
-                Dettaglio auto {{ $dettagli->targa }}
+                Dettaglio
             </div>
             <div class="panel-body">  	
             	<div class="table-responsive">
-                   <table class="table table-striped table-bordered table-hover" id="">
-            		
-            		<thead>
+                   <table class="intestazione_doc" id="">
             			<tr>
-            				<th>Marca:</th>
-            				<th>Modello:</th>
-            				<th>Targa:</th>
-            				<th>Alimentazione:</th>
-            				<th>Cilindrata:</th>
-            				<th>Cavalli Fisc.:</th>
-            				<th>Num.Telaio:</th>
-            				<th>Num. Motore:</th>
-            				<th>Data acquisto:</th>
-            				<th>Kilometraggio:</th>
-            				<th>Note:</th>
+            				<th>Marca:</th><td>{{ $dettagli->marca; }}</td>
+            				<th>Modello:</th><td>{{ $dettagli->modello; }}</td>
+            				<th>Targa:</th>	<td>{{ $dettagli->targa; }}</td>
+            	
             			</tr>
-            		</thead>
-            		<tbody>
-            		
-            		<tr>
-            			<td>{{ $dettagli->marca; }}</td>
-            			<td>{{ $dettagli->modello; }}</td>
-            			<td>{{ $dettagli->targa; }}</td>
-            			<td>{{ $dettagli->alimentazione; }}</td>
-            			<td>{{ $dettagli->cilindrata; }}</td>
-            			<td>{{ $dettagli->cvfiscali; }}</td>
-            			<td>{{ $dettagli->ntelaio; }}</td>
-            			<td>{{ $dettagli->nmotore; }}</td>
-            			<td>{{ $dettagli->data_acquisto; }}</td>
-            			<td>{{ $km ?? ''; }}</td>
-            			<td>{{ $dettagli->note; }}</td>
-            		</tr>
-            		
-            		</tbody>
-            		
+            			<tr>
+            				<th>Alimentazione:</th><td>{{ $dettagli->alimentazione; }}</td>
+            				<th>Cilindrata:</th><td>{{ $dettagli->cilindrata; }}</td>
+            				<th>Cavalli Fisc.:</th><td>{{ $dettagli->cvfiscali; }}</td>
+            			</tr>
+            			<tr>
+            				<th>Num.Telaio:</th><td>{{ $dettagli->ntelaio; }}</td>
+            				<th>Num. Motore:</th><td>{{ $dettagli->nmotore; }}</td>
+            				<th>Data acquisto:</th><td>{{ $dettagli->data_acquisto; }}</td>
+            			</tr>
+            			<tr>
+            				<th>Kilometraggio:</th><td>{{ $km ?? ''; }}</td>
+            				<th>Note:</th><td>{{ $dettagli->note; }}</td>
+            			</tr>
             		</table>
             	</div>
     		</div>
 		</div>
 	</div>
 </div>
+<br><br><hr>
 	<!-- Revisioni -->
 	<div class="row">
  	<div class="col-lg-12">
     	<div class="panel panel-default">
         	<div class="panel-heading">
-                Revisioni auto {{ $dettagli->targa }}
+                Revisioni
             </div>
             <div class="panel-body">  	
             	<div class="table-responsive">
@@ -107,13 +116,13 @@
 	</div>
 </div>
 	<!-- Fine Revisioni -->
-	
+<br><hr>	
 	<!-- Manutenzioni -->
 	<div class="row">
  	<div class="col-lg-12">
     	<div class="panel panel-default">
         	<div class="panel-heading">
-                Manutenzione auto {{ $dettagli->targa }}
+                Manutenzione 
             </div>
             <div class="panel-body">  	
             	<div class="table-responsive">
@@ -147,13 +156,13 @@
 	</div>
 	</div>
 	<!-- Fine Manutenzioni -->
-	
+<br>	<hr>
 	<!-- Accessori -->
 	<div class="row">
  	<div class="col-lg-12">
     	<div class="panel panel-default">
         	<div class="panel-heading">
-                Accessori/Ricambi auto {{ $dettagli->targa }}
+                Accessori/Ricambi
             </div>
             <div class="panel-body">  	
             	<div class="table-responsive">
@@ -187,13 +196,13 @@
 	</div>
 	</div>
 	<!-- Fine Accessori -->
-	
+<br>	<hr>
 	<!-- Rifornimenti -->
 	<div class="row">
  	<div class="col-lg-12">
     	<div class="panel panel-default">
         	<div class="panel-heading">
-                Rifornimenti auto {{ $dettagli->targa }}
+                Rifornimenti
             </div>
             <div class="panel-body">  	
             	<div class="table-responsive">
@@ -231,20 +240,10 @@
 	</div>
 	</div>
 	<!-- Fine Rifornimenti -->
-	
+<br>	<hr>
 	<!--  -->
 </div>
-
+</body>
+</html>
  <!-- /.col-lg-12 -->
 
-@endsection
-
-@section('script')
-<script>
-            $(document).ready(function() {
-                $('#automobili').DataTable({
-                        responsive: true
-                });
-            });
-        </script>
-@endsection

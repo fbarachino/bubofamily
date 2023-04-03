@@ -9,7 +9,7 @@
 	"license" : "MIT",
 	"require" : {
 		"php": "^7.3|^8.0",
-		"barryvdh/laravel-dompdf": "^1.0",
+		"barryvdh/laravel-dompdf": "^2.0",
 		"directorytree/ldaprecord": "^2.9",
 		"directorytree/ldaprecord-laravel": "^2.5",
 		"fruitcake/laravel-cors": "^2.0",
@@ -22,6 +22,7 @@
 		"laraveldaily/laravel-charts": "^0.1.29",
 		"rap2hpoutre/fast-excel": "^3.2",
 		"secondtruth/startmin": "^1.1",
+		"sfneal/view-export": "^2.10",
 		"snapappointments/bootstrap-select": "^1.13",
 		"webklex/laravel-imap": "^2.4"
 	},

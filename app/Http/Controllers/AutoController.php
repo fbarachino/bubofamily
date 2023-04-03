@@ -116,6 +116,11 @@ class AutoController extends Controller
     public function getOperazioni(Request $request)
     {
         $operazioni=Operazione::getOperazioni($request['id']);
-        dd($operazioni);
+       // dd($operazioni);
+    }
+    
+    public function exportPdfOperazioni(Request $id)
+    {
+        $pdf=Operazione::exportPdfOperazioni($id['id']);
     }
 }
