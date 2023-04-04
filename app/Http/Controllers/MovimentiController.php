@@ -254,6 +254,43 @@ class MovimentiController extends Controller
         return json_encode($movments);
     }
     
+    private function dateFormat($type,$string)
+    {
+        if($type)
+        {
+            list($year,$month,$day) = explode('-',$string);
+            return $day.'/'.$month.'/'.$year;
+        } else {
+            list($day,$month,$year) =explode('/',$string);
+            return $year.'-'.$month.'-'.$day;
+        }
+    }
+    
+    public function importEC_ING()
+    {
+        $collection = (new FastExcel)->import('file1.xlsx', function ($line){
+             if($line['Data valuta'])
+            {
+                return Movimenti::insEntrata([
+                'mov_data'=>$this->dateFormat(0,$line['Data valuta']),
+                'mov_fk_categoria'=>1,
+                'mov_descrizione'=>$line['Descrizione operazione'],
+                'mov_importo'=>trim(str_replace(',','.',(str_replace('.','',str_replace('€', '', $line['Importo']))))),
+                'mov_fk_tags'=>1,
+                'userid'=>1,
+                ]
+            );
+            }
+            /*
+             *  "Data contabile" => "29/03/2023"
+  "Data valuta" => "29/03/2023"
+  "Causale" => "PAGAMENTI DIVERSI"
+  "Descrizione operazione" => "Addebito SDD CORE Scad. 29/03/2023 Imp. 5.99 Creditor id. IT46ZZZ0000013970161009 ILIAD Id Mandato ILIAD-FR9HXO-1 Debitore FLAVIO BARACHINO E PAOLA BRENTARI Rif ▶"
+  "Importo" => "€ -5,99"
+             */
+            //dd($line);
+        });
+    }
     
 
 }

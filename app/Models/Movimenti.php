@@ -140,5 +140,11 @@ class Movimenti extends Model
         ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')
         ->get();
     }
+
+    public static function importEstrattoIng($filename)
+    {
+        
+    }
+
 }
 

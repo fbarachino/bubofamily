@@ -63,6 +63,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);
     Route::get('movdocs', [DocumentiController::class,'fileForm'])->name('documenti');
     Route::post('movdocs', [DocumentiController::class,'storeFile']);
+    Route::get('movimenti/import', [MovimentiController::class,'importEC_ING']);
     
     # Automobili
     Route::get('auto', [AutoController::class, 'index'])->name('auto_list');

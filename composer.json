@@ -24,6 +24,7 @@
 		"secondtruth/startmin": "^1.1",
 		"sfneal/view-export": "^2.10",
 		"snapappointments/bootstrap-select": "^1.13",
+		"spatie/laravel-backup": "^7.0",
 		"webklex/laravel-imap": "^2.4"
 	},
 	"require-dev" : {

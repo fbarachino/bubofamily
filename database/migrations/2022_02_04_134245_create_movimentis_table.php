@@ -19,7 +19,7 @@ class CreateMovimentisTable extends Migration
             $table->date('mov_data');
             $table->unsignedBigInteger('mov_fk_categoria');
             $table->foreign('mov_fk_categoria')->references('id')->on('categories');
-            $table->string('mov_descrizione');
+            $table->longText('mov_descrizione');
             $table->decimal('mov_importo',8,2);
             $table->unsignedBigInteger('mov_inserito_da');
             $table->foreign('mov_inserito_da')->references('id')->on('users');
