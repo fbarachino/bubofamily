@@ -19,10 +19,19 @@ class CreateAnagraficasTable extends Migration
             $table->string('ang_cognome');
             $table->string('ang_nome');
 
-            $table->string('ang_ragioneSociale')->nullable();
-            $table->string('ang_codiceFiscale')->nullable();
-            $table->string('ang_partitaIva')->nullable();
+            $table->string('ang_ragioneSociale',255)->nullable();
+            $table->string('ang_codiceFiscale',255)->nullable();
+            $table->string('ang_partitaIva',255)->nullable();
             
+            $table->longText('ang_indirizzo')->nullable();
+            $table->string('ang_CAP',10)->nullable();
+            $table->string('ang_Citta',255)->nullable();
+            $table->string('ang_Provincia',255)->nullable();
+            
+            //ALTER TABLE `bubofamily_db`.`anagraficas`
+            //ADD COLUMN `ang_telefono` VARCHAR(45) NOT NULL AFTER `ang_note`;
+            
+            $table->string('ang_telefono',45);
             $table->longText('ang_note')->nullable();
         });
     }

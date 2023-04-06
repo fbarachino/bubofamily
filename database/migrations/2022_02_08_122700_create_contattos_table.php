@@ -17,7 +17,7 @@ class CreateContattosTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('cnt_fk_anagraficaId');
-            $table->foreign('cnt_fk_anagraficaId')->references('id')->on('anagraficas');
+            $table->foreign('cnt_fk_anagraficaId')->references('id')->on('anagraficas')->onDelete('cascade');
             $table->integer('cnt_tipo');
             $table->longText('cnt_valore');
             $table->longText('cnt_note');

@@ -64,6 +64,20 @@
             </li>
         </ul>
 </li>
+<li>
+    <a href="#"><i class="fa fa-card fa-fw"></i> Contatti <span class="fa arrow"></span></a>
+
+    <ul class="nav nav-second-level">
+            <li>
+            	<a href="{{ route('contatti'); }}"><i class="fa fa-list  fa-fw"></i>Gestione</a>
+                
+            </li>
+             <li>
+             	<a href="{{ route('newContact'); }}"><i class="fa fa-plus  fa-fw"></i>Nuovo contatto</a>
+                
+            </li>
+        </ul>
+</li>
 <!--  <li>
     <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
 </li>

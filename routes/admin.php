@@ -11,6 +11,7 @@ use App\Http\Controllers\MovimentiController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\AutoController;
+use App\Http\Controllers\AnagraficaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,6 +82,14 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('auto/accessori', [AutoController::class, 'saveAccessori']);
     Route::get('auto/operazioni', [AutoController::class, 'getOperazioni']);
     Route::get('auto/operazioni/pdf', [AutoController::class, 'exportPdfOperazioni']);
+    
+    // CONTATTI
+    Route::get('contatti', [AnagraficaController::class, 'listContact'])->name('contatti');
+    Route::get('contatti/new', [AnagraficaController::class, 'newContact'])->name('newContact');
+    Route::post('contatti/new', [AnagraficaController::class, 'insContact']);
+    Route::get('contatti/modifica', [AnagraficaController::class, 'modifica']);
+    Route::get('contatti/scheda', [AnagraficaController::class, 'getScheda']);
+    
     
     /// TEST routes
     Route::get('fullcalender', [FullCalenderController::class, 'index']);
