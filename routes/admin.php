@@ -89,6 +89,8 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('contatti/new', [AnagraficaController::class, 'insContact']);
     Route::get('contatti/modifica', [AnagraficaController::class, 'modifica']);
     Route::get('contatti/scheda', [AnagraficaController::class, 'getScheda']);
+    Route::get('contatti/addOther', [AnagraficaController::class, 'insOtherContact']);
+    Route::post('contatti/addOther', [AnagraficaController::class, 'saveOtherContact']);
     
     
     /// TEST routes

@@ -65,11 +65,11 @@
         </ul>
 </li>
 <li>
-    <a href="#"><i class="fa fa-card fa-fw"></i> Contatti <span class="fa arrow"></span></a>
+    <a href="#"><i class="fa fa-phone-square fa-fw"></i> Contatti <span class="fa arrow"></span></a>
 
     <ul class="nav nav-second-level">
             <li>
-            	<a href="{{ route('contatti'); }}"><i class="fa fa-list  fa-fw"></i>Gestione</a>
+            	<a href="{{ route('contatti'); }}"><i class="fa fa-list  fa-fw"></i>Rubrica</a>
                 
             </li>
              <li>

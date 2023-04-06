@@ -19,5 +19,15 @@ class contatto extends Model
         return ['tipo'=>$type,'contatti'=>$lista];
     }
     
+    public static function saveNewContact($param) {
+        DB::table('contattos')->insert([
+            'cnt_tipo'=>$param['cnt_tipo'],
+            'cnt_valore'=>$param['cnt_valore'],
+            'cnt_note'=>$param['cnt_note'],
+            'cnt_fk_anagraficaId'=>$param['cnt_fk_anagraficaId'],
+        ]);
+        
+    }
+    
     
 }

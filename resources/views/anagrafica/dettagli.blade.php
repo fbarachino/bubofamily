@@ -64,6 +64,11 @@
                 				<td colspan="3">{{ $anagrafiche[0]->ang_note }}</td>
                 			</tr>
                 		</table >
+                		</div>
+                        <div class="col-lg-12">
+                        	<a class="btn btn-primary" href="addOther?id={{ $anagrafiche[0]->id }}">Nuovo Altro Contatto</i></a>
+                        </div>
+    					<div>
                 		<table class="table table-striped table-bordered table-hover" id="contatti">
                 		<thead>
                 		<tr>
