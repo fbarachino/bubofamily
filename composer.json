@@ -20,6 +20,7 @@
 		"laravel/tinker": "^2.5",
 		"laravel/ui": "^3.4",
 		"laraveldaily/laravel-charts": "^0.1.29",
+		"mateusjunges/laravel-acl": "^4.2",
 		"rap2hpoutre/fast-excel": "^3.2",
 		"secondtruth/startmin": "^1.1",
 		"sfneal/view-export": "^2.10",

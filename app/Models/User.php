@@ -9,11 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
  //use LdapRecord\Laravel\Auth\Authenticatable;
 use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
+use Junges\ACL\Concerns\HasGroups;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, AuthenticateswithLdap;
+    use HasApiTokens, HasFactory, Notifiable, AuthenticateswithLdap, HasGroups;
 
     /**
      * The attributes that are mass assignable.

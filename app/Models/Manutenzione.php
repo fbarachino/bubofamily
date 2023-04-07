@@ -10,7 +10,7 @@ class Manutenzione extends Model
 {
     use HasFactory;
     
-    public static function saveRevisione($id,$data)
+    public static function saveManutenzione($id,$data)
     {
         DB::table('manutenziones')->insert([
             'fk_operazione_id'=>$id,
