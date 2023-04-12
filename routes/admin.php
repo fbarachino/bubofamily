@@ -12,6 +12,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\AutoController;
 use App\Http\Controllers\AnagraficaController;
+use App\Http\Controllers\Utenti;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -92,10 +93,16 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('contatti/addOther', [AnagraficaController::class, 'insOtherContact']);
     Route::post('contatti/addOther', [AnagraficaController::class, 'saveOtherContact']);
     
+    Route::get('group/new', [Utenti::class, 'nuovoGruppo']);
+    Route::post('group/new', [Utenti::class, 'saveNuovoGruppo']);
+    Route::get('permesso/new', [Utenti::class, 'nuovoPermesso']);
+    Route::post('permesso/new', [Utenti::class, 'saveNuovoPermesso']);
+    Route::get('permesso/assign', [Utenti::class, 'vw_assignToGroup']);
+    Route::post('permesso/assign', [Utenti::class, 'assignPermissionToGroup']);
     
     /// TEST routes
-    Route::get('fullcalender', [FullCalenderController::class, 'index']);
-    Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+    Route::get('fullcalendar', [FullCalenderController::class, 'index']);
+    Route::post('fullcalendar', [FullCalenderController::class, 'ajax']);
     Route::get('condominio',[CondominioController::class,'testPdf']);
 
     

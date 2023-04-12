@@ -55,4 +55,10 @@ class User extends Authenticatable
     {
     	return 'guid';
     }
+    
+    public static function addGroup($gruppo)
+    {
+        $user= new User();
+        $user->assignGroup($gruppo);
+    }
 }

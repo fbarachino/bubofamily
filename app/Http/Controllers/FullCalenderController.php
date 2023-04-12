@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class FullCalenderController extends Controller
 {
-    **
+   /**
 
      * Write code on Method
 
@@ -40,7 +41,7 @@ class FullCalenderController extends Controller
 
   
 
-        return view('fullcalender');
+        return view('fullcalendar');
 
     }
 

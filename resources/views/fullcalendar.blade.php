@@ -1,54 +1,38 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-    <title>Laravel Fullcalender Tutorial Tutorial - ItSolutionStuff.com</title>
-
+@extends('admin')
+@section('head_additional')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-  
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
-
-  
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+@endsection
 
-</head>
 
-<body>
 
   
-
-<div class="container">
-
-    <h1>Laravel FullCalender Tutorial Example - ItSolutionStuff.com</h1>
-
-    <div id='calendar'></div>
-
+@section('content')
+<!-- <div class="container"> -->
+<div class="row">
+	<div class="col">
+        <h1>Calendario</h1>
+    
+        <div id='calendar'></div>
+    </div>
 </div>
-
+<!-- </div> -->
+@endsection
    
-
+@section('script')
 <script>
 
 $(document).ready(function () {
 
    
 
-var SITEURL = "{{ url('/') }}";
+var SITEURL = "{{ url('/admin/') }}";
 
   
 
@@ -68,7 +52,7 @@ var calendar = $('#calendar').fullCalendar({
 
                     editable: true,
 
-                    events: SITEURL + "/fullcalender",
+                    events: SITEURL + "/fullcalendar",
 
                     displayEventTime: false,
 
@@ -104,7 +88,7 @@ var calendar = $('#calendar').fullCalendar({
 
                             $.ajax({
 
-                                url: SITEURL + "/fullcalenderAjax",
+                                url: SITEURL + "/fullcalendar",
 
                                 data: {
 
@@ -164,7 +148,7 @@ var calendar = $('#calendar').fullCalendar({
 
                         $.ajax({
 
-                            url: SITEURL + '/fullcalenderAjax',
+                            url: SITEURL + '/fullcalendar',
 
                             data: {
 
@@ -202,7 +186,7 @@ var calendar = $('#calendar').fullCalendar({
 
                                 type: "POST",
 
-                                url: SITEURL + '/fullcalenderAjax',
+                                url: SITEURL + '/fullcalendar',
 
                                 data: {
 
@@ -245,9 +229,4 @@ function displayMessage(message) {
   
 
 </script>
-
-  
-
-</body>
-
-</html>
+@endsection
