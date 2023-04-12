@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
  use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
  //use LdapRecord\Laravel\Auth\Authenticatable;
 use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
@@ -60,5 +61,10 @@ class User extends Authenticatable
     {
         $user= new User();
         $user->assignGroup($gruppo);
+    }
+    
+    public static function getUserById($id)
+    {
+        return DB::table('users')->orderBy('name')->get();
     }
 }
