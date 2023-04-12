@@ -25,7 +25,7 @@ class Progetti extends Model
             'data_creazione'=>date('Y-m-d'),
             'data_inizio'=>$progetto['data_inizio'],
             'data_fine'=>$progetto['data_fine'],
-            'coordinatore'=>$progetto['coordinatore'],
+            'fk_user'=>$progetto['coordinatore'],
             'budget'=>$progetto['budget'],
             'stato'=>$progetto['stato'],
             'note'=>$progetto['note']

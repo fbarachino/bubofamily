@@ -39,7 +39,7 @@
     			<td><a href="progetto/detail?id={{ $progetto->id }}">{{ $progetto->nome; }}</a></td>
     			<td>{{ $progetto->data_creazione; }}</td>
     			<td>{{ $progetto->stato; }}</td>
-    			<td>{{ $progetto->coordinatore; }}</td>
+    			<td>{{ $progetto->fk_user; }}</td>
     			<td>{{ $progetto->budget; }}</td>
     		</tr>
     		@endforeach

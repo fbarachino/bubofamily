@@ -13,6 +13,7 @@ use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\AutoController;
 use App\Http\Controllers\AnagraficaController;
 use App\Http\Controllers\Utenti;
+use App\Http\Controllers\ProgettiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,6 +94,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('contatti/addOther', [AnagraficaController::class, 'insOtherContact']);
     Route::post('contatti/addOther', [AnagraficaController::class, 'saveOtherContact']);
     
+    // Gruppi e permessi
     Route::get('group/new', [Utenti::class, 'nuovoGruppo']);
     Route::post('group/new', [Utenti::class, 'saveNuovoGruppo']);
     Route::get('permesso/new', [Utenti::class, 'nuovoPermesso']);
@@ -100,6 +102,10 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('permesso/assign', [Utenti::class, 'vw_assignToGroup']);
     Route::post('permesso/assign', [Utenti::class, 'assignPermissionToGroup']);
     
+    // Progetti
+    Route::get('progetti', [ProgettiController::class, 'listaProgetto'])->name('progetti');
+    Route::post('progetti/new', [ProgettiController::class, 'salvaProgetto']);
+    Route::get('progetti/new', [ProgettiController::class, 'nuovoProgetto'])->name('nuovoProgetto');
     /// TEST routes
     Route::get('fullcalendar', [FullCalenderController::class, 'index']);
     Route::post('fullcalendar', [FullCalenderController::class, 'ajax']);

@@ -65,6 +65,10 @@ class User extends Authenticatable
     
     public static function getUserById($id)
     {
+        return DB::table('users')->where('id','=',$id)->get();
+    }
+    public static function getUsers()
+    {
         return DB::table('users')->orderBy('name')->get();
     }
 }
