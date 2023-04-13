@@ -24,9 +24,12 @@ class ProgettiController extends Controller
     public function salvaProgetto(Request $request)
     {
         Progetti::saveProgetto($request);
-        return view('progetti.list',[
-            'progetti'=>Progetti::getProgetti()
-        ]);
+        return redirect(Route('progetti'));
+    }
+    
+    public function deleteProgetto(Request $param) {
+        Progetti::delProgetto($param['id']);
+        return redirect(Route('progetti'));
     }
     
 }

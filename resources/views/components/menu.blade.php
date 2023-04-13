@@ -58,10 +58,7 @@
             	<a href="{{ route('auto_list'); }}"><i class="fa fa-list  fa-fw"></i>Gestione</a>
                 
             </li>
-             <li>
-             	<a href="#"><i class="fa fa-flash  fa-fw"></i>Non definito</a>
-                
-            </li>
+             
         </ul>
 </li>
 <li>
@@ -79,18 +76,15 @@
         </ul>
 </li>
 <li>
-    <a href="#"><i class="fa fa-list fa-fw"></i> Progetti <span class="fa arrow"></span></a>
-
-    <ul class="nav nav-second-level">
-            <li>
-            	<a href="{{ route('progetti'); }}"><i class="fa fa-list  fa-fw"></i>Lista</a>
-                
-            </li>
-             <li>
-             	<a href="{{ route('nuovoProgetto'); }}"><i class="fa fa-plus  fa-fw"></i>Nuovo progetto</a>
-                
-            </li>
-        </ul>
+    <a href="#"><i class="fa fa-list fa-fw"></i> Progetti <span class="fa arrow"></span></a>	
+	<ul class="nav nav-second-level">
+        <li>
+        	<a href="{{ route('progetti'); }}"><i class="fa fa-list  fa-fw"></i>Lista</a>
+        </li>
+         <li>
+         	<a href="{{ route('nuovoProgetto'); }}"><i class="fa fa-plus  fa-fw"></i>Nuovo progetto</a>
+         </li>
+    </ul>
 </li>
 <li>
     <a href="#"><i class="fa fa-gears fa-fw"></i>Amministrazione<span class="fa arrow"></span></a>
@@ -108,7 +102,7 @@
             <a class="active" href="/admin/permesso/assign">Assegna Permessi ai gruppi</a>
         </li>
         <li>
-            <a href="#">Login Page</a>
+            <a href="/login">Login Page</a>
         </li>
     </ul>
     <!-- /.nav-second-level -->

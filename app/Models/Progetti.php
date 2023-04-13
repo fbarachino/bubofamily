@@ -30,5 +30,12 @@ class Progetti extends Model
             'stato'=>$progetto['stato'],
             'note'=>$progetto['note']
         ]);
+     
     }
+    
+    public static function delProgetto($progetto_id)
+     {
+         DB::table('progettis')->delete($progetto_id);
+     }
+    
 }

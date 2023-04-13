@@ -106,6 +106,9 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('progetti', [ProgettiController::class, 'listaProgetto'])->name('progetti');
     Route::post('progetti/new', [ProgettiController::class, 'salvaProgetto']);
     Route::get('progetti/new', [ProgettiController::class, 'nuovoProgetto'])->name('nuovoProgetto');
+    Route::get('progetti/delete',[ProgettiController::class, 'deleteProgetto']);
+    
+    
     /// TEST routes
     Route::get('fullcalendar', [FullCalenderController::class, 'index']);
     Route::post('fullcalendar', [FullCalenderController::class, 'ajax']);

@@ -8,13 +8,13 @@
 	<div class="container">
     	<!-- Content here -->
     	<div class="row">
-            <div class="col-sx-12">
+            <div class="col-xs-12">
             	<a class="btn btn-primary" href="progetti/new"><i class="fa fa-pencil-square-o fw"></i></a>
             </div>
             </div>	
     	
 <div class="row">
- 	<div class="col-lg-12">
+ 	<div class="col-xs-10">
     	<div class="panel panel-default">
         	<div class="panel-heading">
                 Lista dei progetti
@@ -31,16 +31,20 @@
     				<th>Stato</th>
     				<th>Coordinatore</th>
     				<th>Budget</th>
+    				<th>Azioni</th>
     			</tr>
     		</thead>
     		<tbody>
     		@foreach($progetti ?? '' as $progetto)
     		<tr>
-    			<td><a href="progetto/detail?id={{ $progetto->id }}">{{ $progetto->nome; }}</a></td>
+    			<td><a href="progetti/detail?id={{ $progetto->id }}">{{ $progetto->nome; }}</a></td>
     			<td>{{ $progetto->data_creazione; }}</td>
     			<td>{{ $progetto->stato; }}</td>
     			<td>{{ $progetto->fk_user; }}</td>
     			<td>{{ $progetto->budget; }}</td>
+    			<td>
+    				<a href="progetti/delete?id={{ $progetto->id }}"  class="btn btn-danger">Cancella</a>
+    			</td>
     		</tr>
     		@endforeach
     		</tbody>
