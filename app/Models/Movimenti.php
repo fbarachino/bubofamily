@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class Movimenti extends Model
 {
@@ -143,8 +144,37 @@ class Movimenti extends Model
 
     public static function importEstrattoIng($filename)
     {
-        
+        //$file = str_replace('/EC/','',$filename);
+        $inputPath='/var/www/html/bubofamily/public/storage/'.$filename;
+        $outputPath='/var/www/html/bubofamily/public/'.$filename;
+        rename($inputPath,$outputPath);
+       
+        $collection = (new FastExcel)->import($filename, function ($line){
+            if($line['Data valuta'])
+            {
+                Movimenti::insEntrata([
+                    'mov_data'=>Movimenti::dateFormat(0,$line['Data valuta']),
+                    'mov_fk_categoria'=>1,
+                    'mov_descrizione'=>$line['Descrizione operazione'],
+                    'mov_importo'=>trim(str_replace(',','.',(str_replace('.','',str_replace('€', '', $line['Importo']))))),
+                    'mov_fk_tags'=>1,
+                    'userid'=>1,
+                ]);
+            }
+
+           });
+        //dd($outputPath);
     }
-
+    
+    private static function dateFormat($type,$string)
+    {
+        if($type)
+        {
+            list($year,$month,$day) = explode('-',$string);
+            return $day.'/'.$month.'/'.$year;
+        } else {
+            list($day,$month,$year) =explode('/',$string);
+            return $year.'-'.$month.'-'.$day;
+        }
+    }
 }
-

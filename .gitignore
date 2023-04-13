@@ -1,6 +1,9 @@
 /node_modules
 /public/hot
 /public/storage
+/public/EC
+/public/*.xlsx
+/public/*.xls
 /storage/*.key
 /vendor
 .env
