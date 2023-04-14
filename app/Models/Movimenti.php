@@ -108,12 +108,13 @@ class Movimenti extends Model
         ->delete();
     }
     
-    public static function listByCatMonth($month,$cat) {
+    public static function listByCatMonth($month,$cat,$year) {
         return DB::table('movimentis')
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
         ->join('tags','movimentis.mov_fk_tags','=','tags.id')
         ->where('movimentis.mov_fk_categoria','=',$cat)
         ->whereMonth('mov_data','=',$month)
+        ->whereYear('mov_data', '=' , $year)
         ->leftJoin('documentis', 'movimenti_id','=','movimentis.id')
         ->select('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name', DB::raw('Count(movimenti_id) as quanti'))
         ->groupBy('movimentis.id','mov_data','mov_descrizione','mov_importo','cat_name','tag_name')

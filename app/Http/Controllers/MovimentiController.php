@@ -146,7 +146,15 @@ class MovimentiController extends Controller
     
     public function listMovPerCateg(Request $request)
     {
-        $mov=Movimenti::listByCatMonth($request['month'], $request['cat']);
+        if($request['year'])
+        {
+            $anno=$request['year'];
+        }
+        else 
+        {
+            $anno=date('Y');
+        }
+        $mov=Movimenti::listByCatMonth($request['month'], $request['cat'],$anno);
         return view('conti.movimenti.list',
             [
                 'movimenti'=> $mov,     
