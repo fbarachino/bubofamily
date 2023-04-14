@@ -21,8 +21,8 @@ Route::get('/', function () {
 });
 
     
-//Auth::routes(['register' => false]); // Production only
-   Auth::routes();    //development mode
+Auth::routes(['register' => false]); // Production only
+//   Auth::routes();    //development mode
 Route::get('/calendar', [TagController::class,'calendartest'])->name('calendar');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
