@@ -122,7 +122,7 @@ class Movimenti extends Model
     }
     
     public static function listByCategory($cat) {
-        DB::table('movimentis')
+       return DB::table('movimentis')
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
         ->join('tags','movimentis.mov_fk_tags','=','tags.id')
         ->where('movimentis.mov_fk_categoria','=',$cat)
@@ -133,7 +133,7 @@ class Movimenti extends Model
     }
     
     public static function getByTag($tag) {
-        DB::table('movimentis')
+       return DB::table('movimentis')
         ->where('mov_fk_tags','=',$tag)
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
         ->join('tags','movimentis.mov_fk_tags','=','tags.id')
