@@ -271,7 +271,6 @@ class MovimentiController extends Controller
         if ($request->hasFile('filename'))
         {
             $filename=$request->file('filename')->store('EC');
-           // dd($filename); Documenti/xyz.xls
              Movimenti::importEstrattoIng($filename);
            
             return redirect(Route('movimenti'));
@@ -282,9 +281,29 @@ class MovimentiController extends Controller
         }
     }
     
+    public function importEC_CR(Request $request)
+    {
+        if ($request->hasFile('filename'))
+        {
+            $filename=$request->file('filename')->store('EC');
+            Movimenti::importEstrattoCR($filename);
+            
+            return redirect(Route('movimenti'));
+        }
+        else {
+            return 'Nessun File trovato';
+            
+        }
+    }
+    
     public function importFile()
     {
         return view('conti.import');
+    }
+    
+    public function importFileCR()
+    {
+        return view('conti.importCR');
     }
     
 

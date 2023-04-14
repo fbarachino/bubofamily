@@ -166,6 +166,45 @@ class Movimenti extends Model
         //dd($outputPath);
     }
     
+    public static function importEstrattoCR($filename)
+    {
+        //$file = str_replace('/EC/','',$filename);
+        $inputPath='/var/www/html/bubofamily/public/storage/'.$filename;
+        $outputPath='/var/www/html/bubofamily/public/'.$filename.'.csv';
+        rename($inputPath,$outputPath);
+        
+        $collection = (new FastExcel)->configureCsv(';')->import($filename.'.csv', function ($line){
+            if($line['VALUTA'])
+            {
+                if($line['DARE']<>'')
+                {
+                $dati=[
+                    'mov_data'=>Movimenti::dateFormat(0,$line['VALUTA']),
+                    'mov_fk_categoria'=>1,
+                    'mov_descrizione'=>$line['DESCRIZIONE OPERAZIONE'],
+                    'mov_importo'=>'-'.trim(str_replace(',','.',(str_replace('.','',$line['DARE'])))),
+                    'mov_fk_tags'=>1,
+                    'userid'=>1,
+                ];
+                }
+                if($line['AVERE']<>'')
+                {
+                    $dati=[
+                        'mov_data'=>Movimenti::dateFormat(0,$line['VALUTA']),
+                        'mov_fk_categoria'=>1,
+                        'mov_descrizione'=>$line['DESCRIZIONE OPERAZIONE'],
+                        'mov_importo'=>trim(str_replace(',','.',(str_replace('.','',$line['AVERE'])))),
+                        'mov_fk_tags'=>1,
+                        'userid'=>1,
+                    ];
+                }
+                Movimenti::insEntrata($dati);
+               // dd($dati);
+            }
+            
+        });
+            //dd($outputPath);
+    }
     private static function dateFormat($type,$string)
     {
         if($type)

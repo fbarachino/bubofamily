@@ -36,6 +36,9 @@
         <li>
         	<a href="{{ route('importING'); }}"><i class="fa fa-upload  fa-fw"></i>Importa Estratto ING</a>
         </li>
+        <li>
+        	<a href="{{ route('importCR'); }}"><i class="fa fa-upload  fa-fw"></i>Importa Estratto CR</a>
+        </li>
     </ul>
     <!-- /.nav-second-level -->
 </li>

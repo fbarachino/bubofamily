@@ -68,6 +68,8 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('movdocs', [DocumentiController::class,'storeFile']);
     Route::get('movimenti/import', [MovimentiController::class,'importFile'])->name('importING');
     Route::post('movimenti/import', [MovimentiController::class,'importEC_ING']);
+    Route::get('movimenti/importcr', [MovimentiController::class,'importFileCR'])->name('importCR');
+    Route::post('movimenti/importcr', [MovimentiController::class,'importEC_CR']);
     # Automobili
     Route::get('auto', [AutoController::class, 'index'])->name('auto_list');
     Route::get('auto/new', [AutoController::class, 'newAuto'])->name('auto_new');
