@@ -8,7 +8,7 @@
 <div class="container">
 	<!-- Content here -->
    <div class="row">
-     	<div class="col-lg-12">
+     	<div class="col-lg-10">
         	<div class="panel panel-default">
             	<div class="panel-heading">
                     Contatto
@@ -65,7 +65,7 @@
                 			</tr>
                 		</table >
                 		</div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-10">
                         	<a class="btn btn-primary" href="addOther?id={{ $anagrafiche[0]->id }}">Nuovo Altro Contatto</i></a>
                         </div>
     					<div>
@@ -99,10 +99,10 @@
 
 @section('script')
 <script>
-            $(document).ready(function() {
-                $('#contatti').DataTable({
-                        responsive: true
-                });
-            });
-        </script>
+    $(document).ready(function() {
+        $('#contatti').DataTable({
+                responsive: true
+        });
+    });
+</script>
 @endsection

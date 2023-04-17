@@ -37,9 +37,11 @@ class MovimentiController extends Controller
     
     public static function dashboard()
     {
-        $bilancio=Movimenti::getSaldo(date('Y'));        
+        $bilancio=Movimenti::getSaldo(date('Y')); 
+        $saldo=Movimenti::getSaldoTot();
         return view('layouts.dashboard',[
             'bilancio'=>$bilancio,
+            'saldo'=>$saldo,
         ]);
     }
     
@@ -191,14 +193,8 @@ class MovimentiController extends Controller
                     ->whereYear('mov_data','=',$anno)
                     ->where('mov_fk_categoria','=',$id)
                     ->sum('mov_importo');
-                
-                    
                     $coll[]=$movrow;
                     $collx[]=$movrow;
-                    //$coll[] = ['totale' => $movrow];
-                    // $coll[]=array_push(array_sum($coll['totale']));
-                    
-                    // $coll[]=array_push($coll,$totale);
                }
             $totale[]=array_sum($collx);
             unset($collx);
@@ -234,8 +230,6 @@ class MovimentiController extends Controller
                 ->whereYear('mov_data','=',$anno)
                 ->where('mov_fk_categoria','=',$id)
                 ->sum('mov_importo');
-                
-                //$coll[] = str_replace(".",",",$movrow);
                 $coll[] = $movrow;
                
             }

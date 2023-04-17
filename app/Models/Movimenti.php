@@ -11,7 +11,6 @@ class Movimenti extends Model
 {
     use HasFactory;
 
-
     public static function getList() {
         return DB::table('movimentis')
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
@@ -24,6 +23,10 @@ class Movimenti extends Model
     
     public static function getSaldo($date) {
         return DB::table('movimentis')->whereYear('mov_data','=',$date)->sum('mov_importo');
+    }
+    
+    public static function getSaldoTot() {
+        return DB::table('movimentis')->sum('mov_importo');
     }
     
     public static function insSpesa($request) {
@@ -145,7 +148,6 @@ class Movimenti extends Model
 
     public static function importEstrattoIng($filename)
     {
-        //$file = str_replace('/EC/','',$filename);
         $inputPath='/var/www/html/bubofamily/public/storage/'.$filename;
         $outputPath='/var/www/html/bubofamily/public/'.$filename;
         rename($inputPath,$outputPath);
@@ -162,14 +164,11 @@ class Movimenti extends Model
                     'userid'=>1,
                 ]);
             }
-
            });
-        //dd($outputPath);
     }
     
     public static function importEstrattoCR($filename)
     {
-        //$file = str_replace('/EC/','',$filename);
         $inputPath='/var/www/html/bubofamily/public/storage/'.$filename;
         $outputPath='/var/www/html/bubofamily/public/'.$filename.'.csv';
         rename($inputPath,$outputPath);
@@ -200,12 +199,10 @@ class Movimenti extends Model
                     ];
                 }
                 Movimenti::insEntrata($dati);
-               // dd($dati);
             }
-            
         });
-            //dd($outputPath);
     }
+    
     private static function dateFormat($type,$string)
     {
         if($type)
@@ -217,4 +214,5 @@ class Movimenti extends Model
             return $year.'-'.$month.'-'.$day;
         }
     }
+
 }
