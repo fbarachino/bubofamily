@@ -20,37 +20,76 @@
                     Dettaglio Progetto
                 </div>
                 <div class="panel-body"> 
-                
-        	<div class="table-responsive">
-               <table class="table table-striped table-bordered table-hover" id="tab_progetti">
-        		
-        		<thead>
-        			<tr>
-        				<th>Nome</th>
-        				<th>Data Creazione</th>
-        				<th>Stato</th>
-        				<th>Coordinatore</th>
-        				<th>Budget</th>
-        				<th>Azioni</th>
-        			</tr>
-        		</thead>
-        		<tbody>
-        		@foreach($dettaglio ?? '' as $progetto)
-        		<tr>
-        			<td>{{ $progetto->nome; }}</a></td>
-        			<td>{{ $progetto->data_creazione; }}</td>
-        			<td>{{ $progetto->stato; }}</td>
-        			<td>{{ $progetto->name; }}</td>
-        			<td>{{ $progetto->budget; }}</td>
-        			<td>
-        				
-        			</td>
-        		</tr>
-        		@endforeach
-        		</tbody>
-        		
-        		</table>
-        	</div>
+                @foreach($dettaglio ?? '' as $progetto)
+                	<div class="row">
+     					<div class="col-xs-4">
+        					Nome
+        				</div>
+        				<div class="col-xs-8">
+        					<b>{{ $progetto->nome; }}</b>
+        				</div>
+        			</div>
+
+                	<div class="row">
+     					<div class="col-xs-4">
+        					Descrizione
+        				</div>
+        				<div class="col-xs-8">
+        					<b>{{ $progetto->descrizione; }}</b>
+        				</div>
+        			</div>
+        			<div class="row">
+     					<div class="col-xs-3">
+        					Data Inizio
+        				</div>
+        				<div class="col-xs-3">
+        					<b>{{ $progetto->data_inizio }}</b>
+        				</div>
+     					<div class="col-xs-3">
+        					Data Termine
+        				</div>
+        				<div class="col-xs-3">
+        					<b>{{ $progetto->data_fine }}</b>
+        				</div>
+        			</div>
+        			<div class="row">
+     					<div class="col-xs-3">
+        					Stato
+        				</div>
+        				<div class="col-xs-3">
+        					<b>{{ $progetto->stato }}</b>
+        				</div>
+     					<div class="col-xs-3">
+        					Data Creazione
+        				</div>
+        				<div class="col-xs-3">
+        					<b>{{ $progetto->data_creazione }}</b>
+        				</div>
+        			</div>
+        			<div class="row">
+     					<div class="col-xs-3">
+        					Budget
+        				</div>
+        				<div class="col-xs-3">
+        					<b>&euro; {{ $progetto->budget }}</b>
+        				</div>
+     					<div class="col-xs-3">
+        					Coordinatore
+        				</div>
+        				<div class="col-xs-3">
+        					<b>{{ $progetto->name }}</b>
+        				</div>
+        			</div>
+                	<div class="row">
+     					<div class="col-xs-4">
+        					Note
+        				</div>
+        				<div class="col-xs-8">
+        					<b>{{ $progetto->note; }}</b>
+        				</div>
+        			</div>
+        			@endforeach
+        		</div>
         	</div>
     	</div>
     </div>
