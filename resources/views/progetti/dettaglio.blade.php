@@ -93,14 +93,50 @@
         	</div>
     	</div>
     </div>
-</div>
+
+
 <div class="row">
-    <div class="col-xs-4">
-    	<form method="POST">
-    		<!-- Form per task con jquery e aggiunta righe automatica -->
-    		<input type="text" name="desc" class="form-group" id="desc">
-    	</form>
-    </div>
+	<div class="col-xs-10">
+    	<div class="panel panel-default">
+        	<div class="panel-heading">
+                    Inserisci riga
+            </div>
+        <div class="panel-body"> 
+        <form method="POST">
+        <div class="row">
+        	@csrf
+        		<div class="col-xs-2">
+            	
+            		<!-- Form per task con jquery e aggiunta righe automatica -->
+            		<label for="tdata" class="form-label">data:</label>
+            		 <input type="date" name="tdata" class="form-control" id="tdata">
+            	
+            	</div>
+           	 	<div class="col-xs-6">
+            	
+            		<!-- Form per task con jquery e aggiunta righe automatica -->
+            		<label for="desc" class="form-label">descrizione:</label>
+            		 <input type="text" name="desc" class="form-control" id="desc">
+            	
+            	</div>
+            	<div class="col-xs-2">
+            		<label for="ore" class="form-label">ore lavoro:</label>
+            		<!-- Form per task con jquery e aggiunta righe automatica -->
+            		<input type="text" name="ore" class="form-control" id="ore">
+            	
+            	</div>
+         		<div class="col-xs-2">
+            		<label for="ore" class="form-label">prezzo:</label>
+            		<!-- Form per task con jquery e aggiunta righe automatica -->
+            		<input type="text" name="ore" class="form-control" id="ore">
+            	
+            	</div>
+            	
+        </div>
+		</form>
+	</div>
+</div>
+</div>
 </div>
  <!-- /.col-lg-12 -->
 
