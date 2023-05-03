@@ -94,7 +94,14 @@
     	</div>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-xs-4">
+    	<form method="POST">
+    		<!-- Form per task con jquery e aggiunta righe automatica -->
+    		<input type="text" name="desc" class="form-group" id="desc">
+    	</form>
+    </div>
+</div>
  <!-- /.col-lg-12 -->
 
 @endsection
