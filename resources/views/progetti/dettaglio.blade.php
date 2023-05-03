@@ -158,7 +158,7 @@
             });
             
             $("#dettaglio").click(function(){
-            	$("[hidable]").toggle(500);
+            	$("[hidable]").toggle(400);
             });
         });
 </script>
