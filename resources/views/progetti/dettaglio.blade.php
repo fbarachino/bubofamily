@@ -22,7 +22,7 @@
                 <div class="panel-body"> 
                 @foreach($dettaglio ?? '' as $progetto)
                 	<div class="row">
-     					<div class="col-xs-4">
+     					<div class="col-xs-2">
         					Nome
         				</div>
         				<div class="col-xs-8">
@@ -31,7 +31,7 @@
         			</div>
 
                 	<div class="row">
-     					<div class="col-xs-4">
+     					<div class="col-xs-2">
         					Descrizione
         				</div>
         				<div class="col-xs-8">
@@ -39,41 +39,41 @@
         				</div>
         			</div>
         			<div class="row">
-     					<div class="col-xs-3">
+     					<div class="col-xs-2">
         					Data Inizio
         				</div>
         				<div class="col-xs-3">
-        					<b>{{ $progetto->data_inizio }}</b>
+        					<b>{{  date('d/m/Y',strtotime($progetto->data_inizio)) }}</b>
         				</div>
-     					<div class="col-xs-3">
+     					<div class="col-xs-2">
         					Data Termine
         				</div>
         				<div class="col-xs-3">
-        					<b>{{ $progetto->data_fine }}</b>
+        					<b>{{  date('d/m/Y',strtotime($progetto->data_fine)) }}</b>
         				</div>
         			</div>
         			<div class="row">
-     					<div class="col-xs-3">
+     					<div class="col-xs-2">
         					Stato
         				</div>
         				<div class="col-xs-3">
         					<b>{{ $progetto->stato }}</b>
         				</div>
-     					<div class="col-xs-3">
+     					<div class="col-xs-2">
         					Data Creazione
         				</div>
         				<div class="col-xs-3">
-        					<b>{{ $progetto->data_creazione }}</b>
+        					<b>{{  date('d/m/Y',strtotime($progetto->data_creazione)) }}</b>
         				</div>
         			</div>
         			<div class="row">
-     					<div class="col-xs-3">
+     					<div class="col-xs-2">
         					Budget
         				</div>
         				<div class="col-xs-3">
         					<b>&euro; {{ $progetto->budget }}</b>
         				</div>
-     					<div class="col-xs-3">
+     					<div class="col-xs-2">
         					Coordinatore
         				</div>
         				<div class="col-xs-3">
@@ -81,7 +81,7 @@
         				</div>
         			</div>
                 	<div class="row">
-     					<div class="col-xs-4">
+     					<div class="col-xs-2">
         					Note
         				</div>
         				<div class="col-xs-8">
