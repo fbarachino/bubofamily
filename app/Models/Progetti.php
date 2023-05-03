@@ -11,11 +11,23 @@ class Progetti extends Model
     use HasFactory;
     
     public static function getProgetti() {
-        return DB::table('progettis')->get(); 
+        return DB::table('progettis')
+        ->select(
+            'progettis.id as progetto',
+            'users.id as userid',
+            'nome',
+             'name',
+            'descrizione',
+            'data_creazione',
+            'data_fine',
+            'budget',
+            'stato',
+            'note')
+        ->join('users','progettis.fk_user','=','users.id')->get(); 
     }
     
     public static function getProgettoById($id){
-       return DB::table('progettis')->where('id','=',$id)->get();
+        return DB::table('progettis')->join('users','progettis.fk_user','=','users.id')->where('progettis.id','=',$id)->get();
     }
     
     public static function saveProgetto($progetto){

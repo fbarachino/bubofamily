@@ -7,7 +7,7 @@
 </div>
 <div class="row">
 <!-- WIDGET Bilancio -->
-	<div class="col-lg-3 col-md-6">
+	<div class="col-lg-4 col-md-8">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
@@ -16,7 +16,7 @@
                            </div>
                            <div class="col-xs-9 text-right">
                                        <div class="huge">{{ $bilancio }}</div>
-                                       <div>Bilancio attuale</div>
+                                       <div>Bilancio attuale anno {{ date('Y') }}</div>
                            </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
      	</div>
 	</div>
 	<!-- WIDGET  -->
-	<div class="col-lg-3 col-md-6">
+	<div class="col-lg-4 col-md-8">
         <div class="panel panel-green">
             <div class="panel-heading">
                 <div class="row">
@@ -39,7 +39,7 @@
                    </div>
                    <div class="col-xs-9 text-right">
                        <div class="huge">{{ $saldo }}</div>
-                       <div>Saldo attuale</div>
+                       <div>Saldo attuale negli anni</div>
                    </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
 	</div>
 	
 	<!-- WIDGET  -->
-	<div class="col-lg-3 col-md-6">
+	<!-- <div class="col-lg-3 col-md-6">
         <div class="panel panel-warning">
             <div class="panel-heading">
                 <div class="row">
@@ -75,10 +75,10 @@
                 </div>
            </a>
      	</div>
-	</div>
+	</div>-->
 	
 	<!-- WIDGET  -->
-	<div class="col-lg-3 col-md-6">
+	<!-- <div class="col-lg-3 col-md-6">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <div class="row">
@@ -99,7 +99,7 @@
                 </div>
            </a>
      	</div>
-	</div>
+	</div> -->
 	
 </div>
 @endsection

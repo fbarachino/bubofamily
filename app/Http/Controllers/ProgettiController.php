@@ -11,7 +11,9 @@ class ProgettiController extends Controller
     //
     public function listaProgetto()
     {
-        return view('progetti.list',[
+          /* $progetti=Progetti::getProgetti();
+        dd($progetti);*/
+     return view('progetti.list',[
             'progetti'=>Progetti::getProgetti()
         ]);
     }
@@ -30,6 +32,17 @@ class ProgettiController extends Controller
     public function deleteProgetto(Request $param) {
         Progetti::delProgetto($param['id']);
         return redirect(Route('progetti'));
+    }
+    
+    public function inserisciTask(Request $id)
+    {
+        
+    }
+    
+    public function dettaglioProgetto(Request $id)
+    {
+        $progetto = Progetti::getProgettoById($id['id']);
+        return view('progetti.dettaglio',['dettaglio'=>$progetto]);
     }
     
 }
