@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Lista Progetti</h1>
+        <h1 class="page-header">Dettaglio Progetto</h1>
     </div>
 </div>                          
 	<div class="container">
@@ -16,21 +16,21 @@
     <div class="row">
      	<div class="col-xs-10">
         	<div class="panel panel-default">
-            	<div class="panel-heading">
+            	<div class="panel-heading" id="dettaglio">
                     Dettaglio Progetto
                 </div>
                 <div class="panel-body"> 
                 @foreach($dettaglio ?? '' as $progetto)
                 	<div class="row">
      					<div class="col-xs-2">
-        					Nome
+        					Nome:
         				</div>
         				<div class="col-xs-8">
         					<b>{{ $progetto->nome; }}</b>
         				</div>
         			</div>
 
-                	<div class="row">
+                	<div class="row" hidable="">
      					<div class="col-xs-2">
         					Descrizione
         				</div>
@@ -38,7 +38,7 @@
         					<b>{{ $progetto->descrizione; }}</b>
         				</div>
         			</div>
-        			<div class="row">
+        			<div class="row" hidable="">
      					<div class="col-xs-2">
         					Data Inizio
         				</div>
@@ -52,7 +52,7 @@
         					<b>{{  date('d/m/Y',strtotime($progetto->data_fine)) }}</b>
         				</div>
         			</div>
-        			<div class="row">
+        			<div class="row" hidable="">
      					<div class="col-xs-2">
         					Stato
         				</div>
@@ -66,7 +66,7 @@
         					<b>{{  date('d/m/Y',strtotime($progetto->data_creazione)) }}</b>
         				</div>
         			</div>
-        			<div class="row">
+        			<div class="row" hidable="">
      					<div class="col-xs-2">
         					Budget
         				</div>
@@ -80,7 +80,7 @@
         					<b>{{ $progetto->name }}</b>
         				</div>
         			</div>
-                	<div class="row">
+                	<div class="row" hidable="">
      					<div class="col-xs-2">
         					Note
         				</div>
@@ -98,10 +98,10 @@
 <div class="row">
 	<div class="col-xs-10">
     	<div class="panel panel-default">
-        	<div class="panel-heading">
-                    Inserisci riga
+        	<div class="panel-heading" id="form">
+                    Inserisci riga (click show/hide)
             </div>
-        <div class="panel-body"> 
+        <div class="panel-body" > 
         <form method="POST">
         <div class="row">
         	@csrf
@@ -109,10 +109,10 @@
             	
             		<!-- Form per task con jquery e aggiunta righe automatica -->
             		<label for="tdata" class="form-label">data:</label>
-            		 <input type="date" name="tdata" class="form-control" id="tdata">
+            		 <input type="date" name="tdata" class="form-control" id="tdata" value="{{ date('Y-m-d') }}">
             	
             	</div>
-           	 	<div class="col-xs-6">
+           	 	<div class="col-xs-5">
             	
             		<!-- Form per task con jquery e aggiunta righe automatica -->
             		<label for="desc" class="form-label">descrizione:</label>
@@ -131,6 +131,10 @@
             		<input type="text" name="ore" class="form-control" id="ore">
             	
             	</div>
+            	<div class="col-xs-1">
+            		<input type="submit" name="Submit" class="form-control" >
+            	
+            	</div>
             	
         </div>
 		</form>
@@ -147,6 +151,14 @@
         $(document).ready(function() {
             $('#tab_progetti').DataTable({
                     responsive: true
+            });
+            
+            $('#form').click(function(){
+            	$('form').toggle();
+            });
+            
+            $("#dettaglio").click(function(){
+            	$("[hidable]").toggle(500);
             });
         });
 </script>
