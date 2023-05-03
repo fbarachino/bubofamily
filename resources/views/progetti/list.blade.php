@@ -40,7 +40,7 @@
     			<td><a href="progetti/detail?id={{ $progetto->id }}">{{ $progetto->nome; }}</a></td>
     			<td>{{ $progetto->data_creazione; }}</td>
     			<td>{{ $progetto->stato; }}</td>
-    			<td>{{ $progetto->fk_user; }}</td>
+    			<td>{{ $progetto->name; }}</td>
     			<td>{{ $progetto->budget; }}</td>
     			<td>
     				<a href="progetti/delete?id={{ $progetto->id }}"  class="btn btn-danger">Cancella</a>

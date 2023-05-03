@@ -11,7 +11,7 @@ class Progetti extends Model
     use HasFactory;
     
     public static function getProgetti() {
-        return DB::table('progettis')->get(); 
+        return DB::table('progettis')->join('users','progettis.fk_user','=','users.id')->get(); 
     }
     
     public static function getProgettoById($id){
