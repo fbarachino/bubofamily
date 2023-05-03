@@ -200,12 +200,15 @@ class MovimentiController extends Controller
             unset($collx);
         }
          /*dd($totale);*/
+        $anni=Movimenti::getYearsFromMovimenti();
+       // dd($anni);
         return view('conti.report.catanno',[
                 'categorie'=>$categorie,
                 'mesi'=>$mesi,
                 'matrice'=>array_chunk($coll, 12),
                 'totale'=>$totale,
-                'anno'=>$anno
+                'anno'=>$anno,
+                'sel_anni'=>$anni,
         ]);
     }
     
@@ -308,5 +311,14 @@ class MovimentiController extends Controller
         return view('conti.importCR');
     }
     
+    public function test()
+    {
+        Movimenti::getYearsFromMovimenti();
+    }
+    
+    public function manageRedirect(Request $request)
+    {
+        return redirect('/admin/reportbudget/'.$request['anno']);
+    }
 
 }

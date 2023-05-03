@@ -203,6 +203,14 @@ class Movimenti extends Model
         });
     }
     
+    public static function getYearsFromMovimenti()
+    {
+        $anni=DB::table('movimentis')->select(DB::raw('DISTINCT YEAR(mov_data) as anno'))->get();
+        // dd($anni); // for test purposes
+        return $anni;
+    }
+    
+    
     private static function dateFormat($type,$string)
     {
         if($type)
