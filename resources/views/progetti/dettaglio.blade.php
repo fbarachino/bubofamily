@@ -154,11 +154,11 @@
             });
             
             $('#form').click(function(){
-            	$('form').toggle();
+            	$('form').slideToggle(500);
             });
             
             $("#dettaglio").click(function(){
-            	$("[hidable]").toggle(400);
+            	$("[hidable]").slideToggle(500);
             });
         });
 </script>
