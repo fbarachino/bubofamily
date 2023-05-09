@@ -81,14 +81,14 @@
 				<div class="panel-heading" id="form">Inserisci riga (click
 					show/hide)</div>
 				<div class="panel-body">
-					<form method="POST">
+					<form method="POST" action="">
 						<div class="row">
 							@csrf
 							<div class="col-xs-2">
 
 								<!-- Form per task con jquery e aggiunta righe automatica -->
 								<label for="tdata" class="form-label">data:</label> <input
-									type="date" name="tdata" class="form-control" id="tdata"
+									type="date" name="data" class="form-control" id="data"
 									value="{{ date('Y-m-d') }}">
 
 							</div>
@@ -96,7 +96,7 @@
 
 								<!-- Form per task con jquery e aggiunta righe automatica -->
 								<label for="desc" class="form-label">descrizione:</label> <input
-									type="text" name="desc" class="form-control" id="desc">
+									type="text" name="descrizione" class="form-control" id="desc">
 
 							</div>
 							<div class="col-xs-2">
@@ -108,10 +108,11 @@
 							<div class="col-xs-2">
 								<label for="ore" class="form-label">prezzo:</label>
 								<!-- Form per task con jquery e aggiunta righe automatica -->
-								<input type="text" name="ore" class="form-control" id="ore">
+								<input type="text" name="prezzo" class="form-control" id="ore">
 
 							</div>
 							<div class="col-xs-1">
+								<input type="hidden" name="fk_id_progetto" value="{{ $progetto->id }}">
 								<input type="submit" name="Submit" class="form-control">
 
 							</div>
@@ -128,8 +129,9 @@
 				<div class="panel-heading" id="form">Elementi e costi del progetto</div>
 			</div>
 			<div class="panel-body">
-				<table class="table table-striped table-bordered table-hover"
-					id="tab_progetti">
+			
+			<div class="row">
+				<table class="table table-striped table-bordered table-hover" id="tab_progetti">
 					<thead>
 						<tr>
 							<th>Data</th>
@@ -140,19 +142,29 @@
 					</thead>
 					<tbody>
 						@foreach($righe as $riga)
+						@if(isset($riga->data))
 						<tr>
-							<td>{{ date('d/m/Y',strtotime($riga->data)) }}</td>
+							<td>{{ date('d/m/Y',strtotime($riga->data))  }}</td>
 							<td>{{ $riga->descrizione }}</td>
 							<td>{{ $riga->ore }}</td>
 							<td>{{ $riga->prezzo }}</td>
 						</tr>
+						@else
+						<tr>
+							<td>non c'è</td>
+							<td>non c'è</td>
+							<td>non c'è</td>
+							<td>non c'è</td>
+						</tr>
+						@endif
 						@endforeach
-					</tbody>
+    				</tbody>
 				</table>
 			</div>
+			
 		</div>
-		<
 	</div>
+</div>
 	<!-- /.col-lg-12 -->
 
 	@endsection @section('script')
@@ -161,13 +173,13 @@
             $('#tab_progetti').DataTable({
                     responsive: true
             });
-            
+          
             $('#form').click(function(){
-            	$('form').slideToggle(500);
+            	$('form').toggle();
             });
             
             $("#dettaglio").click(function(){
-            	$("[hidable]").slideToggle(500);
+            	$('[hidable]').toggle();
             });
         });
 	</script>

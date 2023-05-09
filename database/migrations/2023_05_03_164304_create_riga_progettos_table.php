@@ -16,6 +16,12 @@ class CreateRigaProgettosTable extends Migration
         Schema::create('riga_progettos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date('data');
+            $table->longText('descrizione');
+            $table->decimal('prezzo',10,2)->nullable();
+            $table->decimal('ore',10,2)->nullable();
+            $table->unsignedBigInteger('fk_id_progetto');
+            $table->foreign('fk_id_progetto')->references('id')->on('progettis');
         });
     }
 

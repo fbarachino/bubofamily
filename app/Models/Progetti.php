@@ -27,7 +27,11 @@ class Progetti extends Model
     }
     
     public static function getProgettoById($id){
-        return DB::table('progettis')->join('users','progettis.fk_user','=','users.id')->where('progettis.id','=',$id)->get();
+        return DB::table('progettis')->
+            join('users','progettis.fk_user','=','users.id')->
+            select('users.id as userid', 'users.name as name', 'progettis.*')->
+            where('progettis.id','=',$id)->
+            get();
     }
     
     public static function saveProgetto($progetto){
