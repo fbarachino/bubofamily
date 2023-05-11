@@ -138,6 +138,7 @@
 							<th>Descrizione</th>
 							<th>Ore lavoro</th>
 							<th>Costo</th>
+							<th>Azioni</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -148,6 +149,7 @@
 							<td>{{ $riga->descrizione }}</td>
 							<td>{{ $riga->ore }}</td>
 							<td>{{ $riga->prezzo }}</td>
+							<td><a href="#{{ $riga->id }}" class="btn btn-danger">X</a></td>
 						</tr>
 						@else
 						<tr>
