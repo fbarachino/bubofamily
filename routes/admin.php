@@ -8,6 +8,7 @@ use App\Http\Controllers\ContatoreEnElController;
 use App\Http\Controllers\ContatoreGasController;
 use App\Http\Controllers\DocumentiController;
 use App\Http\Controllers\MovimentiController;
+use App\Http\Controllers\RigaProgettoController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\AutoController;
@@ -110,7 +111,8 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('progetti/new', [ProgettiController::class, 'salvaProgetto']);
     Route::get('progetti/new', [ProgettiController::class, 'nuovoProgetto'])->name('nuovoProgetto');
     Route::get('progetti/delete',[ProgettiController::class, 'deleteProgetto']);
-    Route::get('progetti/detail', [ProgettiController::class, 'dettaglioProgetto']);
+    Route::get('progetti/delete_row/{id_row}/return/{id_prog}',[RigaProgettoController::class, 'deleterow']);
+    Route::get('progetti/detail', [ProgettiController::class, 'dettaglioProgetto'])->name('detail');
     Route::post('progetti/detail', [ProgettiController::class, 'inserisciTask']);
     
     /// TEST routes
