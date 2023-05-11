@@ -25,4 +25,9 @@ class RigaProgetto extends Model
             'ore'=>$args['ore'],
         ]);
     }
+    
+    public static function deleteRow($id)
+    {
+        DB::table('riga_progettos')->delete($id);
+    }
 }

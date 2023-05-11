@@ -149,7 +149,7 @@
 							<td>{{ $riga->descrizione }}</td>
 							<td>{{ $riga->ore }}</td>
 							<td>{{ $riga->prezzo }}</td>
-							<td><a href="#{{ $riga->id }}" class="btn btn-danger">X</a></td>
+							<td><a href="delete_row/{{ $riga->id }}/return/{{ $progetto->id }}" class="btn btn-danger">X</a></td>
 						</tr>
 						@else
 						<tr>
