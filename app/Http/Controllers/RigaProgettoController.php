@@ -14,6 +14,7 @@ class RigaProgettoController extends Controller
         $id_progetto = $id_prog;
         
         RigaProgetto::deleteRow($id_riga);
+        // Ritorna alla pagina dei dettagli del progetto
         return redirect('/admin/progetti/detail/?id='.$id_progetto);
     }
 }
