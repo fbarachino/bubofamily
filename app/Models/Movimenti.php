@@ -155,8 +155,8 @@ class Movimenti extends Model
         $collection = (new FastExcel)->import($filename, function ($line){
             if($line['Data valuta'])
             {
-                Movimenti::insEntrata([
-                    'mov_data'=>Movimenti::dateFormat(0,$line['Data valuta']),
+                self::insEntrata([
+                    'mov_data'=>self::dateFormat(0,$line['Data valuta']),
                     'mov_fk_categoria'=>1,
                     'mov_descrizione'=>$line['Descrizione operazione'],
                     'mov_importo'=>trim(str_replace(',','.',(str_replace('.','',str_replace('€', '', $line['Importo']))))),
@@ -179,7 +179,7 @@ class Movimenti extends Model
                 if($line['DARE']<>'')
                 {
                 $dati=[
-                    'mov_data'=>Movimenti::dateFormat(0,$line['VALUTA']),
+                    'mov_data'=>self::dateFormat(0,$line['VALUTA']),
                     'mov_fk_categoria'=>1,
                     'mov_descrizione'=>$line['DESCRIZIONE OPERAZIONE'],
                     'mov_importo'=>'-'.trim(str_replace(',','.',(str_replace('.','',$line['DARE'])))),
@@ -190,7 +190,7 @@ class Movimenti extends Model
                 if($line['AVERE']<>'')
                 {
                     $dati=[
-                        'mov_data'=>Movimenti::dateFormat(0,$line['VALUTA']),
+                        'mov_data'=>self::dateFormat(0,$line['VALUTA']),
                         'mov_fk_categoria'=>1,
                         'mov_descrizione'=>$line['DESCRIZIONE OPERAZIONE'],
                         'mov_importo'=>trim(str_replace(',','.',(str_replace('.','',$line['AVERE'])))),
@@ -198,7 +198,7 @@ class Movimenti extends Model
                         'userid'=>1,
                     ];
                 }
-                Movimenti::insEntrata($dati);
+                self::insEntrata($dati);
             }
         });
     }
