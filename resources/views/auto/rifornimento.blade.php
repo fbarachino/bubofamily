@@ -14,7 +14,7 @@
             </div>
             <div class="panel-body">  	
     			<!-- Form -->
-    			<form action="" method="POST">
+    			<form action="" method="POST" id="form">
                 	@csrf
                     <div class="row">	
                     	<div class="col-xs-6">
@@ -23,7 +23,7 @@
                     	</div>
                     	<div class="col-xs-6">
              				<label for="km" class="form-label">Km</label>
-                    		<input type="text" class="form-control" id="km" name="km">
+                    		<input type="text" class="form-control" id="km" minlength="3" name="km">
                     	</div>
                     </div>
                      <div class="row">
@@ -56,7 +56,7 @@
                         <div class="col-xs-12">
                         <input type="hidden" name="type" value="rifornimento">
                         <input type="hidden" name="auto" value="{{ $dettagli->id; }}">
-                        	<button type="submit" class="btn btn-primary">Submit</button>
+                        	<button type="submit" id="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
             	</form>
@@ -74,6 +74,7 @@
         $('#automobili').DataTable({
                 responsive: true
         });
+    $('#form').validate({rules: {km : {required:true, minlenght:3}}});
     });
 </script>
 @endsection
