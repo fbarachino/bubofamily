@@ -30,4 +30,9 @@ class RigaProgetto extends Model
     {
         DB::table('riga_progettos')->delete($id);
     }
+    
+    public static function getCostoRighe($id)
+    {
+        return DB::table('riga_progettos')->select(DB::raw('SUM(prezzo) as costo'))->where('fk_id_progetto','=',$id)->get();
+    }
 }

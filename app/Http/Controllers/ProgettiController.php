@@ -46,7 +46,8 @@ class ProgettiController extends Controller
         $progetto_id=$id['id'];
         $progetto = Progetti::getProgettoById($progetto_id);
         $righe = RigaProgetto::getRigheProgetto($progetto_id);
-        return view('progetti.dettaglio',['dettaglio'=>$progetto, 'righe'=>$righe,]);
+        $costo_tot=RigaProgetto::getCostoRighe($progetto_id);
+        return view('progetti.dettaglio',['dettaglio'=>$progetto, 'righe'=>$righe, 'tot'=>$costo_tot]);
         //dd($righe);
     }
     

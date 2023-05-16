@@ -18,6 +18,8 @@
 			<div class="panel panel-default">
 				<div class="panel-heading" id="dettaglio">Dettaglio Progetto</div>
 				<div class="panel-body">
+				@foreach($tot as $totale)
+				@endforeach
 					@foreach($dettaglio ?? '' as $progetto)
 					<div class="row">
 						<div class="col-xs-2">Nome:</div>
@@ -53,9 +55,17 @@
 						</div>
 					</div>
 					<div class="row" hidable="">
-						<div class="col-xs-2">Budget</div>
-						<div class="col-xs-3">
-							<b>&euro; {{ $progetto->budget }}</b>
+						<div class="col-xs-1">Budget</div>
+						<div class="col-xs-1">
+							<b>{{ $progetto->budget }}</b>
+						</div>
+						<div class="col-xs-1">Costi</div>
+						<div class="col-xs-1">
+							<b> {{ $totale->costo}}</b>
+						</div>
+						<div class="col-xs-1">Rimanenza</div>
+						<div class="col-xs-1">
+							<b>{{ $progetto->budget - $totale->costo}}</b>
 						</div>
 						<div class="col-xs-2">Coordinatore</div>
 						<div class="col-xs-3">
@@ -160,6 +170,11 @@
 						</tr>
 						@endif
 						@endforeach
+						<tr>
+							<td colspan="2">Totale</td>
+							<td></td>
+							<td>{{ $totale->costo}} &euro;</td>
+						</tr>
     				</tbody>
 				</table>
 			</div>
