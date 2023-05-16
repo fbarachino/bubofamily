@@ -90,7 +90,11 @@
             		<tr>
             			<td>{{ $operazioni->data; }}</td>
             			<td>{{ $operazioni->km; }}</td>
-            			<td>{{ $revisione[$operazioni->id][0]->superata; }}</td>
+            			@if($revisione[$operazioni->id][0]->superata >0)
+            			<td>Superata</td>
+            			@else
+            			<td>Non superata</td>
+            			@endif
             			<td>{{ $revisione[$operazioni->id][0]->centrorevisione; }}</td>
             			<td>{{ $revisione[$operazioni->id][0]->descrizione; }}</td>
             			<td>{{ $revisione[$operazioni->id][0]->dataproxrevisione; }}</td>

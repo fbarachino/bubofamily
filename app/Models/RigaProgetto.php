@@ -12,7 +12,7 @@ class RigaProgetto extends Model
     
     public static function getRigheProgetto($progetto_id)
     {
-        return DB::table('riga_progettos')->where('fk_id_progetto','=',$progetto_id)->get();
+        return DB::table('riga_progettos')->where('fk_id_progetto','=',$progetto_id)->orderBy('data','asc')->get();
     }
     
     public static function saveRiga($args)

@@ -171,9 +171,9 @@
 						@endif
 						@endforeach
 						<tr>
-							<td colspan="2">Totale</td>
+							<td colspan="2"><strong>Totale</strong></td>
 							<td></td>
-							<td>{{ $totale->costo}} &euro;</td>
+							<td><strong>{{ $totale->costo}} &euro;</strong></td>
 						</tr>
     				</tbody>
 				</table>
