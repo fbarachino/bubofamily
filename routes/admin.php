@@ -114,7 +114,8 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('progetti/delete_row/{id_row}/return/{id_prog}',[RigaProgettoController::class, 'deleterow']);
     Route::get('progetti/detail', [ProgettiController::class, 'dettaglioProgetto'])->name('detail');
     Route::post('progetti/detail', [ProgettiController::class, 'inserisciTask']);
-    Route::get('progetti/detail/edit/{id}', [RigaProgettoController::class, 'editRiga'])->name('detailedit');
+    Route::get('progetti/detail/edit/{id}', [RigaProgettoController::class, 'editRiga']);
+    Route::post('progetti/rigaupdate', [RigaProgettoController::class, 'updateRiga']);
     
     /// TEST routes
     Route::get('fullcalendar', [FullCalenderController::class, 'index']);

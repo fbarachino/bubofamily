@@ -25,4 +25,11 @@ class RigaProgettoController extends Controller
         $data=RigaProgetto::getRigaById($id);
         return $data;
     }
+    
+    public function updateRiga(Request $data)
+    {
+        RigaProgetto::updateRiga($data);
+        $id_progetto=$data['fk_id_progetto'];
+        return redirect('/admin/progetti/detail/?id='.$id_progetto);
+    }
 }

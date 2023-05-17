@@ -192,7 +192,7 @@
 					<div class="panel-heading" id="form">Modifica Riga</div>
 
 				<div class="panel-body">
-					<form method="POST" action="">
+					<form method="POST" action="rigaupdate">
 					
 						<div class="row">
 							@csrf
@@ -222,7 +222,8 @@
 
 							</div>
 							<div class="col-xs-1">
-								<input type="hidden" name="fk_id_progetto" >
+								<input type="hidden" name="fk_id_progetto" id="id_progetto_u">
+								<input type="hidden" name="idriga" id="idriga">
 								<input type="submit" name="Submit" class="form-control">
 
 							</div>
@@ -262,6 +263,8 @@
                 $('#desc_u').val(data[0].descrizione);
                 $('#ore_u').val(data[0].ore);
                 $('#prezzo_u').val(data[0].prezzo);
+                $('#id_progetto_u').val(data[0].fk_id_progetto);
+                $('#idriga').val(data[0].id);
                 $('#myModal').modal('show');
         }) 
     });
