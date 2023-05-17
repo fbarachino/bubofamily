@@ -17,4 +17,12 @@ class RigaProgettoController extends Controller
         // Ritorna alla pagina dei dettagli del progetto
         return redirect('/admin/progetti/detail/?id='.$id_progetto);
     }
+    
+    public function editRiga($id)
+    {
+        // modifica della riga inserita
+        //return redirect('/admin/progetti/editDetail');
+        $data=RigaProgetto::getRigaById($id);
+        return $data;
+    }
 }
