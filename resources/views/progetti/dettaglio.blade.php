@@ -159,7 +159,10 @@
 							<td>{{ $riga->descrizione }}</td>
 							<td>{{ $riga->ore }}</td>
 							<td>{{ $riga->prezzo }}</td>
-							<td><a href="delete_row/{{ $riga->id }}/return/{{ $progetto->id }}" class="btn btn-danger">X</a><button class="btn btn-warning btn-detail open_modal" value="{{$riga->id}}">Edit</button></td>
+							<td><a href="delete_row/{{ $riga->id }}/return/{{ $progetto->id }}" class="btn btn-danger">X</a>
+								&nbsp;
+								<button class="btn btn-warning btn-detail open_modal" value="{{$riga->id}}">Edit</button>
+							</td>
 							
 						</tr>
 						@else
@@ -186,55 +189,60 @@
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-					<div class="modal-content">
-					<div class="panel-heading" id="form">Modifica Riga</div>
+<!-- MODAL -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				 <div class="panel-heading" id="form">Modifica Riga</div>
 
 				<div class="panel-body">
 					<form method="POST" action="rigaupdate">
-					
+
 						<div class="row">
 							@csrf
 							<div class="col-xs-2">
 
 								<!-- Form per task con jquery e aggiunta righe automatica -->
-								<label for="tdata" class="form-label">data:</label> 
-								<input type="date" name="data" class="form-control" id="data_u" value="">
+								<label for="tdata" class="form-label">data:</label> <input
+									type="date" name="data" class="form-control" id="data_u"
+									value="">
 							</div>
 							<div class="col-xs-5">
 
 								<!-- Form per task con jquery e aggiunta righe automatica -->
-								<label for="desc" class="form-label">descrizione:</label> 
-								<input type="text" name="descrizione" class="form-control" id="desc_u" value="">
+								<label for="desc" class="form-label">descrizione:</label> <input
+									type="text" name="descrizione" class="form-control" id="desc_u"
+									value="">
 
 							</div>
 							<div class="col-xs-2">
 								<label for="ore" class="form-label">ore lavoro:</label>
 								<!-- Form per task con jquery e aggiunta righe automatica -->
-								<input type="text" name="ore" class="form-control" id="ore_u" >
+								<input type="text" name="ore" class="form-control" id="ore_u">
 
 							</div>
 							<div class="col-xs-2">
 								<label for="prezzo" class="form-label">prezzo:</label>
 								<!-- Form per task con jquery e aggiunta righe automatica -->
-								<input type="text" name="prezzo" class="form-control" id="prezzo_u" >
+								<input type="text" name="prezzo" class="form-control"
+									id="prezzo_u">
 
 							</div>
 							<div class="col-xs-1">
-								<input type="hidden" name="fk_id_progetto" id="id_progetto_u">
-								<input type="hidden" name="idriga" id="idriga">
-								<input type="submit" name="Submit" class="form-control">
+								<input type="hidden" name="fk_id_progetto" id="id_progetto_u"> <input
+									type="hidden" name="idriga" id="idriga"> <input type="submit"
+									name="Submit" class="form-control">
 
 							</div>
 
 						</div>
-						
+
 					</form>
-				</div>
-				</div>
+				 </div>
 			</div>
 		</div>
+	</div>
+	<!-- MODAL END -->
 	<!-- /.col-lg-12 -->
 
 	@endsection @section('script')
