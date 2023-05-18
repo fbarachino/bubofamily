@@ -30,7 +30,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
 
 
     Route::get('logout', function(){ Auth::logout(); return redirect('login'); })->name('logout');
-
+// MOVIMENTI
     Route::get('movimentis', [MovimentiController::class,'newMovimenti'])->name('movimentis');
     Route::post('movimentis',[MovimentiController::class,'insMovimentiSpesa']);
     Route::get('movimentie', [MovimentiController::class,'newMovimenti'])->name('movimentie');
@@ -45,25 +45,24 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('reportbudget/{anno?}',[MovimentiController::class,'manageRedirect']);
     Route::get('reportbudgetxls',[MovimentiController::class,'reportCategorieAnnoXLS'])->name('budgetxls');
     Route::get('movimenti/test', [MovimentiController::class,'test']);
-    
+// CATEGORIE    
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
     Route::post('categorie', [CategorieController::class,'insCategorie']);
     Route::get('catdelete', [CategorieController::class,'deleteCategorie']);
     Route::get('catmodify', [CategorieController::class,'updateCategorie']);
     Route::post('catmodify', [CategorieController::class,'updatePostCategorie']);
-    
+// TAGS    
     Route::get('tags', [TagController::class,'listTags'])->name('tags');
     Route::post('tags', [TagController::class,'insTags']);
     Route::get('tagmodify', [TagController::class,'updateTag']);
     Route::post('tagmodify', [TagController::class,'updatePostTag']);
-    
+// CONSUMI    
     Route::get('letturegas', [ContatoreGasController::class,'listLettureGas'])->name('gas');
     Route::post('letturegas', [ContatoreGasController::class,'insLettureGas']);
-    
     Route::get('lettureenel', [ContatoreEnElController::class,'listLettureEnel'])->name('enel');
     Route::post('lettureenel', [ContatoreEnElController::class,'insLettureEnel']);
-    Route::get('movimenti/filter/tags',[MovimentiController::class,'filterByTag']);
-    
+// MOVIMENTI
+    Route::get('movimenti/filter/tags',[MovimentiController::class,'filterByTag']);    
     Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
     Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);
     Route::get('movdocs', [DocumentiController::class,'fileForm'])->name('documenti');
@@ -72,7 +71,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('movimenti/import', [MovimentiController::class,'importEC_ING']);
     Route::get('movimenti/importcr', [MovimentiController::class,'importFileCR'])->name('importCR');
     Route::post('movimenti/importcr', [MovimentiController::class,'importEC_CR']);
-    # Automobili
+// AUTOMOBILI
     Route::get('auto', [AutoController::class, 'index'])->name('auto_list');
     Route::get('auto/new', [AutoController::class, 'newAuto'])->name('auto_new');
     Route::post('auto/new', [AutoController::class, 'saveAuto'])->name('auto_save');
@@ -88,8 +87,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('auto/accessori', [AutoController::class, 'saveAccessori']);
     Route::get('auto/operazioni', [AutoController::class, 'getOperazioni']);
     Route::get('auto/operazioni/pdf', [AutoController::class, 'exportPdfOperazioni']);
-    
-    // CONTATTI
+// CONTATTI
     Route::get('contatti', [AnagraficaController::class, 'listContact'])->name('contatti');
     Route::get('contatti/new', [AnagraficaController::class, 'newContact'])->name('newContact');
     Route::post('contatti/new', [AnagraficaController::class, 'insContact']);
@@ -97,27 +95,24 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('contatti/scheda', [AnagraficaController::class, 'getScheda']);
     Route::get('contatti/addOther', [AnagraficaController::class, 'insOtherContact']);
     Route::post('contatti/addOther', [AnagraficaController::class, 'saveOtherContact']);
-    
-    // Gruppi e permessi
+// Gruppi e permessi
     Route::get('group/new', [Utenti::class, 'nuovoGruppo']);
     Route::post('group/new', [Utenti::class, 'saveNuovoGruppo']);
     Route::get('permesso/new', [Utenti::class, 'nuovoPermesso']);
     Route::post('permesso/new', [Utenti::class, 'saveNuovoPermesso']);
     Route::get('permesso/assign', [Utenti::class, 'vw_assignToGroup']);
     Route::post('permesso/assign', [Utenti::class, 'assignPermissionToGroup']);
-    
-    // Progetti
+// Progetti
     Route::get('progetti', [ProgettiController::class, 'listaProgetto'])->name('progetti');
     Route::post('progetti/new', [ProgettiController::class, 'salvaProgetto']);
     Route::get('progetti/new', [ProgettiController::class, 'nuovoProgetto'])->name('nuovoProgetto');
     Route::get('progetti/delete',[ProgettiController::class, 'deleteProgetto']);
     Route::get('progetti/delete_row/{id_row}/return/{id_prog}',[RigaProgettoController::class, 'deleterow']);
     Route::get('progetti/detail', [ProgettiController::class, 'dettaglioProgetto'])->name('detail');
-    Route::post('progetti/detail', [ProgettiController::class, 'inserisciTask']);
+    Route::post('progetti/detail', [RigaProgettoController::class, 'inserisciRiga']);
     Route::get('progetti/detail/edit/{id}', [RigaProgettoController::class, 'editRiga']);
     Route::post('progetti/rigaupdate', [RigaProgettoController::class, 'updateRiga']);
-    
-    /// TEST routes
+/// TEST routes
     Route::get('fullcalendar', [FullCalenderController::class, 'index']);
     Route::post('fullcalendar', [FullCalenderController::class, 'ajax']);
     Route::get('condominio',[CondominioController::class,'testPdf']);

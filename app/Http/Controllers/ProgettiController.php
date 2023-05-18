@@ -35,12 +35,7 @@ class ProgettiController extends Controller
         return redirect(Route('progetti'));
     }
     
-    public function inserisciTask(Request $args)
-    {
-        RigaProgetto::saveRiga($args);
-        return redirect(Route('detail',['id'=>$args['fk_id_progetto']]));
-    }
-    
+
     public function dettaglioProgetto(Request $id)
     {
         $progetto_id=$id['id'];

@@ -32,4 +32,11 @@ class RigaProgettoController extends Controller
         $id_progetto=$data['fk_id_progetto'];
         return redirect('/admin/progetti/detail/?id='.$id_progetto);
     }
+    
+    public function inserisciRiga(Request $args)
+    {
+        RigaProgetto::saveRiga($args);
+        return redirect(Route('detail',['id'=>$args['fk_id_progetto']]));
+    }
+    
 }
