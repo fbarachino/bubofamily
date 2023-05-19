@@ -38,7 +38,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('movimenti',[MovimentiController::class,'listMovimenti'])->name('movimenti');
     Route::get('export',[MovimentiController::class,'exportMovimenti'])->name('export');
     Route::get('resoconto',[MovimentiController::class,'resocontoMovimenti'])->name('resoconto');
-    Route::get('movmodify',[MovimentiController::class,'updateMovimenti']);
+    Route::get('movmodify/{id}',[MovimentiController::class,'updateMovimenti']);
     Route::post('movmodify',[MovimentiController::class,'updatePostMovimenti']);
     Route::get('movdelete',[MovimentiController::class,'deleteMovimenti']);
     Route::get('reportbudget/{anno?}',[MovimentiController::class,'reportCategorieAnno'])->name('budget');

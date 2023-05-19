@@ -119,7 +119,7 @@ class MovimentiController extends Controller
         ]);
     }
     
-    public function updateMovimenti(Request $request)
+    /*public function updateMovimenti(Request $request)
     {
         $id=$request['id'];
         $mov=Movimenti::getMovimentoById($id);
@@ -131,7 +131,7 @@ class MovimentiController extends Controller
                 'movimenti'=> $mov,
                 'tags'=>$tags,
             ]);
-    }
+    }*/
     
     public function updatePostMovimenti(Request $request)
     {
@@ -320,5 +320,10 @@ class MovimentiController extends Controller
     {
         return redirect('/admin/reportbudget/'.$request['anno']);
     }
-
+    
+    public function updateMovimenti($id)
+    {
+        $mov=Movimenti::getMovimentoById($id);
+        return json_encode($mov);
+    }
 }

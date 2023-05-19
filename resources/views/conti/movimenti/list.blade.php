@@ -36,7 +36,7 @@
             			<td>{{ $movimento->mov_descrizione; }}</td>
             			<td>&euro; {{ $movimento->mov_importo; }}</td>
             			<td>
-            				<a class="btn btn-primary" href="/admin/movmodify?id={{ $movimento->id; }}"><i class="fa fa-pencil-square-o fw"></i></a>&nbsp;
+            				<button class="btn btn-warning btn-detail open_modal_modifica" value="{{ $movimento->id; }}"><i class="fa fa-pencil-square-o fw"></i></button>&nbsp;
             				<a class="btn btn-danger" href="/admin/movdelete?id={{ $movimento->id; }}"><i class="fa fa-trash-o fa-fw"></i></a>&nbsp;
             				<a class="btn btn-warning" href="/admin/movdocs?id={{ $movimento->id; }}"><i class="fa fa-files-o fa-fw"></i></a>&nbsp;
             				<!-- Definisce quanti documenti sono presenti per il record -->
@@ -136,7 +136,30 @@
                    $('#myModal').modal('show');
                    $('.panel-heading').append(' entrata');
                    $('#form').attr('action','movimentie');
-                });         
+                });
+    $(document).on('click','.open_modal_modifica',function(){
+    			var url = "movmodify";
+                var riga_id= $(this).val();
+                $.getJSON(url + '/' + riga_id, function (data) {
+                    // success data
+                    console.log(data[0]);
+                   $('#data').val(data[0].mov_data); 
+                   $('#descrizione').val(data[0].mov_descrizione);
+                   $('#importo').val(data[0].mov_importo); 
+                   $('#tags')
+                   		.find('option:contains('+ data[0].tag_name  +')')
+                   		.prop('selected',true)
+                   		.trigger('change');
+                   $('#categoria')
+                   		.find('option:contains('+ data[0].cat_name +')')
+                   		.prop('selected',true)
+                   		.trigger('change');
+                   $('#myModal').modal('show');
+                   $('.panel-heading').text('Modifica movimento');
+                   $('#form').attr('action','/admin/movmodify');
+                   $('#form').append('<input type="hidden" name="id" value="' + riga_id +'">');
+                }); 
+               });                    
     $.getJSON("service/catlist",{},function(data){
         	$.each(data,function(i,item){
         		$("select[name='mov_fk_categoria']").append(
