@@ -7,17 +7,7 @@
 </div>                          
 	<div class="container">
     	<!-- Content here -->
-    	<form action="" method="POST">
-    	@csrf
-    	<div class="mb-3">
-    		<label for="categoria" class="form-label">Categoria</label>
-    		<input type="text" class="form-control" id="categoria" name="cat_name">
-    		
-    	</div> 
-    	
-    	   	<button type="submit" class="btn btn-primary">Submit</button>
-    	</form>
-    	
+<button class="btn btn-warning btn-detail open_modal_new" > Nuova Categoria </button>	
 <div class="row">
  	<div class="col-lg-12">
     	<div class="panel panel-default">
@@ -86,18 +76,36 @@
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="myModal_new" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<!-- FORM INSERIMENTO NUOVA CATEGORIA -->
+    	<form action="" method="POST">
+    	@csrf
+    	<div class="mb-3">
+    		<label for="categoria" class="form-label">Categoria</label>
+    		<input type="text" class="form-control" id="categoria" name="cat_name">
+    		
+    	</div> 
+    	
+    	   	<button type="submit" class="btn btn-primary">Submit</button>
+    	</form>
+ <!-- FINE FORM INSERIMENTO NUOVA CATEGORIA -->
+ 	</div>
+ </div>
+ </div>  
  <!-- /.col-lg-12 -->
 
 @endsection
 
 @section('script')
 <script>
-            $(document).ready(function() {
-                $('#categorie').DataTable({
-                        responsive: true
-                });
-            
-            $(document).on('click','.open_modal',function(){
+   $(document).ready(function() {
+            $('#categorie').DataTable({
+                    responsive: true
+            });
+        
+        $(document).on('click','.open_modal',function(){
             var url = "catmodify";
             var riga_id= $(this).val();
             $.getJSON(url + '/' + riga_id, function (data) {
@@ -107,8 +115,12 @@
                 $('#H_cat_cat_name').val(data[0].cat_name);
                 $('#H_cat_id').val(data[0].id);
                 $('#myModal').modal('show');
-        }); 
-    });
-            });
+            }); 
+        });
+        $(document).on('click','.open_modal_new',function(){
+                $('#myModal_new').modal('show');
+             
+        });
+   });
         </script>
 @endsection
