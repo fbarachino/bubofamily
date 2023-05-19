@@ -13,8 +13,8 @@ class MovimentiController extends Controller
 {
     // Gestione dei movimenti
     public static function newMovimenti() {
-        $categorie=Categorie::list();
-        $tags=tag::getList();
+        $categorie=Categorie::list();   // TODO: da risolvere con jquery nella pagina blade conti.movimenti.list
+        $tags=tag::getList();           // TODO: da risolvere con jquery nella pagina blade conti.movimenti.list (spiegazione su https://library.webschool.com/lezione/guida-jquery-recuperare-dati-da-php-con-json-2564.html )
         return view('conti.movimenti.new',[
             'categorie'=>$categorie,
             'tags'=>$tags,
