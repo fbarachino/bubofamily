@@ -54,7 +54,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
 // TAGS    
     Route::get('tags', [TagController::class,'listTags'])->name('tags');
     Route::post('tags', [TagController::class,'insTags']);
-    Route::get('tagmodify', [TagController::class,'updateTag']);
+    Route::get('tagmodify/{id}', [TagController::class,'updateTag']);
     Route::post('tagmodify', [TagController::class,'updatePostTag']);
 // CONSUMI    
     Route::get('letturegas', [ContatoreGasController::class,'listLettureGas'])->name('gas');
