@@ -33,10 +33,11 @@ class CategorieController extends Controller
         $id=$request['id'];
         
         $categorie = Categorie::getById($id);
-        return view('conti.categorie.update',
+       /* return view('conti.categorie.update',
             [
                 'categorie'=> $categorie,
-            ]);
+            ]);*/
+        return json_encode($categorie);
     }
     
     public function updatePostCategorie(Request $request)
