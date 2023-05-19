@@ -28,17 +28,17 @@ class CategorieController extends Controller
         Categorie::deleteById($request['id']);
         return redirect(route('categorie'));  
     }
-    public function updateCategorie(Request $request)
+     /*public function updateCategorie(Request $request)
     {
         $id=$request['id'];
         
         $categorie = Categorie::getById($id);
-       /* return view('conti.categorie.update',
+       return view('conti.categorie.update',
             [
                 'categorie'=> $categorie,
-            ]);*/
-        return json_encode($categorie);
-    }
+            ]);
+        
+    }*/
     
     public function updatePostCategorie(Request $request)
     {
@@ -51,5 +51,11 @@ class CategorieController extends Controller
     {
         $categorie=Categorie::list();
         return response()->json($categorie);
+    }
+    
+    public function updateCategorie($id)
+    {
+        $categorie = Categorie::getById($id);
+        return json_encode($categorie);
     }
 }

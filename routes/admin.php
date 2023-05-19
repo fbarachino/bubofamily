@@ -49,7 +49,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
     Route::post('categorie', [CategorieController::class,'insCategorie']);
     Route::get('catdelete', [CategorieController::class,'deleteCategorie']);
-    Route::get('catmodify', [CategorieController::class,'updateCategorie']);
+    Route::get('catmodify/{id}', [CategorieController::class,'updateCategorie']);
     Route::post('catmodify', [CategorieController::class,'updatePostCategorie']);
 // TAGS    
     Route::get('tags', [TagController::class,'listTags'])->name('tags');

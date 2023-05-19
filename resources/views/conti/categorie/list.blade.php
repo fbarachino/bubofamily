@@ -66,17 +66,18 @@
 						<div class="panel-heading">Modifica categorie</div>
 						<div class="panel-body">
 							<form action="catmodify" method="POST">
-								@foreach($categorie as $categoria) @csrf
+								
+								@csrf
 								<div class="mb-3">
-									<label for="categoria" class="form-label">Categoria</label> <input
-										type="text" class="form-control" id="categoria" size="50"
-										name="cat_name" value="{{ $categoria->cat_name }}">
+									<label for="H_cat_cat_name" class="form-label">Categoria</label> <input
+										type="text" class="form-control" id="H_cat_cat_name" size="50"
+										name="cat_name" value="">
 								</div>
-								<input type="hidden" name="id" id="id" value="{{ $_GET['id']; }}">
+								<input type="hidden" name="id" id="H_cat_id" >
 
 								<button type="submit" class="btn btn-primary">Submit</button>
 
-								@endforeach
+								
 							</form>
 						</div>
 					</div>
@@ -99,12 +100,12 @@
             $(document).on('click','.open_modal',function(){
             var url = "catmodify";
             var riga_id= $(this).val();
-            $.get(url + '/' + riga_id, function (data) {
+            $.getJSON(url + '/' + riga_id, function (data) {
                 //success data
-                console.log(data);
-                console.log(data[0].descrizione);
-                $('#categoria').val(data[0].cat_name);
-                $('#id').val(data[0].id);
+                console.log(data[0]);
+                console.log(data[0].cat_name);
+                $('#H_cat_cat_name').val(data[0].cat_name);
+                $('#H_cat_id').val(data[0].id);
                 $('#myModal').modal('show');
         }); 
     });
