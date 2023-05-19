@@ -28,17 +28,7 @@ class CategorieController extends Controller
         Categorie::deleteById($request['id']);
         return redirect(route('categorie'));  
     }
-     /*public function updateCategorie(Request $request)
-    {
-        $id=$request['id'];
-        
-        $categorie = Categorie::getById($id);
-       return view('conti.categorie.update',
-            [
-                'categorie'=> $categorie,
-            ]);
-        
-    }*/
+  
     
     public function updatePostCategorie(Request $request)
     {
@@ -50,7 +40,7 @@ class CategorieController extends Controller
     public function apiList()
     {
         $categorie=Categorie::list();
-        return response()->json($categorie);
+        return json_encode($categorie);
     }
     
     public function updateCategorie($id)

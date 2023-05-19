@@ -51,6 +51,11 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('catdelete', [CategorieController::class,'deleteCategorie']);
     Route::get('catmodify/{id}', [CategorieController::class,'updateCategorie']);
     Route::post('catmodify', [CategorieController::class,'updatePostCategorie']);
+    
+// Richiami di servizio da jquery
+    Route::get('service/catlist', [CategorieController::class,'apiList']);
+    Route::get('service/taglist', [TagController::class,'apiList']);
+    
 // TAGS    
     Route::get('tags', [TagController::class,'listTags'])->name('tags');
     Route::post('tags', [TagController::class,'insTags']);
