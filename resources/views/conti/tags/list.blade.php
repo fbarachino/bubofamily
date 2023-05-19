@@ -6,14 +6,7 @@
 </div>
 <div class="container">
 	<!-- Content here -->
-	<form action="" method="POST">
-		@csrf
-		<div class="mb-3">
-			<label for="tag" class="form-label">Tag</label> <input type="text"
-				class="form-control" id="tag" name="tag_name">
-		</div>
-		<button type="submit" class="btn btn-primary">Inserisci nuovo Tag</button>
-	</form>
+	<button class="btn btn-warning btn-detail open_modal_new">Nuovo Tag</button> 
 	<div class="table-responsive">
 		<table class="table table-striped table-bordered table-hover"
 			id="tags">
@@ -67,11 +60,30 @@
 		</div>
 	</div>
 </div>
+<div class="modal fade" id="myModal_new" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="row">
+				<div class="col-lg-12">
+					<form action="" method="POST">
+						@csrf
+						<div class="mb-3">
+							<label for="tag" class="form-label">Tag</label> <input
+								type="text" class="form-control" id="tag" name="tag_name">
+						</div>
+						<button type="submit" class="btn btn-primary">Inserisci nuovo Tag</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+					<!-- /.col-lg-12 -->
 
-<!-- /.col-lg-12 -->
-
-@endsection @section('script')
-<script>
+					@endsection @section('script')
+					<script>
             $(document).ready(function() {
                 $('#tags').DataTable({
                         responsive: true
@@ -88,6 +100,10 @@
                     $('#myModal').modal('show');
                 }); 
             });
+            $(document).on('click','.open_modal_new',function(){
+                $('#myModal_new').modal('show');
+             
+        });
             });
         </script>
-@endsection
+					@endsection
