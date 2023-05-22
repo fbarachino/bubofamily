@@ -25,7 +25,4 @@ Auth::routes(['register' => false]); // Production only
 //   Auth::routes();    //development mode
 Route::get('/calendar', [TagController::class,'calendartest'])->name('calendar');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

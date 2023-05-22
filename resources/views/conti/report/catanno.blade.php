@@ -18,6 +18,17 @@
                 Rapporto spese per categoria nell'arco dell'anno {{ $anno ?? '' }}
             </div>
             <div class="panel-body">
+            <div class="row">
+            	<form action="" method="POST">
+            	@csrf
+            	<select name="anno">
+            		@foreach($sel_anni as $sel)
+            		<option value="{{ $sel->anno }}">{{ $sel->anno }}</option>
+            		@endforeach
+            	</select>
+            	<input type="submit" name="Seleziona">
+            	</form>
+            </div>
             <table class="table table-striped table-bordered table-hover" id="listrapporto">
             	<thead>
             		<tr>

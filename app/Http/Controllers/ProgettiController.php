@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Progetti;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\RigaProgetto;
 
 class ProgettiController extends Controller
 {
     //
     public function listaProgetto()
     {
-        return view('progetti.list',[
+          /* $progetti=Progetti::getProgetti();
+        dd($progetti);*/
+     return view('progetti.list',[
             'progetti'=>Progetti::getProgetti()
         ]);
     }
@@ -30,6 +33,17 @@ class ProgettiController extends Controller
     public function deleteProgetto(Request $param) {
         Progetti::delProgetto($param['id']);
         return redirect(Route('progetti'));
+    }
+    
+
+    public function dettaglioProgetto(Request $id)
+    {
+        $progetto_id=$id['id'];
+        $progetto = Progetti::getProgettoById($progetto_id);
+        $righe = RigaProgetto::getRigheProgetto($progetto_id);
+        $costo_tot=RigaProgetto::getCostoRighe($progetto_id);
+        return view('progetti.dettaglio',['dettaglio'=>$progetto, 'righe'=>$righe, 'tot'=>$costo_tot]);
+        //dd($righe);
     }
     
 }

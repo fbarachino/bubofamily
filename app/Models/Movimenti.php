@@ -11,7 +11,6 @@ class Movimenti extends Model
 {
     use HasFactory;
 
-
     public static function getList() {
         return DB::table('movimentis')
         ->join('categories','movimentis.mov_fk_categoria','=','categories.id')
@@ -24,6 +23,10 @@ class Movimenti extends Model
     
     public static function getSaldo($date) {
         return DB::table('movimentis')->whereYear('mov_data','=',$date)->sum('mov_importo');
+    }
+    
+    public static function getSaldoTot() {
+        return DB::table('movimentis')->sum('mov_importo');
     }
     
     public static function insSpesa($request) {
@@ -145,7 +148,6 @@ class Movimenti extends Model
 
     public static function importEstrattoIng($filename)
     {
-        //$file = str_replace('/EC/','',$filename);
         $inputPath='/var/www/html/bubofamily/public/storage/'.$filename;
         $outputPath='/var/www/html/bubofamily/public/'.$filename;
         rename($inputPath,$outputPath);
@@ -153,8 +155,8 @@ class Movimenti extends Model
         $collection = (new FastExcel)->import($filename, function ($line){
             if($line['Data valuta'])
             {
-                Movimenti::insEntrata([
-                    'mov_data'=>Movimenti::dateFormat(0,$line['Data valuta']),
+                self::insEntrata([
+                    'mov_data'=>self::dateFormat(0,$line['Data valuta']),
                     'mov_fk_categoria'=>1,
                     'mov_descrizione'=>$line['Descrizione operazione'],
                     'mov_importo'=>trim(str_replace(',','.',(str_replace('.','',str_replace('€', '', $line['Importo']))))),
@@ -162,14 +164,11 @@ class Movimenti extends Model
                     'userid'=>1,
                 ]);
             }
-
            });
-        //dd($outputPath);
     }
     
     public static function importEstrattoCR($filename)
     {
-        //$file = str_replace('/EC/','',$filename);
         $inputPath='/var/www/html/bubofamily/public/storage/'.$filename;
         $outputPath='/var/www/html/bubofamily/public/'.$filename.'.csv';
         rename($inputPath,$outputPath);
@@ -180,7 +179,7 @@ class Movimenti extends Model
                 if($line['DARE']<>'')
                 {
                 $dati=[
-                    'mov_data'=>Movimenti::dateFormat(0,$line['VALUTA']),
+                    'mov_data'=>self::dateFormat(0,$line['VALUTA']),
                     'mov_fk_categoria'=>1,
                     'mov_descrizione'=>$line['DESCRIZIONE OPERAZIONE'],
                     'mov_importo'=>'-'.trim(str_replace(',','.',(str_replace('.','',$line['DARE'])))),
@@ -191,7 +190,7 @@ class Movimenti extends Model
                 if($line['AVERE']<>'')
                 {
                     $dati=[
-                        'mov_data'=>Movimenti::dateFormat(0,$line['VALUTA']),
+                        'mov_data'=>self::dateFormat(0,$line['VALUTA']),
                         'mov_fk_categoria'=>1,
                         'mov_descrizione'=>$line['DESCRIZIONE OPERAZIONE'],
                         'mov_importo'=>trim(str_replace(',','.',(str_replace('.','',$line['AVERE'])))),
@@ -199,13 +198,19 @@ class Movimenti extends Model
                         'userid'=>1,
                     ];
                 }
-                Movimenti::insEntrata($dati);
-               // dd($dati);
+                self::insEntrata($dati);
             }
-            
         });
-            //dd($outputPath);
     }
+    
+    public static function getYearsFromMovimenti()
+    {
+        $anni=DB::table('movimentis')->select(DB::raw('DISTINCT YEAR(mov_data) as anno'))->get();
+        // dd($anni); // for test purposes
+        return $anni;
+    }
+    
+    
     private static function dateFormat($type,$string)
     {
         if($type)
@@ -217,4 +222,5 @@ class Movimenti extends Model
             return $year.'-'.$month.'-'.$day;
         }
     }
+
 }

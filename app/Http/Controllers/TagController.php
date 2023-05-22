@@ -25,14 +25,10 @@ class TagController extends Controller
         return view('components.calendar');
     }
     
-    public function updateTag(Request $request)
+    public function updateTag($id)
     {
-        $id=$request['id'];
         $tags=tag::getById($id);
-        return view('conti.tags.update',
-            [
-                'tags'=> $tags,
-            ]);
+        return json_encode($tags);
     }
     
     public function updatePostTag(Request $request)

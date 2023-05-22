@@ -13,8 +13,8 @@ class MovimentiController extends Controller
 {
     // Gestione dei movimenti
     public static function newMovimenti() {
-        $categorie=Categorie::list();
-        $tags=tag::getList();
+        $categorie=Categorie::list();   // TODO: da risolvere con jquery nella pagina blade conti.movimenti.list
+        $tags=tag::getList();           // TODO: da risolvere con jquery nella pagina blade conti.movimenti.list (spiegazione su https://library.webschool.com/lezione/guida-jquery-recuperare-dati-da-php-con-json-2564.html )
         return view('conti.movimenti.new',[
             'categorie'=>$categorie,
             'tags'=>$tags,
@@ -37,9 +37,11 @@ class MovimentiController extends Controller
     
     public static function dashboard()
     {
-        $bilancio=Movimenti::getSaldo(date('Y'));        
+        $bilancio=Movimenti::getSaldo(date('Y')); 
+        $saldo=Movimenti::getSaldoTot();
         return view('layouts.dashboard',[
             'bilancio'=>$bilancio,
+            'saldo'=>$saldo,
         ]);
     }
     
@@ -117,7 +119,7 @@ class MovimentiController extends Controller
         ]);
     }
     
-    public function updateMovimenti(Request $request)
+    /*public function updateMovimenti(Request $request)
     {
         $id=$request['id'];
         $mov=Movimenti::getMovimentoById($id);
@@ -129,7 +131,7 @@ class MovimentiController extends Controller
                 'movimenti'=> $mov,
                 'tags'=>$tags,
             ]);
-    }
+    }*/
     
     public function updatePostMovimenti(Request $request)
     {
@@ -191,25 +193,22 @@ class MovimentiController extends Controller
                     ->whereYear('mov_data','=',$anno)
                     ->where('mov_fk_categoria','=',$id)
                     ->sum('mov_importo');
-                
-                    
                     $coll[]=$movrow;
                     $collx[]=$movrow;
-                    //$coll[] = ['totale' => $movrow];
-                    // $coll[]=array_push(array_sum($coll['totale']));
-                    
-                    // $coll[]=array_push($coll,$totale);
                }
             $totale[]=array_sum($collx);
             unset($collx);
         }
          /*dd($totale);*/
+        $anni=Movimenti::getYearsFromMovimenti();
+       // dd($anni);
         return view('conti.report.catanno',[
                 'categorie'=>$categorie,
                 'mesi'=>$mesi,
                 'matrice'=>array_chunk($coll, 12),
                 'totale'=>$totale,
-                'anno'=>$anno
+                'anno'=>$anno,
+                'sel_anni'=>$anni,
         ]);
     }
     
@@ -234,8 +233,6 @@ class MovimentiController extends Controller
                 ->whereYear('mov_data','=',$anno)
                 ->where('mov_fk_categoria','=',$id)
                 ->sum('mov_importo');
-                
-                //$coll[] = str_replace(".",",",$movrow);
                 $coll[] = $movrow;
                
             }
@@ -314,5 +311,19 @@ class MovimentiController extends Controller
         return view('conti.importCR');
     }
     
-
+    public function test()
+    {
+        Movimenti::getYearsFromMovimenti();
+    }
+    
+    public function manageRedirect(Request $request)
+    {
+        return redirect('/admin/reportbudget/'.$request['anno']);
+    }
+    
+    public function updateMovimenti($id)
+    {
+        $mov=Movimenti::getMovimentoById($id);
+        return json_encode($mov);
+    }
 }
