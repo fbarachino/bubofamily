@@ -1,9 +1,9 @@
 @extends('admin')
 @section('content')
 <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">Lista categorie</h1>
-                        </div>
+    <div class="col-lg-12">
+        <h1 class="page-header">Lista categorie</h1>
+    </div>
 </div>
 <div class="container">
 	<!-- Content here -->
@@ -54,7 +54,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Modifica Categoria</h5>
+				<h4 class="modal-title">Modifica Categoria</h4>
 			</div>
 			<div class="modal-body">
 				<div class="row">
@@ -82,7 +82,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Categoria</h5>
+					<h4 class="modal-title">Categoria</h4>
 				</div>
 				<div class="modal-body">
 					<div class="row">
@@ -98,7 +98,8 @@
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Submit</button>
-					</form><!-- FINE FORM INSERIMENTO NUOVA CATEGORIA -->
+					</form>
+					<!-- FINE FORM INSERIMENTO NUOVA CATEGORIA -->
 				</div>
 			</div>
 		</div>

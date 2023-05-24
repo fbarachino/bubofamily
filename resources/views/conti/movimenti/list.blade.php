@@ -63,7 +63,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Nuovo movimento</h5>
+				<h4 class="modal-title">Nuovo movimento</h4>
 			
 			</div>
 			<div class="modal-body">
