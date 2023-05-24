@@ -52,73 +52,81 @@
 		</div>
 	</div>
 </div>
+
+
+		</div>
+	</div>
+</div>
+<!-- MODAL NEW -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">Nuovo movimento</div>
-						<div class="panel-body">
-							<form action="" method="POST" id="form">
-								@csrf
-								<div class="row">
-									<div class="col-xs-6">
-										<label for="data" class="form-label">Data</label> <input
-											type="date" class="form-control" id="data" name="mov_data"
-											value="{{ date('Y-m-d'); }}">
-									</div>
-									<div class="col-xs-6">
-										<label for="categoria" class="form-label">Categoria</label> <select
-											name="mov_fk_categoria" class="form-control selectpicker"
-											id="categoria" data-live-search="true"
-											data-live-search-placeholder="Cerca opzioni">
-										</select>
+			<div class="modal-header">
+				<h5 class="modal-title">Nuovo movimento</h5>
+			
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<form action="" method="POST" id="form">
+							@csrf
+							<div class="row">
+								<div class="col-xs-6">
+									<label for="data" class="form-label">Data</label> <input
+										type="date" class="form-control" id="data" name="mov_data"
+										value="{{ date('Y-m-d'); }}">
+								</div>
+								<div class="col-xs-6">
+									<label for="categoria" class="form-label">Categoria</label> <select
+										name="mov_fk_categoria" class="form-control selectpicker"
+										id="categoria" data-live-search="true"
+										data-live-search-placeholder="Cerca opzioni">
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label for="descrizione" class="form-label">Descrizione</label>
+									<input type="text" class="form-control" id="descrizione"
+										size="50" name="mov_descrizione">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-5">
+									<label for="importo" class="form-label">Importo</label>
+									<div class="input-group">
+										<span class="input-group-addon"> <i class="fa fa-eur"></i>
+										</span> <input type="number" step="0.01" min="-999999"
+											max="999999" class="form-control" id="importo" size="50"
+											name="mov_importo" aria-describedby="importo">
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-xs-12">
-										<label for="descrizione" class="form-label">Descrizione</label>
-										<input type="text" class="form-control" id="descrizione"
-											size="50" name="mov_descrizione">
-									</div>
+
+								<div class="col-xs-7">
+									<label for="tags" class="form-label">Tag</label> <select
+										name="mov_fk_tags" class="form-control" id="tags"></select>
 								</div>
-								<div class="row">
-									<div class="col-xs-5">
-										<label for="importo" class="form-label">Importo</label>
-										<div class="input-group">
-											<span class="input-group-addon"> <i class="fa fa-eur"></i>
-											</span> <input type="number" step="0.01" min="-999999"
-												max="999999" class="form-control" id="importo" size="50"
-												name="mov_importo" aria-describedby="importo">
-										</div>
-									</div>
-									<!--   <div id="importo"  class="form-text">inserire l'importo (se spesa far precedere da il simbolo "-")</div>-->
-									<div class="col-xs-7">
-										<label for="tags" class="form-label">Tag</label> <select
-											name="mov_fk_tags" class="form-control" id="tags"></select>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-12">&nbsp;</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-12">
-										<input type="hidden" name="userid"
-											value="{{ Auth::user()->id }}">
-										<button type="submit" class="btn btn-primary">Submit</button>
-									</div>
-								</div>
-							</form>
-						</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">&nbsp;</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12"></div>
+							</div>
+					
 					</div>
 				</div>
+			</div>
+			<div class="modal-footer">
+				<input type="hidden" name="userid" value="{{ Auth::user()->id }}">
+				<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
 			</div>
 		</div>
 	</div>
 </div>
- 
+
 @endsection
 @section('script')
 <script>
@@ -129,12 +137,12 @@
         });
     $(document).on('click','.open_modal_spesa',function(){
                    $('#myModal').modal('show');
-                   $('.panel-heading').append(' spesa');
+                   $('.modal-title').append(' spesa');
                    $('#form').attr('action','movimentis');
                 }); 
     $(document).on('click','.open_modal_entrata',function(){
                    $('#myModal').modal('show');
-                   $('.panel-heading').append(' entrata');
+                   $('.modal-title').append(' entrata');
                    $('#form').attr('action','movimentie');
                 });
     $(document).on('click','.open_modal_modifica',function(){
@@ -143,6 +151,7 @@
                 $.getJSON(url + '/' + riga_id, function (data) {
                     // success data
                     console.log(data[0]);
+                   $('.modal-title').text('Modifica movimento');
                    $('#data').val(data[0].mov_data); 
                    $('#descrizione').val(data[0].mov_descrizione);
                    $('#importo').val(data[0].mov_importo); 
@@ -155,7 +164,7 @@
                    		.prop('selected',true)
                    		.trigger('change');
                    $('#myModal').modal('show');
-                   $('.panel-heading').text('Modifica movimento');
+                   // $('.panel-heading').text('Modifica movimento');
                    $('#form').attr('action','/admin/movmodify');
                    $('#form').append('<input type="hidden" name="id" value="' + riga_id +'">');
                 }); 
