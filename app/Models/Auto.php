@@ -41,4 +41,21 @@ class Auto extends Model
     {
         DB::table('autos')->delete($id['id']);
     }
+    
+    public static function updateAuto($data)
+    {
+        DB::table('autos')->where('id','=',$data['id'])->update([
+            'targa'=>$data['targa'],
+            'marca'=>$data['marca'],
+            'modello'=>$data['modello'],
+            'cilindrata'=>$data['cilindrata'],
+            'cvfiscali'=>$data['cvfiscali'],
+            'alimentazione'=>$data['alimentazione'],
+            'ntelaio'=>$data['ntelaio'],
+            'nmotore'=>$data['nmotore'],
+            'data_acquisto'=>$data['data_acquisto'],
+            'note'=>$data['note'],
+            
+        ]);
+    }
 }

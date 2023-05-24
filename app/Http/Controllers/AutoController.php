@@ -123,4 +123,15 @@ class AutoController extends Controller
     {
         $pdf=Operazione::exportPdfOperazioni($id['id']);
     }
+    
+    public function getAutoById($id)
+    {
+        return json_encode(Auto::getAutoById($id));
+    }
+    
+    public function udateAuto(Request $request)
+    {
+        Auto::updateAuto($request);
+        return redirect('/admin/auto');
+    }
 }

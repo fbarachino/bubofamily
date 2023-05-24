@@ -80,6 +80,8 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('auto', [AutoController::class, 'index'])->name('auto_list');
     Route::get('auto/new', [AutoController::class, 'newAuto'])->name('auto_new');
     Route::post('auto/new', [AutoController::class, 'saveAuto'])->name('auto_save');
+    Route::get('auto/getAuto/{id}', [AutoController::class, 'getAutoById']);
+    Route::post('auto/modify', [AutoController::class, 'udateAuto']);
     Route::get('auto/delete', [AutoController::class, 'delAuto']);
     Route::get('auto/detail', [AutoController::class, 'getAutoDetails']);
     Route::get('auto/rifornimento', [AutoController::class, 'rifornimentoAuto'])->name('auto_rifornimento');

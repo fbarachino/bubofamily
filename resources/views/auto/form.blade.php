@@ -93,5 +93,11 @@
                         responsive: true
                 });
             });
+            
+                $(document).on('click','.open_modal_nuovo',function(){
+                   $('#myModal_nuovo').modal('show');
+                   // $('.modal-title').append(' entrata');
+                   $('#form').attr('action','movimentie');
+                });
         </script>
 @endsection
