@@ -63,10 +63,10 @@
 
 @section('script')
 <script>
-            $(document).ready(function() {
-                $('#automobili').DataTable({
-                        responsive: true
-                });
+        $(document).ready(function() {
+            $('#automobili').DataTable({
+                    responsive: true
             });
-        </script>
+        });
+</script>
 @endsection
