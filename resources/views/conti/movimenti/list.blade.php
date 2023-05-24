@@ -14,7 +14,7 @@
             <div class="panel-body">
             	<div class="row">
             		<button class="btn btn-warning btn-detail open_modal_spesa">Nuova Spesa</button>&nbsp;
-            		<button class="btn btn-warning btn-detail open_modal_entrata">Nuova Entrata</button</a>
+            		<button class="btn btn-warning btn-detail open_modal_entrata">Nuova Entrata</button>
             	</div>
             	<div class="row">
             <div class="table-responsive">

@@ -1,4 +1,7 @@
 @extends('admin')
+@section('head_additional')
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+@endsection
 @section('content')
 <div class="row">
                         <div class="col-lg-12">
@@ -40,10 +43,16 @@
     			<td>{{ $automobile->modello; }}</td>
     			<td>{{ $automobile->targa; }}</td>
     			<td>
-    				<a class="btn btn-primary" href="auto/rifornimento?id={{ $automobile->id; }}">Rifornimento</a>&nbsp;
-    				<a class="btn btn-primary" href="auto/revisione?id={{ $automobile->id; }}">Revisione</a>&nbsp;
-    				<a class="btn btn-primary" href="auto/manutenzione?id={{ $automobile->id; }}">Manutenzione</a>&nbsp;
-    				<a class="btn btn-primary" href="auto/accessori?id={{ $automobile->id; }}">Accessori</a>&nbsp;
+    				<a class="btn btn-primary" href="auto/rifornimento?id={{ $automobile->id; }}"><span class="material-symbols-outlined">local_gas_station</span></a>&nbsp;
+    				<a class="btn btn-primary" href="auto/revisione?id={{ $automobile->id; }}"><span class="material-symbols-outlined">
+checklist
+</span></a>&nbsp;
+    				<a class="btn btn-primary" href="auto/manutenzione?id={{ $automobile->id; }}"><span class="material-symbols-outlined">
+plumbing
+</span></a>&nbsp;
+    				<a class="btn btn-primary" href="auto/accessori?id={{ $automobile->id; }}"><span class="material-symbols-outlined">
+park
+</span></a>&nbsp;
     			</td>
     			<td>
     				<a class="btn btn-primary" href="auto/modify?id={{ $automobile->id; }}"><i class="fa fa-pencil-square-o fw"></i></a>&nbsp;
