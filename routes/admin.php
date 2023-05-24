@@ -28,8 +28,8 @@ use App\Http\Controllers\ProgettiController;
 
 Route::get('/', [MovimentiController::class,'dashboard']);
 
-
     Route::get('logout', function(){ Auth::logout(); return redirect('login'); })->name('logout');
+    
 // MOVIMENTI
     Route::get('movimentis', [MovimentiController::class,'newMovimenti'])->name('movimentis');
     Route::post('movimentis',[MovimentiController::class,'insMovimentiSpesa']);
