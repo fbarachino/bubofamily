@@ -43,7 +43,7 @@
     			<td>{{ $automobile->modello; }}</td>
     			<td>{{ $automobile->targa; }}</td>
     			<td>
-    				<a class="btn btn-primary" href="auto/rifornimento?id={{ $automobile->id; }}"><span class="material-symbols-outlined">local_gas_station</span></a>&nbsp;
+    				<button class="btn btn-primary open_modal_rifornimento" value="{{ $automobile->id; }}"><span class="material-symbols-outlined">local_gas_station</span></button>&nbsp;
     				<a class="btn btn-primary" href="auto/revisione?id={{ $automobile->id; }}"><span class="material-symbols-outlined">
 checklist
 </span></a>&nbsp;
@@ -69,7 +69,7 @@ park
 </div>
 </div>
 	</div>
-<!-- MODAL -->
+<!-- MODAL AUTO-->
 	<div class="modal fade" id="myModal_new" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -149,6 +149,72 @@ park
 		</div>
 
 	<!-- /MODAL -->
+	
+	<!-- MODAL Rifornimento -->
+<div class="modal fade" id="myModal_rifornimento" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Rifornimento auto</h5>
+			</div>
+			<div class="modal-body">
+				<form action="" method="POST" id="form_rifornimento">
+					@csrf
+					<div class="row">
+						<div class="col-xs-6">
+							<label for="data" class="form-label">Data</label> <input
+								type="date" class="form-control" id="Rifdata" name="data"
+								value="{{ date('Y-m-d');}}">
+						</div>
+						<div class="col-xs-6">
+							<label for="km" class="form-label">Km</label> <input type="text"
+								class="form-control" id="Rifkm" minlength="3" name="km">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<label for="eurolitro" class="form-label">Costo al litro</label>
+							<input type="text" class="form-control" id="Rifeurolitro"
+								name="eurolitro">
+						</div>
+						<div class="col-xs-6">
+							<label for="litri" class="form-label">Litri</label> <input
+								type="text" class="form-control" id="Riflitri" name="litri">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<label for="importo" class="form-label">Importo totale</label> <input
+								type="text" class="form-control" id="Rifimporto" name="importo">
+						</div>
+						<div class="col-xs-6">
+							<label for="distributore" class="form-label">Distributore</label>
+							<input type="text" class="form-control" id="Rifdistributore"
+								name="distributore">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<label for="inMovimenti" class="form-label">Inserire nei
+								movimenti?</label> <input type="checkbox" id="RifinMovimenti"
+								name="inMovimenti">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="row">
+							<div class="col-xs-12">
+								<input type="hidden" name="type" value="rifornimento"> 
+								<button type="submit" id="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</div>
+				
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /MODAL Rifornimento -->
  <!-- /.col-lg-12 -->
 
 @endsection
@@ -201,5 +267,13 @@ park
                    $('#form').append('<input type="hidden" name="id" value="' + riga_id +'">');
                 }); 
                });
+               
+               $(document).on('click','.open_modal_rifornimento',function(){
+               var riga_id= $(this).val();
+               	   $('#form_rifornimento').attr('action','auto/rifornimento');
+               	   $('#form_rifornimento').append('<input type="hidden" name=""type" value="rifornimento">');
+                   $('#form_rifornimento').append('<input type="hidden" name="auto" value="' + riga_id +'">');
+                   $('#myModal_rifornimento').modal('show');
+                });
         </script>
 @endsection
