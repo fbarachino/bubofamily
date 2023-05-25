@@ -78,12 +78,7 @@
 @endsection
 @section('script')
 <script>
-    $(document).ready(function() {
-        $('#listrapporto').DataTable({
-                responsive: true,
-                paging: false
-        });
-    });
+    
 </script>
 @endsection
           
