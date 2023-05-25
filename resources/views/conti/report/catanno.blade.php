@@ -77,8 +77,6 @@
  
 @endsection
 @section('script')
-<script>
-    
-</script>
+<script src="/js/app/conti_catanno.js"></script>
 @endsection
           
