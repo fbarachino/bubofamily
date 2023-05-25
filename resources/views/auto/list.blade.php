@@ -9,10 +9,10 @@
 </div>
 <div class="container">
 	<!-- Content here -->
-	<div class="row">
-		<div class="col-sx-12">
+	<div class="row" >
+		<div class="col-sx-12" style="padding:6px;">
 			<a class="btn btn-primary open_modal_new"><i
-				class="fa fa-pencil-square-o fw"></i></a>
+				class="fa fa-pencil-square-o fw"></i> Nuovo Veicolo</a>
 		</div>
 	</div>
 
