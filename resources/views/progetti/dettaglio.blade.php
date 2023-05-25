@@ -194,7 +194,6 @@
 		</div>
 	</form>
 </div>
-
 <!-- MODAL END -->
 
 <!-- MODAL NEW ROW -->
@@ -207,23 +206,17 @@
 					<h4 class="modal-title">Aggiungi riga</h4>
 				</div>
 				<div class="modal-body">
-
 					<div class="row">
 						@csrf
 						<div class="col-xs-6">
-
-
 							<label for="tdata" class="form-label">data:</label> <input
 								type="date" name="data" class="form-control" id="data"
 								value="{{ date('Y-m-d') }}">
-
 						</div>
 						<div class="col-xs-6">
-
 							<!-- Form per task con jquery e aggiunta righe automatica -->
 							<label for="desc" class="form-label">descrizione:</label> <input
 								type="text" name="descrizione" class="form-control" id="desc">
-
 						</div>
 					</div>
 					<div class="row">
@@ -241,7 +234,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="modal-footer">
 					<div class="col-xs-12">
 						<input type="submit" name="Submit" class="form-control" value="Inserisci">
@@ -251,13 +243,9 @@
 		</div>
 	</form>
 </div>
-
-
 <!-- /MODAL RIGA -->
 
-
 <!-- /.col-lg-12 -->
-
 @endsection @section('script')
 <script src="/js/app/rigaProgetti.js"></script>
 @endsection
