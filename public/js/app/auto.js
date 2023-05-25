@@ -60,7 +60,6 @@ $(document).on('click', '.open_modal_revisione', function() {
 	$('#form_revisione').attr('action', 'auto/revisione');
 	$('#form_revisione').append('<input type="hidden" name="type" value="revisione">');
 	$('#form_revisione').append('<input type="hidden" name="auto" value="' + riga_id + '">');
-	
 });
 
 $(document).on('click', '.open_modal_manutenzione', function() {
@@ -69,6 +68,14 @@ $(document).on('click', '.open_modal_manutenzione', function() {
 	$('#myModal_manutenzione').modal('show');
 	$('#form_manutenzione').attr('action', 'auto/manutenzione');
 	$('#form_manutenzione').append('<input type="hidden" name="type" value="manutenzione">');
-	$('#form_manutenzione').append('<input type="hidden" name="auto" value="' + riga_id + '">');
-	
+	$('#form_manutenzione').append('<input type="hidden" name="auto" value="' + riga_id + '">');	
+});
+
+$(document).on('click', '.open_modal_accessori', function() {
+	var riga_id = $(this).val();
+	console.log('click su open_modal_accessori '+ riga_id);
+	$('#myModal_accessori').modal('show');
+	$('#form_accessori').attr('action', 'auto/accessori');
+	$('#form_accessori').append('<input type="hidden" name="type" value="accessori">');
+	$('#form_accessori').append('<input type="hidden" name="auto" value="' + riga_id + '">');	
 });

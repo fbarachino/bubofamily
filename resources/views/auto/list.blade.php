@@ -358,6 +358,59 @@
 
 
 <!-- /MODAL Manutenzione -->
+
+<!-- MODAL Accessori -->
+<div class="modal fade" id="myModal_accessori" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<form action="" method="POST" id="form_accessori">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Accessori</h4>
+				</div>
+				<div class="modal-body">
+                	@csrf
+                    <div class="row">	
+                    	<div class="col-xs-6">
+                    		<label for="data" class="form-label">Data</label>
+                    		<input type="date" class="form-control" id="data" name="data" value="{{ date('Y-m-d');}}">
+                    	</div>
+                    	<div class="col-xs-6">
+             				<label for="km" class="form-label">Km</label>
+                    		<input type="text" class="form-control" id="km" name="km">
+                    	</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                    		<label for="importo" class="form-label">Importo totale</label>
+                    		<input type="text" class="form-control" id="importo" name="importo">
+                    	</div>
+                    	<div class="col-xs-6">
+                    		<label for="descrizione" class="form-label">Descrizione</label>
+                    		<input type="text" class="form-control" id="descrizione" name="descrizione">
+                    	</div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                    		<label for="inMovimenti" class="form-label">Inserire nei movimenti?</label>
+                    		<input type="checkbox" id="inMovimenti" name="inMovimenti">
+                    	</div>
+                    </div>
+                    </div>
+				<div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-12">
+                        
+                        	<button type="submit" class="btn btn-primary">Submit</button>
+                       </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- MODAL Accessori -->
+
 <!-- /.col-lg-12 -->
 
 @endsection @section('script')
