@@ -7,7 +7,7 @@
         <li>
             <a href="{{ route('movimenti'); }}">Lista Movimenti</a>
         </li>
-        <li>
+        <!--  <li>
             <a href="#">Nuovo Movimento<span class="fa arrow"></span></a>
             <ul class="nav nav-third-level">
                 <li>
@@ -17,7 +17,7 @@
                 	<a href="{{ route('movimentie'); }}">Entrata</a>
                 </li>
             </ul>
-        </li>
+        </li>-->
         <li>
             <a href="{{ route('categorie'); }}">Categorie</a>
         </li>
@@ -62,15 +62,15 @@
         </ul>
 </li>
 <li>
-    <a href="#"><i class="fa fa-car fa-fw"></i> Automobili <span class="fa arrow"></span></a>
+    <a href="{{ route('auto_list'); }}"><i class="fa fa-car fa-fw"></i> Automobili <span class="fa arrow"></span></a>
 
-    <ul class="nav nav-second-level">
+    <!--  <ul class="nav nav-second-level">
             <li>
             	<a href="{{ route('auto_list'); }}"><i class="fa fa-list  fa-fw"></i>Gestione</a>
                 
             </li>
              
-        </ul>
+        </ul>-->
 </li>
 <li>
     <a href="#"><i class="fa fa-phone-square fa-fw"></i> Contatti <span class="fa arrow"></span></a>
@@ -87,15 +87,15 @@
         </ul>
 </li>
 <li>
-    <a href="#"><i class="fa fa-list fa-fw"></i> Progetti <span class="fa arrow"></span></a>	
-	<ul class="nav nav-second-level">
+    <a href="{{ route('progetti'); }}"><i class="fa fa-list fa-fw"></i> Progetti <span class="fa arrow"></span></a>	
+	<!--  <ul class="nav nav-second-level">
         <li>
         	<a href="{{ route('progetti'); }}"><i class="fa fa-list  fa-fw"></i>Lista</a>
         </li>
          <li>
          	<a href="{{ route('nuovoProgetto'); }}"><i class="fa fa-plus  fa-fw"></i>Nuovo progetto</a>
          </li>
-    </ul>
+    </ul>-->
 </li>
 <li>
     <a href="#"><i class="fa fa-gears fa-fw"></i>Amministrazione<span class="fa arrow"></span></a>

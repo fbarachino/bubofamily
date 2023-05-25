@@ -47,6 +47,7 @@ $(document).on('click', '.open_modal_modify', function() {
 
 $(document).on('click', '.open_modal_rifornimento', function() {
 	var riga_id = $(this).val();
+	
 	$('#form_rifornimento').attr('action', 'auto/rifornimento');
 	$('#form_rifornimento').append('<input type="hidden" name=""type" value="rifornimento">');
 	$('#form_rifornimento').append('<input type="hidden" name="auto" value="' + riga_id + '">');
