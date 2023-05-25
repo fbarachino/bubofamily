@@ -87,17 +87,5 @@
 @endsection
 
 @section('script')
-<script>
-            $(document).ready(function() {
-                $('#automobili').DataTable({
-                        responsive: true
-                });
-            });
-            
-                $(document).on('click','.open_modal_nuovo',function(){
-                   $('#myModal_nuovo').modal('show');
-                   // $('.modal-title').append(' entrata');
-                   $('#form').attr('action','movimentie');
-                });
-        </script>
+<script src="/js/app/auto.js"></script>
 @endsection
