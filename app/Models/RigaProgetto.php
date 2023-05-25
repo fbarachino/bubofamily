@@ -15,10 +15,10 @@ class RigaProgetto extends Model
         return DB::table('riga_progettos')->where('fk_id_progetto','=',$progetto_id)->orderBy('data')->get();
     }
     
-    public static function saveRiga($args)
+    public static function saveRiga($args,$id)
     {
         DB::table('riga_progettos')->insert([
-            'fk_id_progetto'=>$args['fk_id_progetto'],
+            'fk_id_progetto'=>$id,
             'data'=>$args['data'],
             'descrizione'=>$args['descrizione'],
             'prezzo'=>$args['prezzo'],
