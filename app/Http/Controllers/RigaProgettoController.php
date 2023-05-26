@@ -26,8 +26,9 @@ class RigaProgettoController extends Controller
         return $data;
     }
     
-    public function updateRiga(Request $data,$id)
+    public function updateRiga(Request $data)
     {
+        $id=$data['fk_id_progetto'];
         RigaProgetto::updateRiga($data);
         // $id_progetto=$data['fk_id_progetto'];
         return redirect('/admin/progetti/detail/'.$id);
@@ -35,6 +36,7 @@ class RigaProgettoController extends Controller
     
     public function inserisciRiga(Request $args,$id)
     {
+        
         RigaProgetto::saveRiga($args,$id);
         return redirect('/admin/progetti/detail/'.$id);
     }
