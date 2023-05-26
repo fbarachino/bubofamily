@@ -213,12 +213,14 @@ class Movimenti extends Model
     
     private static function dateFormat($type,$string)
     {
-        $string=$string->format('d/m/Y');
+        
         if($type)
         {
+            $string=$string->format('Y-m-d');
             list($year,$month,$day) = explode('-',$string);
             return $day.'/'.$month.'/'.$year;
         } else {
+            $string=$string->format('d/m/Y');
             list($day,$month,$year) =explode('/',$string);
             return $year.'-'.$month.'-'.$day;
         }
