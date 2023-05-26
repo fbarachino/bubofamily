@@ -12,7 +12,7 @@ Al momento sono presenti:
 
 *Sviluppato in php, mysql, jquery su framework Laravel*.
 
-<<<<<<< HEAD
+
 ## Installazione
  - clonare il repository
  - copiare il file .env.example
@@ -35,5 +35,3 @@ Flavio Barachino <flavio.barachino@lavorain.cloud>
 ### Vuoi partecipare?
 Scrivimi con le tue proposte, le tue critiche, i tuoi suggerimenti.
 
->>>>>>> 1b6609d0284a739053caeda9936ab9a9b8e7738e
-> Written with [StackEdit](https://stackedit.io/).
