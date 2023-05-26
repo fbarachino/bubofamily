@@ -140,7 +140,7 @@
 <!-- MODAL EDIT Riga-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
 	aria-labelledby="myModalLabel" aria-hidden="true">
-	<form method="POST" action="rigaupdate">
+	<form method="POST" action="/admin/progetti/rigaupdate">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -182,9 +182,9 @@
 
 				<div class="modal-footer">
 					<div class="col-xs-12">
-						<input type="hidden" name="fk_id_progetto" id="id_progetto_u"> <input
-							type="hidden" name="idriga" id="idriga"> <input type="submit"
-							name="Submit" class="form-control" value="Aggiorna">
+						<input type="hidden" name="fk_id_progetto" id="id_progetto_u"> 
+						<input type="hidden" name="idriga" id="idriga"> 
+						<input type="submit" name="Submit" class="form-control" value="Aggiorna">
 
 					</div>
 				</div>
