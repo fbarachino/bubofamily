@@ -98,11 +98,5 @@
 @endsection
 
 @section('script')
-<script>
-    $(document).ready(function() {
-        $('#contatti').DataTable({
-                responsive: true
-        });
-    });
-</script>
+<script src="/js/app/altrocontatto.js"></script>
 @endsection

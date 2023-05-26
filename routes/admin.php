@@ -115,10 +115,11 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('progetti/new', [ProgettiController::class, 'nuovoProgetto'])->name('nuovoProgetto');
     Route::get('progetti/delete',[ProgettiController::class, 'deleteProgetto']);
     Route::get('progetti/delete_row/{id_row}/return/{id_prog}',[RigaProgettoController::class, 'deleterow']);
-    Route::get('progetti/detail', [ProgettiController::class, 'dettaglioProgetto'])->name('detail');
-    Route::post('progetti/detail', [RigaProgettoController::class, 'inserisciRiga']);
+    Route::get('progetti/detail/{id}', [ProgettiController::class, 'dettaglioProgetto'])->name('detail');
+    Route::post('progetti/detail/{id}', [RigaProgettoController::class, 'inserisciRiga']);
     Route::get('progetti/detail/edit/{id}', [RigaProgettoController::class, 'editRiga']);
     Route::post('progetti/rigaupdate', [RigaProgettoController::class, 'updateRiga']);
+    Route::get('progetti/coordinatori', [ProgettiController::class, 'getCoordinatori']);
 /// TEST routes
     Route::get('fullcalendar', [FullCalenderController::class, 'index']);
     Route::post('fullcalendar', [FullCalenderController::class, 'ajax']);

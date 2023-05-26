@@ -49,7 +49,7 @@
             		<thead>
             			<tr>
             				<th>Categoria</th>
-            				<th>Somma delle spese</th>
+            				<th>Somma delle entrate</th>
             			</tr>
             		</thead>
             		<tbody>
@@ -70,17 +70,6 @@
  
 @endsection
 @section('script')
-<script>
-            $(document).ready(function() {
-                $('#listrapportoS').DataTable({
-                        responsive: true
-                });
-            });
-            $(document).ready(function() {
-                $('#listrapportoE').DataTable({
-                        responsive: true
-                });
-            });
-        </script>
+<script src="/js/app/conti_categorie.js"></script>
 @endsection
             	

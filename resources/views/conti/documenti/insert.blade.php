@@ -63,11 +63,5 @@
 
 @endsection
 @section('script')
-<script>
-    $(document).ready(function() {
-        $('#categorie').DataTable({
-                responsive: true
-        });
-    });
-</script>
+<script src="/js/app/conti_categorie.js"></script>
 @endsection

@@ -6,6 +6,7 @@ use App\Models\Progetti;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\RigaProgetto;
+use function GuzzleHttp\json_encode;
 
 class ProgettiController extends Controller
 {
@@ -24,6 +25,11 @@ class ProgettiController extends Controller
         return view('progetti.new',['coordinatori'=>User::getUsers()]);
     }
     
+    public function getCoordinatori()
+    {
+        return json_encode(User::getUsers());
+    }
+    
     public function salvaProgetto(Request $request)
     {
         Progetti::saveProgetto($request);
@@ -36,9 +42,9 @@ class ProgettiController extends Controller
     }
     
 
-    public function dettaglioProgetto(Request $id)
+    public function dettaglioProgetto($id)
     {
-        $progetto_id=$id['id'];
+        $progetto_id=$id;
         $progetto = Progetti::getProgettoById($progetto_id);
         $righe = RigaProgetto::getRigheProgetto($progetto_id);
         $costo_tot=RigaProgetto::getCostoRighe($progetto_id);

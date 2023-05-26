@@ -99,12 +99,6 @@
  
 @endsection
 @section('script')
-<script>
-            $(document).ready(function() {
-                $('#listaLettureGas').DataTable({
-                        responsive: true
-                });
-            });
-        </script>
+<script src="/js/app/gas.js"></script>
 @endsection
             				
