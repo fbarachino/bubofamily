@@ -7,7 +7,7 @@
 </div>                          
 <div class="container">    	
 <div class="row">
- 	<div class="col-lg-12">
+ 	<div class="col-lg-10">
     	<div class="panel panel-default">
         	<div class="panel-heading">
                 Nuova anagrafica
@@ -51,10 +51,6 @@
                     		<label for="ang_indirizzo" class="form-label">Indirizzo:</label>
                     		<textarea class="form-control" id="ang_indirizzo" name="ang_indirizzo">{{ $anagrafiche[0]->ang_indirizzo ?? ''}}</textarea>
                     	</div>
-                    	<!--<div class="col-xs-6">
-                    		<label for="nmotore" class="form-label">Num. Motore</label>
-                    		<input type="text" class="form-control" id="nmotore" name="nmotore">
-                    	</div> -->
                 	</div>
                 	<div class="row">
                     	<div class="col-xs-4">
