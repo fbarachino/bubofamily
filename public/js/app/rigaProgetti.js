@@ -23,7 +23,7 @@ $(document).ready(function() {
 			$('#ore_u').val(data[0].ore);
 			$('#prezzo_u').val(data[0].prezzo);
 			$('#id_progetto_u').val(data[0].fk_id_progetto);
-			$('#idriga').val(data[0].id);
+			$('#idriga').val(riga_id);
 			$('#myModal').modal('show');
 		})
 	});
