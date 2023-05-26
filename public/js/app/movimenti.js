@@ -58,7 +58,7 @@ $(document).on('click', '.open_modal_modifica', function() {
 	});
 });
 
-$.getJSON("service/catlist", {}, function(data) {
+$.getJSON("/admin/service/catlist", {}, function(data) {
 	$.each(data, function(i, item) {
 		$("select[name='mov_fk_categoria']").append(
 			new Option(item.cat_name, item.id)
@@ -67,7 +67,7 @@ $.getJSON("service/catlist", {}, function(data) {
 	);
 });
 
-$.getJSON("service/taglist", {}, function(data) {
+$.getJSON("/admin/service/taglist", {}, function(data) {
 	$.each(data, function(i, item) {
 		$("select[name='mov_fk_tags']").append(
 			new Option(item.tag_name, item.id)
