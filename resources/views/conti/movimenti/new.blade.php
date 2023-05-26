@@ -72,12 +72,6 @@
  
 @endsection
 @section('script')
-<script>
-            $(document).ready(function() {
-                $('#listamovimenti').DataTable({
-                        responsive: true
-                });
-            });
-        </script>
+<script src="/js/app/movimenti.js"></script>
 @endsection
 

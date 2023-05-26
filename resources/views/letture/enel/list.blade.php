@@ -81,12 +81,6 @@
  
 @endsection
 @section('script')
-<script>
-            $(document).ready(function() {
-                $('#listaLettureEnel').DataTable({
-                        responsive: true
-                });
-            });
-        </script>
+<script src="/js/app/enel.js"></script>
 @endsection
             				
