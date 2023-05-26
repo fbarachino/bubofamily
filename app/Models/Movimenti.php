@@ -213,6 +213,7 @@ class Movimenti extends Model
     
     private static function dateFormat($type,$string)
     {
+        $string=$string->format('d/m/Y');
         if($type)
         {
             list($year,$month,$day) = explode('-',$string);
