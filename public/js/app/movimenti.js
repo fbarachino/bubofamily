@@ -34,7 +34,7 @@ $(document).on('click', '.open_modal_entrata', function() {
 });
 
 $(document).on('click', '.open_modal_modifica', function() {
-	var url = "movmodify";
+	var url = "/admin/movmodify";
 	var riga_id = $(this).val();
 	$.getJSON(url + '/' + riga_id, function(data) {
 		// success data
