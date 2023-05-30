@@ -131,5 +131,6 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('test/fullcalendar', [FullCalenderController::class, 'index']);
     Route::post('test/fullcalendar', [FullCalenderController::class, 'ajax']);
     Route::get('test/condominio',[CondominioController::class,'testPdf']);
+    Route::get('test/err403',[CondominioController::class,'err403']);
 
 

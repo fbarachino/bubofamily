@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
- use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,7 +16,7 @@ use Junges\ACL\Concerns\HasGroups;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, AuthenticateswithLdap, HasGroups;
+    use HasApiTokens, HasFactory, Notifiable, AuthenticateswithLdap, HasGroups, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -46,23 +47,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function getLdapDomainColumn()
     {
     	return 'domain';
     }
-    
+
     public function getLdapGuidColumn()
     {
     	return 'guid';
     }
-    
+
     public static function addGroup($gruppo)
     {
         $user= new User();
         $user->assignGroup($gruppo);
     }
-    
+
     public static function getUserById($id)
     {
         return DB::table('users')->where('id','=',$id)->get();
@@ -71,4 +72,7 @@ class User extends Authenticatable
     {
         return DB::table('users')->orderBy('name')->get();
     }
+
+    
+
 }
