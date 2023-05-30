@@ -41,10 +41,10 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('movimenti/modify/{id}',[MovimentiController::class,'updateMovimenti']);
     Route::post('movimenti/modify',[MovimentiController::class,'updatePostMovimenti']);
     Route::get('movimenti/delete',[MovimentiController::class,'deleteMovimenti']);
-    Route::get('reportbudget/{anno?}',[MovimentiController::class,'reportCategorieAnno'])->name('budget');
-    Route::post('reportbudget/{anno?}',[MovimentiController::class,'manageRedirect']);
-    Route::get('reportbudgetxls',[MovimentiController::class,'reportCategorieAnnoXLS'])->name('budgetxls');
-    Route::get('movimenti/test', [MovimentiController::class,'test']);
+    Route::get('movimenti/reportbudget/{anno?}',[MovimentiController::class,'reportCategorieAnno'])->name('budget');
+    Route::post('movimenti/reportbudget/{anno?}',[MovimentiController::class,'manageRedirect']);
+    Route::get('movimenti/reportbudgetxls',[MovimentiController::class,'reportCategorieAnnoXLS'])->name('budgetxls');
+    /*Route::get('movimenti/test', [MovimentiController::class,'test']);*/
 
 // CATEGORIE
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
