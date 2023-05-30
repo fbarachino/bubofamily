@@ -44,7 +44,7 @@ class TagController extends Controller
     }
 
     public function deleteTag($id){
-        tag::delete($id);
+        tag::deleteTag($id);
         return redirect(route('tags'));
     }
 }

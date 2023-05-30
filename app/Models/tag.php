@@ -34,7 +34,7 @@ class tag extends Model
 
     }
 
-    public static function delete($id)
+    public static function deleteTag($id)
     {
         DB::table('tags')
         //->where('id','=',$id)
