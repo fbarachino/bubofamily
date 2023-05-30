@@ -3,7 +3,7 @@ $(document).ready(function() {
 		responsive: true
 	});
 	$(document).on('click', '.open_modal', function() {
-		var url = "tagmodify";
+		var url = "tags/modify";
 		var riga_id = $(this).val();
 		$.getJSON(url + '/' + riga_id, function(data) {
 			//success data

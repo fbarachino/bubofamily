@@ -37,8 +37,8 @@
             			<td>&euro; {{ $movimento->mov_importo; }}</td>
             			<td>
             				<button class="btn btn-warning btn-detail open_modal_modifica" value="{{ $movimento->id; }}"><i class="fa fa-pencil-square-o fw"></i></button>&nbsp;
-            				<a class="btn btn-danger" href="/admin/movdelete?id={{ $movimento->id; }}"><i class="fa fa-trash-o fa-fw"></i></a>&nbsp;
-            				<a class="btn btn-warning" href="/admin/movdocs?id={{ $movimento->id; }}"><i class="fa fa-files-o fa-fw"></i></a>&nbsp;
+            				<a class="btn btn-danger" href="/admin/movimenti/delete?id={{ $movimento->id; }}"><i class="fa fa-trash-o fa-fw"></i></a>&nbsp;
+            				<a class="btn btn-warning" href="/admin/movimenti/docs?id={{ $movimento->id; }}"><i class="fa fa-files-o fa-fw"></i></a>&nbsp;
             				<!-- Definisce quanti documenti sono presenti per il record -->
             				( {{ $movimento->quanti ?? ''; }} )
             			</td>
@@ -64,7 +64,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">Nuovo movimento</h4>
-			
+
 			</div>
 			<div class="modal-body">
 				<div class="row">
@@ -114,7 +114,7 @@
 							<div class="row">
 								<div class="col-xs-12"></div>
 							</div>
-					
+
 					</div>
 				</div>
 			</div>
@@ -132,4 +132,3 @@
 <script src="/js/app/movimenti.js"></script>
 @endsection
 
-            
