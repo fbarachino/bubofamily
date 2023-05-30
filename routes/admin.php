@@ -29,7 +29,7 @@ use App\Http\Controllers\ProgettiController;
 Route::get('/', [MovimentiController::class,'dashboard']);
 
     Route::get('logout', function(){ Auth::logout(); return redirect('login'); })->name('logout');
-    
+
 // MOVIMENTI
     Route::get('movimentis', [MovimentiController::class,'newMovimenti'])->name('movimentis');
     Route::post('movimentis',[MovimentiController::class,'insMovimentiSpesa']);
@@ -45,29 +45,32 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('reportbudget/{anno?}',[MovimentiController::class,'manageRedirect']);
     Route::get('reportbudgetxls',[MovimentiController::class,'reportCategorieAnnoXLS'])->name('budgetxls');
     Route::get('movimenti/test', [MovimentiController::class,'test']);
-// CATEGORIE    
+
+// CATEGORIE
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
     Route::post('categorie', [CategorieController::class,'insCategorie']);
     Route::get('catdelete', [CategorieController::class,'deleteCategorie']);
     Route::get('catmodify/{id}', [CategorieController::class,'updateCategorie']);
     Route::post('catmodify', [CategorieController::class,'updatePostCategorie']);
-    
+
 // Richiami di servizio da jquery
     Route::get('service/catlist', [CategorieController::class,'apiList']);
     Route::get('service/taglist', [TagController::class,'apiList']);
-    
-// TAGS    
+
+// TAGS
     Route::get('tags', [TagController::class,'listTags'])->name('tags');
     Route::post('tags', [TagController::class,'insTags']);
     Route::get('tagmodify/{id}', [TagController::class,'updateTag']);
     Route::post('tagmodify', [TagController::class,'updatePostTag']);
-// CONSUMI    
+
+// CONSUMI
     Route::get('letturegas', [ContatoreGasController::class,'listLettureGas'])->name('gas');
     Route::post('letturegas', [ContatoreGasController::class,'insLettureGas']);
     Route::get('lettureenel', [ContatoreEnElController::class,'listLettureEnel'])->name('enel');
     Route::post('lettureenel', [ContatoreEnElController::class,'insLettureEnel']);
+
 // MOVIMENTI
-    Route::get('movimenti/filter/tags',[MovimentiController::class,'filterByTag']);    
+    Route::get('movimenti/filter/tags',[MovimentiController::class,'filterByTag']);
     Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
     Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);
     Route::get('movdocs', [DocumentiController::class,'fileForm'])->name('documenti');
@@ -76,6 +79,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('movimenti/import', [MovimentiController::class,'importEC_ING']);
     Route::get('movimenti/importcr', [MovimentiController::class,'importFileCR'])->name('importCR');
     Route::post('movimenti/importcr', [MovimentiController::class,'importEC_CR']);
+
 // AUTOMOBILI
     Route::get('auto', [AutoController::class, 'index'])->name('auto_list');
     Route::get('auto/new', [AutoController::class, 'newAuto'])->name('auto_new');
@@ -94,6 +98,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('auto/accessori', [AutoController::class, 'saveAccessori']);
     Route::get('auto/operazioni', [AutoController::class, 'getOperazioni']);
     Route::get('auto/operazioni/pdf', [AutoController::class, 'exportPdfOperazioni']);
+
 // CONTATTI
     Route::get('contatti', [AnagraficaController::class, 'listContact'])->name('contatti');
     Route::get('contatti/new', [AnagraficaController::class, 'newContact'])->name('newContact');
@@ -102,6 +107,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('contatti/scheda', [AnagraficaController::class, 'getScheda']);
     Route::get('contatti/addOther', [AnagraficaController::class, 'insOtherContact']);
     Route::post('contatti/addOther', [AnagraficaController::class, 'saveOtherContact']);
+
 // Gruppi e permessi
     Route::get('group/new', [Utenti::class, 'nuovoGruppo']);
     Route::post('group/new', [Utenti::class, 'saveNuovoGruppo']);
@@ -109,6 +115,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('permesso/new', [Utenti::class, 'saveNuovoPermesso']);
     Route::get('permesso/assign', [Utenti::class, 'vw_assignToGroup']);
     Route::post('permesso/assign', [Utenti::class, 'assignPermissionToGroup']);
+
 // Progetti
     Route::get('progetti', [ProgettiController::class, 'listaProgetto'])->name('progetti');
     Route::post('progetti/new', [ProgettiController::class, 'salvaProgetto']);
@@ -120,9 +127,10 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('progetti/detail/edit/{id}', [RigaProgettoController::class, 'editRiga']);
     Route::post('progetti/rigaupdate', [RigaProgettoController::class, 'updateRiga']);
     Route::get('progetti/coordinatori', [ProgettiController::class, 'getCoordinatori']);
+
 /// TEST routes
     Route::get('fullcalendar', [FullCalenderController::class, 'index']);
     Route::post('fullcalendar', [FullCalenderController::class, 'ajax']);
     Route::get('condominio',[CondominioController::class,'testPdf']);
 
-    
+
