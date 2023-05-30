@@ -59,7 +59,7 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-8">
-						<form action="catmodify" method="POST">
+						<form action="/admin/categorie/modify" method="POST">
 							@csrf <label for="H_cat_cat_name" class="form-label">Categoria</label>
 							<input type="text" class="form-control" id="H_cat_cat_name"
 								size="50" name="cat_name" value="" size="50">
