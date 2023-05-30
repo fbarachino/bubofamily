@@ -60,8 +60,9 @@ Route::get('/', [MovimentiController::class,'dashboard']);
 // TAGS
     Route::get('tags', [TagController::class,'listTags'])->name('tags');
     Route::post('tags', [TagController::class,'insTags']);
-    Route::get('tagmodify/{id}', [TagController::class,'updateTag']);
-    Route::post('tagmodify', [TagController::class,'updatePostTag']);
+    Route::get('tags/modify/{id}', [TagController::class,'updateTag']);
+    Route::post('tags/modify', [TagController::class,'updatePostTag']);
+    Route::get('tags/delete/{id}',[TagController::class,'deleteTag']);
 
 // CONSUMI
     Route::get('consumi/gas', [ContatoreGasController::class,'listLettureGas'])->name('gas');
