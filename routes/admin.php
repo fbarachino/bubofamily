@@ -32,14 +32,14 @@ Route::get('/', [MovimentiController::class,'dashboard']);
 
 // MOVIMENTI
     // Route::get('movimentis', [MovimentiController::class,'newMovimenti'])->name('movimentis');
-    Route::post('movimentis',[MovimentiController::class,'insMovimentiSpesa']);
+    Route::post('movimenti/spesa',[MovimentiController::class,'insMovimentiSpesa']);
     // Route::get('movimentie', [MovimentiController::class,'newMovimenti'])->name('movimentie');
-    Route::post('movimentie',[MovimentiController::class,'insMovimentiEntrata']);
+    Route::post('movimenti/entrata',[MovimentiController::class,'insMovimentiEntrata']);
     Route::get('movimenti',[MovimentiController::class,'listMovimenti'])->name('movimenti');
     Route::get('movimenti/export',[MovimentiController::class,'exportMovimenti'])->name('export');
     Route::get('movimenti/resoconto',[MovimentiController::class,'resocontoMovimenti'])->name('resoconto');
-    Route::get('movmodify/{id}',[MovimentiController::class,'updateMovimenti']);
-    Route::post('movmodify',[MovimentiController::class,'updatePostMovimenti']);
+    Route::get('movimenti/modify/{id}',[MovimentiController::class,'updateMovimenti']);
+    Route::post('movimenti/modify',[MovimentiController::class,'updatePostMovimenti']);
     Route::get('movimenti/delete',[MovimentiController::class,'deleteMovimenti']);
     Route::get('reportbudget/{anno?}',[MovimentiController::class,'reportCategorieAnno'])->name('budget');
     Route::post('reportbudget/{anno?}',[MovimentiController::class,'manageRedirect']);
