@@ -31,16 +31,16 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('logout', function(){ Auth::logout(); return redirect('login'); })->name('logout');
 
 // MOVIMENTI
-    Route::get('movimentis', [MovimentiController::class,'newMovimenti'])->name('movimentis');
+    // Route::get('movimentis', [MovimentiController::class,'newMovimenti'])->name('movimentis');
     Route::post('movimentis',[MovimentiController::class,'insMovimentiSpesa']);
-    Route::get('movimentie', [MovimentiController::class,'newMovimenti'])->name('movimentie');
+    // Route::get('movimentie', [MovimentiController::class,'newMovimenti'])->name('movimentie');
     Route::post('movimentie',[MovimentiController::class,'insMovimentiEntrata']);
     Route::get('movimenti',[MovimentiController::class,'listMovimenti'])->name('movimenti');
-    Route::get('export',[MovimentiController::class,'exportMovimenti'])->name('export');
-    Route::get('resoconto',[MovimentiController::class,'resocontoMovimenti'])->name('resoconto');
+    Route::get('movimenti/export',[MovimentiController::class,'exportMovimenti'])->name('export');
+    Route::get('movimenti/resoconto',[MovimentiController::class,'resocontoMovimenti'])->name('resoconto');
     Route::get('movmodify/{id}',[MovimentiController::class,'updateMovimenti']);
     Route::post('movmodify',[MovimentiController::class,'updatePostMovimenti']);
-    Route::get('movdelete',[MovimentiController::class,'deleteMovimenti']);
+    Route::get('movimenti/delete',[MovimentiController::class,'deleteMovimenti']);
     Route::get('reportbudget/{anno?}',[MovimentiController::class,'reportCategorieAnno'])->name('budget');
     Route::post('reportbudget/{anno?}',[MovimentiController::class,'manageRedirect']);
     Route::get('reportbudgetxls',[MovimentiController::class,'reportCategorieAnnoXLS'])->name('budgetxls');
@@ -64,17 +64,17 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('tagmodify', [TagController::class,'updatePostTag']);
 
 // CONSUMI
-    Route::get('letturegas', [ContatoreGasController::class,'listLettureGas'])->name('gas');
-    Route::post('letturegas', [ContatoreGasController::class,'insLettureGas']);
-    Route::get('lettureenel', [ContatoreEnElController::class,'listLettureEnel'])->name('enel');
-    Route::post('lettureenel', [ContatoreEnElController::class,'insLettureEnel']);
+    Route::get('consumi/gas', [ContatoreGasController::class,'listLettureGas'])->name('gas');
+    Route::post('consumi/gas', [ContatoreGasController::class,'insLettureGas']);
+    Route::get('consumi/enel', [ContatoreEnElController::class,'listLettureEnel'])->name('enel');
+    Route::post('consumi/enel', [ContatoreEnElController::class,'insLettureEnel']);
 
 // MOVIMENTI
     Route::get('movimenti/filter/tags',[MovimentiController::class,'filterByTag']);
     Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
     Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);
-    Route::get('movdocs', [DocumentiController::class,'fileForm'])->name('documenti');
-    Route::post('movdocs', [DocumentiController::class,'storeFile']);
+    Route::get('movimenti/docs', [DocumentiController::class,'fileForm'])->name('documenti');
+    Route::post('movimenti/docs', [DocumentiController::class,'storeFile']);
     Route::get('movimenti/import', [MovimentiController::class,'importFile'])->name('importING');
     Route::post('movimenti/import', [MovimentiController::class,'importEC_ING']);
     Route::get('movimenti/importcr', [MovimentiController::class,'importFileCR'])->name('importCR');
@@ -129,8 +129,8 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('progetti/coordinatori', [ProgettiController::class, 'getCoordinatori']);
 
 /// TEST routes
-    Route::get('fullcalendar', [FullCalenderController::class, 'index']);
-    Route::post('fullcalendar', [FullCalenderController::class, 'ajax']);
-    Route::get('condominio',[CondominioController::class,'testPdf']);
+    Route::get('test/fullcalendar', [FullCalenderController::class, 'index']);
+    Route::post('test/fullcalendar', [FullCalenderController::class, 'ajax']);
+    Route::get('test/condominio',[CondominioController::class,'testPdf']);
 
 
