@@ -15,6 +15,7 @@ use App\Http\Controllers\AutoController;
 use App\Http\Controllers\AnagraficaController;
 use App\Http\Controllers\Utenti;
 use App\Http\Controllers\ProgettiController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,9 +32,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('logout', function(){ Auth::logout(); return redirect('login'); })->name('logout');
 
 // MOVIMENTI
-    // Route::get('movimentis', [MovimentiController::class,'newMovimenti'])->name('movimentis');
     Route::post('movimenti/spesa',[MovimentiController::class,'insMovimentiSpesa']);
-    // Route::get('movimentie', [MovimentiController::class,'newMovimenti'])->name('movimentie');
     Route::post('movimenti/entrata',[MovimentiController::class,'insMovimentiEntrata']);
     Route::get('movimenti',[MovimentiController::class,'listMovimenti'])->name('movimenti');
     Route::get('movimenti/export',[MovimentiController::class,'exportMovimenti'])->name('export');
