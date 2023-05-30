@@ -49,9 +49,9 @@ Route::get('/', [MovimentiController::class,'dashboard']);
 // CATEGORIE
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
     Route::post('categorie', [CategorieController::class,'insCategorie']);
-    Route::get('catdelete', [CategorieController::class,'deleteCategorie']);
-    Route::get('catmodify/{id}', [CategorieController::class,'updateCategorie']);
-    Route::post('catmodify', [CategorieController::class,'updatePostCategorie']);
+    Route::get('categorie/delete', [CategorieController::class,'deleteCategorie']);
+    Route::get('categorie/modify/{id}', [CategorieController::class,'updateCategorie']);
+    Route::post('categorie/modify', [CategorieController::class,'updatePostCategorie']);
 
 // Richiami di servizio da jquery
     Route::get('service/catlist', [CategorieController::class,'apiList']);

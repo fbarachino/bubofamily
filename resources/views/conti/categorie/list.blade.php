@@ -34,7 +34,7 @@
 										<button class="btn btn-warning btn-detail open_modal"
 											value="{{$categoria->id}}">Edit</button>&nbsp; <a
 										class="btn btn-danger"
-										href="/admin/catdelete?id={{ $categoria->id; }}"><i
+										href="/admin/categorie/delete?id={{ $categoria->id; }}"><i
 											class="fa fa-trash-o fa-fw"></i></a>&nbsp;
 									</td>
 								</tr>
@@ -63,7 +63,7 @@
 							@csrf <label for="H_cat_cat_name" class="form-label">Categoria</label>
 							<input type="text" class="form-control" id="H_cat_cat_name"
 								size="50" name="cat_name" value="" size="50">
-						
+
 					</div>
 				</div>
 			</div>
@@ -92,7 +92,7 @@
 								@csrf <label for="categoria" class="form-label">Categoria</label>
 								<input type="text" class="form-control" id="categoria"
 									name="cat_name" size="50">
-							
+
 						</div>
 					</div>
 				</div>
@@ -104,7 +104,7 @@
 			</div>
 		</div>
 <!-- FINE MODAL INSERIMENTO -->
-			
+
 
 
 
