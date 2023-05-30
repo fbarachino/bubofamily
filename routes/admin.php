@@ -44,7 +44,16 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('movimenti/reportbudget/{anno?}',[MovimentiController::class,'reportCategorieAnno'])->name('budget');
     Route::post('movimenti/reportbudget/{anno?}',[MovimentiController::class,'manageRedirect']);
     Route::get('movimenti/reportbudgetxls',[MovimentiController::class,'reportCategorieAnnoXLS'])->name('budgetxls');
-    /*Route::get('movimenti/test', [MovimentiController::class,'test']);*/
+    Route::get('movimenti/filter/tags',[MovimentiController::class,'filterByTag']);
+    Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
+    Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);
+    Route::get('movimenti/docs', [DocumentiController::class,'fileForm'])->name('documenti');
+    Route::post('movimenti/docs', [DocumentiController::class,'storeFile']);
+    Route::get('movimenti/import', [MovimentiController::class,'importFile'])->name('importING');
+    Route::post('movimenti/import', [MovimentiController::class,'importEC_ING']);
+    Route::get('movimenti/importcr', [MovimentiController::class,'importFileCR'])->name('importCR');
+    Route::post('movimenti/importcr', [MovimentiController::class,'importEC_CR']);
+
 
 // CATEGORIE
     Route::get('categorie', [CategorieController::class,'listCategorie'])->name('categorie');
@@ -70,16 +79,6 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('consumi/enel', [ContatoreEnElController::class,'listLettureEnel'])->name('enel');
     Route::post('consumi/enel', [ContatoreEnElController::class,'insLettureEnel']);
 
-// MOVIMENTI
-    Route::get('movimenti/filter/tags',[MovimentiController::class,'filterByTag']);
-    Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
-    Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);
-    Route::get('movimenti/docs', [DocumentiController::class,'fileForm'])->name('documenti');
-    Route::post('movimenti/docs', [DocumentiController::class,'storeFile']);
-    Route::get('movimenti/import', [MovimentiController::class,'importFile'])->name('importING');
-    Route::post('movimenti/import', [MovimentiController::class,'importEC_ING']);
-    Route::get('movimenti/importcr', [MovimentiController::class,'importFileCR'])->name('importCR');
-    Route::post('movimenti/importcr', [MovimentiController::class,'importEC_CR']);
 
 // AUTOMOBILI
     Route::get('auto', [AutoController::class, 'index'])->name('auto_list');
