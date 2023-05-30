@@ -21,7 +21,7 @@ $(document).on('click', '.open_modal_spesa', function() {
 	$('#form').find('input[type="date"]').val(strDate);
 	$('#myModal').modal('show');
 	$('.modal-title').text(' Nuovo movimento in uscita');
-	$('#form').attr('action', 'movimentis');
+	$('#form').attr('action', '/admin/movimenti/spesa');
 });
 
 $(document).on('click', '.open_modal_entrata', function() {
@@ -30,11 +30,11 @@ $(document).on('click', '.open_modal_entrata', function() {
 	$('#form').find('input[type="date"]').val(strDate);
 	$('#myModal').modal('show');
 	$('.modal-title').text('Nuovo movimento in entrata');
-	$('#form').attr('action', 'movimentie');
+	$('#form').attr('action', '/admin/movimenti/entrata');
 });
 
 $(document).on('click', '.open_modal_modifica', function() {
-	var url = "/admin/movmodify";
+	var url = "/admin/movimenti/modify";
 	var riga_id = $(this).val();
 	$.getJSON(url + '/' + riga_id, function(data) {
 		// success data
@@ -53,7 +53,7 @@ $(document).on('click', '.open_modal_modifica', function() {
 			.trigger('change');
 		$('#myModal').modal('show');
 		// $('.panel-heading').text('Modifica movimento');
-		$('#form').attr('action', '/admin/movmodify');
+		$('#form').attr('action', '/admin/movimenti/modify');
 		$('#form').append('<input type="hidden" name="id" value="' + riga_id + '">');
 	});
 });

@@ -20,35 +20,35 @@ class MovimentiController extends Controller
             'tags'=>$tags,
         ]);
     }
-    
+
     public static function listMovimenti(){
         $categorie=Categorie::list();
         $tags=tag::getList();
        /* Query per visualizzare anche il totale dei documenti presenti per il record */
         $movimenti=Movimenti::getList();
-         
-        
+
+
         return view('conti.movimenti.list',[
             'categorie'=>$categorie,
             'movimenti'=>$movimenti,
-            'tags'=>$tags 
+            'tags'=>$tags
         ]);
     }
-    
+
     public static function dashboard()
     {
-        $bilancio=Movimenti::getSaldo(date('Y')); 
+        $bilancio=Movimenti::getSaldo(date('Y'));
         $saldo=Movimenti::getSaldoTot();
         return view('layouts.dashboard',[
             'bilancio'=>$bilancio,
             'saldo'=>$saldo,
         ]);
     }
-    
+
     public static function insMovimentiSpesa(Request $request)
     {
         Movimenti::insSpesa($request);
-        $mov=Movimenti::getList();        
+        $mov=Movimenti::getList();
         $categorie=Categorie::list();
         $tags=tag::getList();
         return view('conti.movimenti.list',
@@ -57,8 +57,8 @@ class MovimentiController extends Controller
                 'movimenti'=> $mov,
                 'tags'=>$tags,
             ]);
-          
-           /* return dd($mov);*/  
+
+           /* return dd($mov);*/
     }
     public static function insMovimentiEntrata(Request $request)
     {
@@ -72,7 +72,7 @@ class MovimentiController extends Controller
                 'movimenti'=> $mov,
                 'tags'=>$tags,
             ]);
-        
+
         /* return dd($mov);*/
     }
     public function exportMovimenti()
@@ -91,7 +91,7 @@ class MovimentiController extends Controller
             return (new FastExcel($lista))->download('movimenti_al_'.date('d-m-Y').'.xls');
             // return dd($movimenti);
     }
-    
+
     public function resocontoMovimenti(Request $request)
     {
         if(!$request['Year'])
@@ -101,7 +101,7 @@ class MovimentiController extends Controller
         else {
             $year=$request['Year'];
         }
-        
+
         if (!$request['Month'])
         {
             $month=date('m');
@@ -109,16 +109,16 @@ class MovimentiController extends Controller
         else {
             $month=$request['Month'];
         }
-        
+
         $reportSpesa = Movimenti::reportSpesa($year, $month);
         $reportEntrate = Movimenti::reportEntrate($year,$month);
-        
+
         return view('components.charts',[
             'dataSpesa'=>$reportSpesa,
-            'dataEntrate'=>$reportEntrate,    
+            'dataEntrate'=>$reportEntrate,
         ]);
     }
-    
+
     /*public function updateMovimenti(Request $request)
     {
         $id=$request['id'];
@@ -132,37 +132,37 @@ class MovimentiController extends Controller
                 'tags'=>$tags,
             ]);
     }*/
-    
+
     public function updatePostMovimenti(Request $request)
     {
         Movimenti::updateMovimenti($request);
         return redirect(route('movimenti'));
     }
-    
+
     public function deleteMovimenti(Request $request)
     {
         Movimenti::deleteMovimento($request['id']);
         return redirect(route('movimenti'));
-        
+
     }
-    
+
     public function listMovPerCateg(Request $request)
     {
         if($request['year'])
         {
             $anno=$request['year'];
         }
-        else 
+        else
         {
             $anno=date('Y');
         }
         $mov=Movimenti::listByCatMonth($request['month'], $request['cat'],$anno);
         return view('conti.movimenti.list',
             [
-                'movimenti'=> $mov,     
+                'movimenti'=> $mov,
             ]);
     }
-    
+
     public function listMovByCat(Request $request)
     {
         $mov=Movimenti::listByCategory($request['cat']);
@@ -171,17 +171,17 @@ class MovimentiController extends Controller
                 'movimenti'=> $mov,
             ]);
     }
-    
+
     public function reportCategorieAnno($anno = 0)
     {
         if ($anno <= 1970)
         {
-            $anno = date('Y');    
+            $anno = date('Y');
         }
-        
+
         $mesi=['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
         $categorie=Categorie::list();
-        
+
         foreach ($categorie as $categoria)
         {
             $id=$categoria->id;
@@ -211,17 +211,17 @@ class MovimentiController extends Controller
                 'sel_anni'=>$anni,
         ]);
     }
-    
+
     public function reportCategorieAnnoXLS($anno = 0)
     {
         if ($anno <= 1970)
         {
             $anno = date('Y');
         }
-        
+
         $intestazione=['Categoria','Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
         $categorie=DB::table('categories')->orderBy('cat_name')->get();
-        
+
         foreach ($categorie as $categoria)
         {
             $id=$categoria->id;
@@ -234,15 +234,15 @@ class MovimentiController extends Controller
                 ->where('mov_fk_categoria','=',$id)
                 ->sum('mov_importo');
                 $coll[] = $movrow;
-               
+
             }
-            
+
             $row[]=array_combine($intestazione,array_merge(array($ncategoria),$coll));
-            unset($coll); 
+            unset($coll);
         }
-     return (new FastExcel($row))->download('report_al_'.date('d-m-Y').'.xls');   
+     return (new FastExcel($row))->download('report_al_'.date('d-m-Y').'.xls');
     }
-    
+
     public function filterByTag(Request $tag)
     {
         $mov=Movimenti::getByTag($tag['tag']);
@@ -251,14 +251,14 @@ class MovimentiController extends Controller
                 'movimenti'=> $mov,
             ]);
     }
-    
-    
+
+
     public function apiList()
     {
         $movments = Movimenti::getList();
         return json_encode($movments);
     }
-    
+
     private function dateFormat($type,$string)
     {
         if($type)
@@ -270,57 +270,57 @@ class MovimentiController extends Controller
             return $year.'-'.$month.'-'.$day;
         }
     }
-    
+
     public function importEC_ING(Request $request)
     {
         if ($request->hasFile('filename'))
         {
             $filename=$request->file('filename')->store('EC');
              Movimenti::importEstrattoIng($filename);
-           
+
             return redirect(Route('movimenti'));
         }
         else {
             return 'Nessun File trovato';
-        
+
         }
     }
-    
+
     public function importEC_CR(Request $request)
     {
         if ($request->hasFile('filename'))
         {
             $filename=$request->file('filename')->store('EC');
             Movimenti::importEstrattoCR($filename);
-            
+
             return redirect(Route('movimenti'));
         }
         else {
             return 'Nessun File trovato';
-            
+
         }
     }
-    
+
     public function importFile()
     {
         return view('conti.import');
     }
-    
+
     public function importFileCR()
     {
         return view('conti.importCR');
     }
-    
-    public function test()
+
+  /*  public function test()
     {
         Movimenti::getYearsFromMovimenti();
-    }
-    
+    }*/
+
     public function manageRedirect(Request $request)
     {
-        return redirect('/admin/reportbudget/'.$request['anno']);
+        return redirect('/admin/movimenti/reportbudget/'.$request['anno']);
     }
-    
+
     public function updateMovimenti($id)
     {
         $mov=Movimenti::getMovimentoById($id);
