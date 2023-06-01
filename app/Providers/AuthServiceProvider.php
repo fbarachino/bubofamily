@@ -26,5 +26,10 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
+        Gate::define('admin', function(User $user ){
+            return $user->isAdmin
+                ? Response::allow()
+                : Response::deny('E\'necessario essere amministratori per accedere a questa risorsa');
+        });
     }
 }

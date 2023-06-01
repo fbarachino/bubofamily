@@ -108,9 +108,9 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('contatti/addOther', [AnagraficaController::class, 'saveOtherContact']);
 
 // GRUPPI E PERMESSI
-    Route::get('group/new', [Utenti::class, 'nuovoGruppo']);
+    Route::get('role/new/{ruolo}', [Utenti::class, 'createRole']);
     Route::post('group/new', [Utenti::class, 'saveNuovoGruppo']);
-    Route::get('permesso/new', [Utenti::class, 'nuovoPermesso']);
+    Route::get('permesso/new/{permesso}', [Utenti::class, 'createPermission']);
     Route::post('permesso/new', [Utenti::class, 'saveNuovoPermesso']);
     Route::get('permesso/assign', [Utenti::class, 'vw_assignToGroup']);
     Route::post('permesso/assign', [Utenti::class, 'assignPermissionToGroup']);
@@ -132,5 +132,5 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('test/fullcalendar', [FullCalenderController::class, 'ajax']);
     Route::get('test/condominio',[CondominioController::class,'testPdf']);
     Route::get('test/err403',[CondominioController::class,'err403']);
-
+    Route::get('test/user_role',[CondominioController::class,'user_role']);
 

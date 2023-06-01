@@ -23,4 +23,6 @@ class CondominioController extends Controller
     {
         abort(403);
     }
+
+
 }

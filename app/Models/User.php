@@ -4,19 +4,20 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
- //use LdapRecord\Laravel\Auth\Authenticatable;
 use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
-use Junges\ACL\Concerns\HasGroups;
+use Illuminate\Contracts\Auth\Access\Authorizable ;
+use Spatie\Permission\Traits\HasRole;
+
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, AuthenticateswithLdap, HasGroups, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, AuthenticateswithLdap, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +28,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_role',
     ];
 
     /**
@@ -73,6 +75,6 @@ class User extends Authenticatable
         return DB::table('users')->orderBy('name')->get();
     }
 
-    
+
 
 }
