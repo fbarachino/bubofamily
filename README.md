@@ -19,7 +19,7 @@ Al momento sono presenti:
  - inserire le informazioni del database (username,password,dbname)
  - lanciare ``` composer install ```
  - lanciare ``` php artisan migrate --seed``` 
- - preparare Apache copiando e modificando secondo le proprie impostazioni il file ``` bubofamily.conf ``` in ```/etc/apache2/sites-available ``` e quindi impostare in ```/etc/hosts``` il proprio fqdn relativo al gestionale. Ora applicare la modifica ad apache digitando ``` a2ensite bubofamily.conf``` e poi ``` systemctl apache2 restart```
+ - preparare Apache copiando e modificando secondo le proprie impostazioni il file ``` bubofamily.conf ``` in ```/etc/apache2/sites-available ``` e quindi impostare in ```/etc/hosts``` il proprio fqdn relativo al gestionale. Ora applicare la modifica ad apache digitando ``` a2ensite bubofamily.conf``` e poi ``` systemctl restart apache2```
  - di default si crea l'utente ``` admin ``` con password ```admin ``` per accedere la prima volta.
  
 
