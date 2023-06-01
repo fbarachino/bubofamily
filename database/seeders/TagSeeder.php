@@ -18,5 +18,8 @@ class TagSeeder extends Seeder
         DB::table('tags')->insert(
             ['tag_name'=>'System']
             );
+        DB::table('tags')->insert(
+            ['tag_name'=>'da verificare']
+            );
     }
 }
