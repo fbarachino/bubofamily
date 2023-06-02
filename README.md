@@ -15,23 +15,16 @@ Al momento sono presenti:
 
 ## Installazione
  - clonare il repository
- - copiare il file .env.example
+ - copiare il file ```.env.example``` in ```.env```
  - inserire le informazioni del database (username,password,dbname)
- - lanciare >composer install
- - lanciare php artisan migrate
- - lanciare i seeds (categorie e utenti di default)
+ - lanciare ``` composer install ```
+ - lanciare ``` php artisan migrate --seed``` 
+ - preparare Apache copiando e modificando secondo le proprie impostazioni il file ``` bubofamily.conf ``` in ```/etc/apache2/sites-available ``` e quindi impostare in ```/etc/hosts``` il proprio fqdn relativo al gestionale. Ora applicare la modifica ad apache digitando ``` a2ensite bubofamily.conf``` e poi ``` systemctl restart apache2```
+ - di default si crea l'utente ``` admin ``` con password ```admin ``` per accedere la prima volta.
  
 
-## Sviluppatori
+## Sviluppatori (attualmente)
 Flavio Barachino <flavio.barachino@lavorain.cloud>
 
 ### Vuoi partecipare?
 Scrivimi con le tue proposte, le tue critiche, i tuoi suggerimenti.
-
-=======
-## Sviluppatori
-Flavio Barachino <flavio.barachino@lavorain.cloud>
-
-### Vuoi partecipare?
-Scrivimi con le tue proposte, le tue critiche, i tuoi suggerimenti.
-

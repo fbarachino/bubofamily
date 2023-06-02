@@ -20,8 +20,15 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 'name'=>'SystemUser',
-                'email'=>env('SYSADMIN_MAIL'),
+                'email'=>'system@localhost.local',
                 'password'=>Hash::make(Str::random(16)),
+            ]
+            );
+        DB::table('users')->insert(
+            [
+                'name'=>'admin',
+                'email'=>env('SYSADMIN_MAIL'),
+                'password'=>Hash::make('admin'),
             ]
             );
     }

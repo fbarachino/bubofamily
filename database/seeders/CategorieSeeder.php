@@ -18,5 +18,11 @@ class CategorieSeeder extends Seeder
         DB::table('categories')->insert(
             ['cat_name'=>'Automobili']
             );
+        DB::table('categories')->insert(
+            ['cat_name'=>'Stipendio']
+            );
+        DB::table('categories')->insert(
+            ['cat_name'=>'Utenze']
+            );
     }
 }

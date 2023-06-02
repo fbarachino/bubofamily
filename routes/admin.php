@@ -15,6 +15,7 @@ use App\Http\Controllers\AutoController;
 use App\Http\Controllers\AnagraficaController;
 use App\Http\Controllers\Utenti;
 use App\Http\Controllers\ProgettiController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,9 +32,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('logout', function(){ Auth::logout(); return redirect('login'); })->name('logout');
 
 // MOVIMENTI
-    // Route::get('movimentis', [MovimentiController::class,'newMovimenti'])->name('movimentis');
     Route::post('movimenti/spesa',[MovimentiController::class,'insMovimentiSpesa']);
-    // Route::get('movimentie', [MovimentiController::class,'newMovimenti'])->name('movimentie');
     Route::post('movimenti/entrata',[MovimentiController::class,'insMovimentiEntrata']);
     Route::get('movimenti',[MovimentiController::class,'listMovimenti'])->name('movimenti');
     Route::get('movimenti/export',[MovimentiController::class,'exportMovimenti'])->name('export');
@@ -108,7 +107,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('contatti/addOther', [AnagraficaController::class, 'insOtherContact']);
     Route::post('contatti/addOther', [AnagraficaController::class, 'saveOtherContact']);
 
-// Gruppi e permessi
+// GRUPPI E PERMESSI
     Route::get('group/new', [Utenti::class, 'nuovoGruppo']);
     Route::post('group/new', [Utenti::class, 'saveNuovoGruppo']);
     Route::get('permesso/new', [Utenti::class, 'nuovoPermesso']);
@@ -116,7 +115,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('permesso/assign', [Utenti::class, 'vw_assignToGroup']);
     Route::post('permesso/assign', [Utenti::class, 'assignPermissionToGroup']);
 
-// Progetti
+// PROGETTI
     Route::get('progetti', [ProgettiController::class, 'listaProgetto'])->name('progetti');
     Route::post('progetti/new', [ProgettiController::class, 'salvaProgetto']);
     Route::get('progetti/new', [ProgettiController::class, 'nuovoProgetto'])->name('nuovoProgetto');
@@ -128,9 +127,10 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('progetti/rigaupdate', [RigaProgettoController::class, 'updateRiga']);
     Route::get('progetti/coordinatori', [ProgettiController::class, 'getCoordinatori']);
 
-/// TEST routes
+/// TEST ROUTES
     Route::get('test/fullcalendar', [FullCalenderController::class, 'index']);
     Route::post('test/fullcalendar', [FullCalenderController::class, 'ajax']);
     Route::get('test/condominio',[CondominioController::class,'testPdf']);
+    Route::get('test/err403',[CondominioController::class,'err403']);
 
 
