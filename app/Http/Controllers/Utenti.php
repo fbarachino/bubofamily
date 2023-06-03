@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 // use Junges\ACL\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\User;
 
 class Utenti extends Controller
 {
@@ -70,5 +71,10 @@ class Utenti extends Controller
     function createPermission($permesso){
         $permission=Permission::create(['name'=>$permesso]);
         return json_encode(Permission::all()->pluck('name'));
+    }
+    
+    function userClass() {
+        $user=new User();
+        return get_class_methods($user);
     }
 }

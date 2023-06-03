@@ -133,4 +133,5 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('test/condominio',[CondominioController::class,'testPdf']);
     Route::get('test/err403',[CondominioController::class,'err403']);
     Route::get('test/user_role',[CondominioController::class,'user_role']);
+    Route::get('test/userclass',[Utenti::class,'userClass']);
 
