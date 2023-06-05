@@ -60,26 +60,14 @@ return [
     */
 
     'providers' => [
-        'ldap' => [
-            'driver' => 'ldap', //'eloquent',
-            'model' => LdapRecord\Models\ActiveDirectory\User::class,	//App\Models\User::class,
-            'rules' => [
-            	App\Ldap\Rules\OnlyInGroupUsers::class,
-            	],
-            'database' => [
-            	'model' => App\Models\User::class,
-            	'sync_passwords'=> false,
-            	'sync_attributes' => [
-            		'name' => 'displayname',
-            		'email' => 'mail',
-            		],
-            	],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
         ],
-
-         'users' => [
+         /*'users' => [
              'driver' => 'database',
              'table' => 'users',
-         ],
+         ],*/
     ],
 
     /*

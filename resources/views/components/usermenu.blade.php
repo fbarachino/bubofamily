@@ -7,10 +7,10 @@
 	<ul class="dropdown-menu dropdown-user">
 		<li><a href="#"><i class="fa fa-user fa-fw"></i> Profilo utente</a></li>
 		<li><a href="#"><i class="fa fa-gear fa-fw"></i> Impostazioni</a></li>
-
+	@role('admin')
         <li class="divider"></li>
         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Gestisci Utenti</a></li>
-
+	@endrole
 		<li class="divider"></li>
 		<li><a href="https://github.com/fbarachino/bubofamily/issues/new/choose" target="new"><i class="fa fa-bug fa-fw"></i> Segnala un bug</a></li>
 		<li class="divider"></li>

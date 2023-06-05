@@ -22,16 +22,9 @@ class UserSeeder extends Seeder
                 'name'=>'SystemUser',
                 'email'=>'system@localhost.local',
                 'password'=>Hash::make(Str::random(16)),
-                'user_role'=>'user',
+                
             ]
             );
-        DB::table('users')->insert(
-            [
-                'name'=>'admin',
-                'email'=>env('SYSADMIN_MAIL'),
-                'password'=>Hash::make('admin'),
-                'user_role'=>'admin',
-            ]
-            );
+        
     }
 }
