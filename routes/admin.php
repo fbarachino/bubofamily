@@ -32,6 +32,7 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('logout', function(){ Auth::logout(); return redirect('login'); })->name('logout');
 
 // MOVIMENTI
+Route::group(['middleware'=>['permission:conti']], function(){
     Route::post('movimenti/spesa',[MovimentiController::class,'insMovimentiSpesa']);
     Route::post('movimenti/entrata',[MovimentiController::class,'insMovimentiEntrata']);
     Route::get('movimenti',[MovimentiController::class,'listMovimenti'])->name('movimenti');
@@ -71,15 +72,17 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('tags/modify/{id}', [TagController::class,'updateTag']);
     Route::post('tags/modify', [TagController::class,'updatePostTag']);
     Route::get('tags/delete/{id}',[TagController::class,'deleteTag']);
-
+});
 // CONSUMI
+Route::group(['middleware'=>['permission:consumi']], function(){
     Route::get('consumi/gas', [ContatoreGasController::class,'listLettureGas'])->name('gas');
     Route::post('consumi/gas', [ContatoreGasController::class,'insLettureGas']);
     Route::get('consumi/enel', [ContatoreEnElController::class,'listLettureEnel'])->name('enel');
     Route::post('consumi/enel', [ContatoreEnElController::class,'insLettureEnel']);
-
+});
 
 // AUTOMOBILI
+Route::group(['middleware'=>['permission:automobili']], function(){
     Route::get('auto', [AutoController::class, 'index'])->name('auto_list');
     Route::get('auto/new', [AutoController::class, 'newAuto'])->name('auto_new');
     Route::post('auto/new', [AutoController::class, 'saveAuto'])->name('auto_save');
@@ -97,8 +100,9 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::post('auto/accessori', [AutoController::class, 'saveAccessori']);
     Route::get('auto/operazioni', [AutoController::class, 'getOperazioni']);
     Route::get('auto/operazioni/pdf', [AutoController::class, 'exportPdfOperazioni']);
-
+});
 // CONTATTI
+Route::group(['middleware'=>['permission:contatti']], function(){
     Route::get('contatti', [AnagraficaController::class, 'listContact'])->name('contatti');
     Route::get('contatti/new', [AnagraficaController::class, 'newContact'])->name('newContact');
     Route::post('contatti/new', [AnagraficaController::class, 'insContact']);
@@ -106,16 +110,19 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('contatti/scheda', [AnagraficaController::class, 'getScheda']);
     Route::get('contatti/addOther', [AnagraficaController::class, 'insOtherContact']);
     Route::post('contatti/addOther', [AnagraficaController::class, 'saveOtherContact']);
+});
 
 // GRUPPI E PERMESSI
+Route::group(['middleware'=>['permission:amministrazione']], function(){
     Route::get('role/new/{ruolo}', [Utenti::class, 'createRole']);
     Route::post('group/new', [Utenti::class, 'saveNuovoGruppo']);
     Route::get('permesso/new/{permesso}', [Utenti::class, 'createPermission']);
     Route::post('permesso/new', [Utenti::class, 'saveNuovoPermesso']);
     Route::get('permesso/assign', [Utenti::class, 'vw_assignToGroup']);
     Route::post('permesso/assign', [Utenti::class, 'assignPermissionToGroup']);
-
+});
 // PROGETTI
+Route::group(['middleware'=>['permission:progetti']], function(){
     Route::get('progetti', [ProgettiController::class, 'listaProgetto'])->name('progetti');
     Route::post('progetti/new', [ProgettiController::class, 'salvaProgetto']);
     Route::get('progetti/new', [ProgettiController::class, 'nuovoProgetto'])->name('nuovoProgetto');
@@ -126,6 +133,8 @@ Route::get('/', [MovimentiController::class,'dashboard']);
     Route::get('progetti/detail/edit/{id}', [RigaProgettoController::class, 'editRiga']);
     Route::post('progetti/rigaupdate', [RigaProgettoController::class, 'updateRiga']);
     Route::get('progetti/coordinatori', [ProgettiController::class, 'getCoordinatori']);
+});
+
 
 /// TEST ROUTES
     Route::get('test/fullcalendar', [FullCalenderController::class, 'index']);
