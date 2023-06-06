@@ -65,6 +65,7 @@ Route::group(['middleware'=>['permission:conti']], function(){
 // Richiami di servizio da jquery
     Route::get('service/catlist', [CategorieController::class,'apiList']);
     Route::get('service/taglist', [TagController::class,'apiList']);
+    Route::get('service/rolesList', [Utenti::class,'listRoles']);
 
 // TAGS
     Route::get('tags', [TagController::class,'listTags'])->name('tags');
@@ -114,12 +115,17 @@ Route::group(['middleware'=>['permission:contatti']], function(){
 
 // GRUPPI E PERMESSI
 Route::group(['middleware'=>['permission:amministrazione']], function(){
+    /*
     Route::get('role/new/{ruolo}', [Utenti::class, 'createRole']);
     Route::post('group/new', [Utenti::class, 'saveNuovoGruppo']);
     Route::get('permesso/new/{permesso}', [Utenti::class, 'createPermission']);
     Route::post('permesso/new', [Utenti::class, 'saveNuovoPermesso']);
     Route::get('permesso/assign', [Utenti::class, 'vw_assignToGroup']);
     Route::post('permesso/assign', [Utenti::class, 'assignPermissionToGroup']);
+    */
+    Route::get('users/new',[Utenti::class,'addUser']);
+    Route::post('users/new',[Utenti::class,'createUser']);
+    Route::get('users/roles',[Utenti::class,'listRoles']);
 });
 // PROGETTI
 Route::group(['middleware'=>['permission:progetti']], function(){

@@ -9,7 +9,7 @@
 		<li><a href="#"><i class="fa fa-gear fa-fw"></i> Impostazioni</a></li>
 	@role('admin')
         <li class="divider"></li>
-        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Gestisci Utenti</a></li>
+        <li><a href="/admin/users/new"><i class="fa fa-gear fa-fw"></i> Gestisci Utenti</a></li>
 	@endrole
 		<li class="divider"></li>
 		<li><a href="https://github.com/fbarachino/bubofamily/issues/new/choose" target="new"><i class="fa fa-bug fa-fw"></i> Segnala un bug</a></li>

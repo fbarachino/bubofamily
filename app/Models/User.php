@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Foundation\Auth\Access\Authorizable;
@@ -69,11 +70,24 @@ class User extends Authenticatable
     {
         return DB::table('users')->where('id','=',$id)->get();
     }
+    
     public static function getUsers()
     {
         return DB::table('users')->orderBy('name')->get();
     }
-
+    
+    // Aggiunge un utente e assegna un ruolo
+    public static function addUser($params)
+    {
+        self::create([
+           'name'=>$params['name'],
+           'email'=>$params['email'],
+           'password'=>Hash::make($params['password']),
+        ])->assignRole($params['role']);
+        
+    }
+    
+    
 
 
 }

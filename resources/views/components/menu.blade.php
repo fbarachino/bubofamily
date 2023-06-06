@@ -58,7 +58,7 @@
 <li><a href="#"><i class="fa fa-gears fa-fw"></i>Amministrazione<span
 		class="fa arrow"></span></a>
 	<ul class="nav nav-second-level">
-		<li><a class="active" href="#">Utenti</a></li>
+		<li><a class="active" href="/admin/users/new">Nuovo Utente</a></li>
 		<li><a class="active" href="/admin/group/new">Gruppi</a></li>
 		<li><a class="active" href="/admin/permesso/new">Permessi</a></li>
 		<li><a class="active" href="/admin/permesso/assign">Assegna Permessi
