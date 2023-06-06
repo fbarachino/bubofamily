@@ -49,6 +49,7 @@
 					<tr>
 						<th>Nome</th>
 						<th>Email</th>
+						<th>Azioni</th>
 						
 					</tr>
 				</thead>
@@ -57,7 +58,7 @@
 					<tr>
 						<td>{{ $user->name }}</td>
 						<td>{{ $user->email }}</td>
-						
+						<td><a href="/admin/users/delete/{{ $user->id }}" class="button">Cancella</a></td>
 					</tr>
 					@endforeach
 				</tbody>

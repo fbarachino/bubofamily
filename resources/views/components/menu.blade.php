@@ -19,10 +19,9 @@
 				<li><a href="{{ route('importCR'); }}"><i
 						class="fa fa-upload  fa-fw"></i>Importa Estratto CR</a></li>
 			</ul></li>
-	
+
 	</ul> <!-- /.nav-second-level --></li>
-@endcan
-@can('consumi')
+@endcan @can('consumi')
 <li><a href="#"><i class="fa fa-industry fa-fw"></i> Consumi <span
 		class="fa arrow"></span></a>
 
@@ -33,12 +32,10 @@
 		<li><a href="{{ route('enel'); }}"><i class="fa fa-flash  fa-fw"></i>Energia
 				Elettrica</a></li>
 	</ul></li>
-@endcan
-@can('automobili')
+@endcan @can('automobili')
 <li><a href="{{ route('auto_list'); }}"><i class="fa fa-car fa-fw"></i>
 		Automobili <span class="fa arrow"></span></a></li>
-@endcan
-@can('contatti')
+@endcan @can('contatti')
 <li><a href="#"><i class="fa fa-phone-square fa-fw"></i> Contatti <span
 		class="fa arrow"></span></a>
 
@@ -49,20 +46,21 @@
 		<li><a href="{{ route('newContact'); }}"><i class="fa fa-plus  fa-fw"></i>Nuovo
 				contatto</a></li>
 	</ul></li>
-@endcan
-@can('progetti')
+@endcan @can('progetti')
 <li><a href="{{ route('progetti'); }}"><i class="fa fa-list fa-fw"></i>
 		Progetti <span class="fa arrow"></span></a></li>
-@endcan
-@can('amministrazione')
+@endcan @can('amministrazione')
 <li><a href="#"><i class="fa fa-gears fa-fw"></i>Amministrazione<span
 		class="fa arrow"></span></a>
 	<ul class="nav nav-second-level">
 		<li><a class="active" href="/admin/users/new">Nuovo Utente</a></li>
-		<li><a class="active" href="/admin/group/new">Gruppi</a></li>
-		<li><a class="active" href="/admin/permesso/new">Permessi</a></li>
-		<li><a class="active" href="/admin/permesso/assign">Assegna Permessi
-				ai gruppi</a></li>
-		<li><a href="/login">Login Page</a></li>
+		<!--
+		<li><a class="active" href="/admin/users/newRole">Gruppi</a></li>
+		<li><a class="active" href="/admin/users/newPermission">Permessi</a></li>
+		-->
+		<li><a class="active" href="/admin/users/assignRole">Assegna Ruoli</a></li>
+		<!--  
+		<li><a href="/login">Login Page</a></li> 
+		-->
 	</ul> <!-- /.nav-second-level --></li>
-	@endcan
+@endcan

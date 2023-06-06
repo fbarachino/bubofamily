@@ -6,7 +6,7 @@
 	</div>
 </div>
 <div class="row">
-@role('user')
+@hasanyrole('user|admin')
 <!-- WIDGET Bilancio -->
 	<div class="col-lg-4 col-md-8">
         <div class="panel panel-primary">
@@ -53,7 +53,7 @@
            </a>
      	</div>
 	</div>	
-	@endrole
+	@endhasanyrole
 </div>
 @endsection
 

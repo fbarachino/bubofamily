@@ -52,7 +52,11 @@ class Utenti extends Controller
         return $roles;
     }
     
-
+    function deleteUser($id) {
+        User::destroy($id);
+        
+        return redirect('/admin/users/new');
+    }
         
     
 }

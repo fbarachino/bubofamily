@@ -126,6 +126,7 @@ Route::group(['middleware'=>['permission:amministrazione']], function(){
     Route::get('users/new',[Utenti::class,'addUser']);
     Route::post('users/new',[Utenti::class,'createUser']);
     Route::get('users/roles',[Utenti::class,'listRoles']);
+    Route::get('users/delete/{id}',[Utenti::class,'deleteUser']);
 });
 // PROGETTI
 Route::group(['middleware'=>['permission:progetti']], function(){
