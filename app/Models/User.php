@@ -10,13 +10,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
  //use LdapRecord\Laravel\Auth\Authenticatable;
-use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
+
 use Junges\ACL\Concerns\HasGroups;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, AuthenticateswithLdap, HasGroups, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, HasGroups, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -73,6 +73,6 @@ class User extends Authenticatable
         return DB::table('users')->orderBy('name')->get();
     }
 
-    
+
 
 }
