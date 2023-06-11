@@ -1,6 +1,13 @@
 $(document).ready(function() {
+
 	$('#tab_progetti').DataTable({
 		responsive: true
+		fields: [
+			{
+				label:"Data",
+				type: "datetime"
+			}
+		]
 	});
 });
 
