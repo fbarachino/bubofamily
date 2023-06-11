@@ -1,6 +1,12 @@
 $(document).ready(function() {
 	$('#automobili').DataTable({
 		responsive: true
+        fields: [
+			{
+				label:"Data",
+				type: "datetime"
+			}
+		]
 	});
 });
 
@@ -26,7 +32,7 @@ $(document).on('click', '.open_modal_modify', function() {
 	$.getJSON(url + '/' + riga_id, function(data) {
 
 		$('.modal-title').text('Modifica Automobile');
-		// $('#id').val(data.mov_data); 
+		// $('#id').val(data.mov_data);
 		$('#targa').val(data.targa);
 		$('#marca').val(data.marca);
 		$('#modello').val(data.modello);

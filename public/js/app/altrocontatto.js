@@ -1,10 +1,21 @@
 $(document).ready(function() {
 	$('#automobili').DataTable({
 		responsive: true
+        fields: [
+			{
+				label:"Data",
+				type: "datetime"
+			}
+		]
 	});
-});
-$(document).ready(function() {
+
 	$('#contatti').DataTable({
 		responsive: true
+        fields: [
+			{
+				label:"Data",
+				type: "datetime"
+			}
+		]
 	});
 });
