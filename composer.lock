@@ -9149,7 +9149,6 @@
         },
         {
             "name": "phpunit/phpunit",
-<<<<<<< HEAD
             "version": "9.6.8",
             "source": {
                 "type": "git",
@@ -9160,18 +9159,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/17d621b3aff84d0c8b62539e269e87d8d5baa76e",
                 "reference": "17d621b3aff84d0c8b62539e269e87d8d5baa76e",
-=======
-            "version": "9.6.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c993f0d3b0489ffc42ee2fe0bd645af1538a63b2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c993f0d3b0489ffc42ee2fe0bd645af1538a63b2",
-                "reference": "c993f0d3b0489ffc42ee2fe0bd645af1538a63b2",
->>>>>>> 3ebca7bb4a04430aecf781bee6ba7b1a1ec56a41
                 "shasum": ""
             },
             "require": {
