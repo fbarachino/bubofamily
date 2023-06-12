@@ -15,6 +15,7 @@ use App\Http\Controllers\AutoController;
 use App\Http\Controllers\AnagraficaController;
 use App\Http\Controllers\Utenti;
 use App\Http\Controllers\ProgettiController;
+use App\Mail\myTestEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -151,3 +152,7 @@ Route::group(['middleware'=>['permission:progetti']], function(){
     Route::get('test/user_role',[CondominioController::class,'user_role']);
     Route::get('test/userclass',[Utenti::class,'userClass']);
 
+    Route::get('testmail',function(){
+        $name='Flavio';
+        Mail::to('git@lavorain.cloud')->send(new myTestEmail($name));
+    });
