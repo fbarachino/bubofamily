@@ -1,5 +1,11 @@
 $(document).ready(function() {
 	$('#listaLettureGas').DataTable({
-		responsive: true
+		responsive: true,
+        fields: [
+			{
+				label:"Data lettura",
+				type: "datetime"
+			}
+		]
 	});
 });

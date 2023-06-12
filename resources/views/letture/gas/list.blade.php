@@ -24,7 +24,7 @@
                 Nuova lettura Gas
             </div>
             <div class="panel-body">
-            
+
             	<form action="" method="POST">
             		@csrf
                 	<div class="mb-3">
@@ -38,7 +38,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
             	</form>
             	</div>
-           
+
           </div>
           <div class="panel-heading">
                 Letture Gas
@@ -57,7 +57,7 @@
             		</thead>
             		<tbody>
             		@php $dateprec=NULL; @endphp
-            		
+
             		@foreach($lettureGas as $lettura)
             		    @php
             			if (!is_null($dateprec))
@@ -65,13 +65,13 @@
             				$diffdate=date_diff(
             					date_create_from_format('Y-m-d',$lettura->gas_date),
             					date_create_from_format('Y-m-d',$dateprec)
-            					)->format('%a'); 
+            					)->format('%a');
             				$differenza=($lettura->gas_lettura)-$lettprec;
             				$mediagg=($differenza/$diffdate);
             			}
             			@endphp
             			<tr>
-            				<td>{{ $lettura->gas_date; }}</td>
+            				<td>{{ date_format(date_create($lettura->gas_date),'d/m/Y'); }}</td>
             				<td>{{ $lettura->gas_lettura; }}</td>
             				@if(!is_null($dateprec))
                 				<td>{{ $diffdate ?? '' }}</td>
@@ -83,9 +83,9 @@
             					<td></td>
         					@endif
             			</tr>
-            		
+
             			@php
-            				$dateprec=$lettura->gas_date; 
+            				$dateprec=$lettura->gas_date;
             				$lettprec=$lettura->gas_lettura;
             			@endphp
             		@endforeach
@@ -96,9 +96,8 @@
 		</div>
 	</div>
 </div>
- 
+
 @endsection
 @section('script')
 <script src="/js/app/gas.js"></script>
 @endsection
-            				

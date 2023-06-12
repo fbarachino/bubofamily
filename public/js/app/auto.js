@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#automobili').DataTable({
-		responsive: true
+		responsive: true,
         fields: [
 			{
 				label:"Data",

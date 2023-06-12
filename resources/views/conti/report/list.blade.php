@@ -25,9 +25,9 @@
             		<tbody>
             		@foreach( $dataSpesa as $dato )
             		<tr>
-            			<td><a href="movimenti/report/movimenti_categoria?cat={{ $dato->id }}&month={{ $_GET['Month'] ?? date('m')}}">{{ $dato->cat_name; }}</a> </td>
+            			<td><a href="/admin/movimenti/report/movimenti_categoria?cat={{ $dato->id }}&month={{ $_GET['Month'] ?? date('m')}}">{{ $dato->cat_name; }}</a> </td>
             			<td>{{ $dato->resoconto; }}</td>
-            			
+
             		</tr>
             		@endforeach
             		</tbody>
@@ -55,9 +55,9 @@
             		<tbody>
             		@foreach( $dataEntrate as $dato )
             		<tr>
-            			<td><a href="movimenti/report/movimenti_categoria?cat={{ $dato->id }}&month={{ $_GET['Month'] ?? date('m')}}">{{ $dato->cat_name; }}</a> </td>
+            			<td><a href="/admin/movimenti/report/movimenti_categoria?cat={{ $dato->id }}&month={{ $_GET['Month'] ?? date('m')}}">{{ $dato->cat_name; }}</a> </td>
             			<td>{{ $dato->resoconto; }}</td>
-            			
+
             		</tr>
             		@endforeach
             		</tbody>
@@ -67,9 +67,8 @@
 		</div>
 	</div>
 </div>
- 
+
 @endsection
 @section('script')
 <script src="/js/app/conti_categorie.js"></script>
 @endsection
-            	

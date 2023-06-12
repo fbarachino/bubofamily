@@ -1,5 +1,11 @@
 $(document).ready(function() {
 	$('#listaLettureEnel').DataTable({
-		responsive: true
+		responsive: true,
+        fields: [
+			{
+				label:"Data lettura",
+				type: "datetime"
+			}
+		]
 	});
 });

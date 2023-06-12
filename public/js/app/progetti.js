@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	$('#tab_progetti').DataTable({
-		responsive: true
+		responsive: true,
 		fields: [
 			{
 				label:"Data",

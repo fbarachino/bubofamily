@@ -81,7 +81,7 @@ class MovimentiController extends Controller
         foreach ($movimenti as $movimento)
         {
             $lista[]=[
-                'Data'=>$movimento->Data,
+                'Data'=> date_format(date_create($movimento->Data),'d/m/Y'),
                 'Categoria'=>$movimento->Categoria,
                 'Tag'=>$movimento->Tag,
                 'Descrizione'=>$movimento->Descrizione,

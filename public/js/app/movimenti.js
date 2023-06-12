@@ -1,6 +1,12 @@
 $(document).ready(function() {
 	$('#listamovimenti').DataTable({
 		"responsive": true,
+        fields: [
+			{
+				label:"Data",
+				type: "datetime"
+			}
+		],
 		"order": [[0, "desc"]]
 	});
 });
