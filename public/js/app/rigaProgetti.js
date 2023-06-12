@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#tab_progetti').DataTable({
-		responsive: true
+		responsive: true,
         fields: [
 			{
 				label:"Data",
@@ -8,7 +8,7 @@ $(document).ready(function() {
 			}
 		]
 	});
-
+});
 	$('#form').click(function() {
 		$('form').toggle();
 	});
@@ -41,4 +41,4 @@ $(document).ready(function() {
 		$('#myModal_addRow').modal('show');
 		// $('#form_new').attr('action', 'progetti/new');
 	});
-});
+
