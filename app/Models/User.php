@@ -11,8 +11,6 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
-
-
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles,Authorizable;
@@ -86,8 +84,4 @@ class User extends Authenticatable
         ])->assignRole($params['role']);
 
     }
-
-
-
-
 }

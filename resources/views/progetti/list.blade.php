@@ -38,7 +38,7 @@
 								<tr>
 									<td><a href="progetti/detail/{{ $progetto->progetto }}">{{
 											$progetto->nome; }}</a></td>
-									<td>{{ $progetto->data_creazione; }}</td>
+									<td>{{ date_format(date_create($progetto->data_creazione),'d/m/Y'); }}</td>
 									<td>{{ $progetto->stato; }}</td>
 									<td>{{ $progetto->name; }}</td>
 									<td>{{ $progetto->budget; }}</td>
@@ -78,7 +78,7 @@
 								<!-- TODO: Da vedere funzione di select in js -->
 								<select name="coordinatore" class="form-control selectpicker"
 									id="coordinatore" data-live-search="true"
-									data-live-search-placeholder="Cerca"> 
+									data-live-search-placeholder="Cerca">
 								</select>
 							</div>
 						</div>
