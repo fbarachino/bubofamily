@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Progetti extends Model
 {
     use HasFactory;
-    
+
     public static function getProgetti() {
         return DB::table('progettis')
         ->select(
@@ -23,9 +23,9 @@ class Progetti extends Model
             'budget',
             'stato',
             'note')
-        ->join('users','progettis.fk_user','=','users.id')->get(); 
+        ->join('users','progettis.fk_user','=','users.id')->get();
     }
-    
+
     public static function getProgettoById($id){
         return DB::table('progettis')->
             join('users','progettis.fk_user','=','users.id')->
@@ -33,7 +33,7 @@ class Progetti extends Model
             where('progettis.id','=',$id)->
             get();
     }
-    
+
     public static function saveProgetto($progetto){
         DB::table('progettis')->insert([
            'nome'=>$progetto['nome'],
@@ -46,12 +46,24 @@ class Progetti extends Model
             'stato'=>$progetto['stato'],
             'note'=>$progetto['note']
         ]);
-     
+
     }
-    
+
     public static function delProgetto($progetto_id)
      {
          DB::table('progettis')->delete($progetto_id);
      }
-    
+
+    public static function chiudiProgetto($progetto_id)
+    {
+        // chiude il progetto e lo rende non cancellabile e non più editabile
+        // potrà solo essere esportato in PDF
+        DB::table('progettis')
+        ->where('id','=', $progetto_id)
+        ->update([
+            'stato'=>'chiuso',
+            'data_fine'=>date('Y-m-d'),
+        ]);
+
+    }
 }

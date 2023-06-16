@@ -42,8 +42,8 @@
 									<td>{{ $progetto->stato; }}</td>
 									<td>{{ $progetto->name; }}</td>
 									<td>{{ $progetto->budget; }}</td>
-									<td><a href="progetti/delete?id={{ $progetto->progetto }}"
-										class="btn btn-danger">Cancella</a></td>
+									<td>@if($progetto->stato != 'chiuso')<a href="progetti/delete?id={{ $progetto->progetto }}"
+										class="btn btn-danger">Cancella</a>@endif</td>
 								</tr>
 								@endforeach
 							</tbody>
