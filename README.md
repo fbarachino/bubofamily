@@ -1,29 +1,23 @@
-# Gestionale di Famiglia
-Piccolo sistema di gestione famigliare. 
+# Gestionale Per le associazioni
+Piccolo sistema di gestione. 
 Al momento sono presenti:
 
  - Gestione delle Entrate e uscite con possibilità di inserimento delle foto degli scontrini ed eventuali documenti in PDF.
  - Possibilità di importare gli estratti conto da un file excel o csv.
- - Un sistema di gestione delle letture dei contatori per il GAS e per l'Energia elettrica
- - Un sistema di gestione delle autovetture e relative operazioni effettuate su di esse.
+ - Un sistema di gestione delle letture dei contatori per il GAS e per l'Energia elettrica [Da rivedere]
+ - Un sistema di gestione delle autovetture e relative operazioni effettuate su di esse. [Da rivedere]
  - Una rubrica telefonica e degli indirizzi
- - Una gestione dei progetti (ancora in sviluppo) 
- - Una gestione degli utenti e dei gruppi e relativi permessi.
+ - Una gestione dei progetti (ancora in sviluppo) [Da rivedere]
+ - Una gestione degli utenti e dei gruppi e relativi permessi. [Da rivedere]
 
 *Sviluppato in php, mysql, jquery su framework Laravel*.
-
-
-## Installazione
- - clonare il repository
- - copiare il file ```.env.example``` in ```.env```
- - inserire le informazioni del database (username,password,dbname)
- - lanciare ``` composer install ```
- - lanciare ``` php artisan migrate --seed``` 
- - di default si crea l'utente ``` admin ``` con password ```admin ``` per accedere la prima volta.
- 
 
 ## Sviluppatori (attualmente)
 Flavio Barachino <flavio.barachino@lavorain.cloud>
 
+## Consulenza e richiesta
+Mariano Benzi
+
 ### Vuoi partecipare?
-Scrivimi con le tue proposte, le tue critiche, i tuoi suggerimenti.
+Scrivici con le tue proposte, le tue critiche, i tuoi suggerimenti.
+AdimGest <adimegest@lavorain.cloud>
