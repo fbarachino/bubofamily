@@ -20,4 +20,4 @@ Mariano Benzi
 
 ### Vuoi partecipare?
 Scrivici con le tue proposte, le tue critiche, i tuoi suggerimenti.
-AdimGest <adimegest@lavorain.cloud>
+AdimGest <adimgest@lavorain.cloud>
