@@ -72,7 +72,7 @@
 		<li><a class="active" href="/admin/users/newRole">Gruppi</a></li>
 		<li><a class="active" href="/admin/users/newPermission">Permessi</a></li>
 		-->
-		<li><a class="active" href="/admin/users/assignRole">Assegna Ruoli</a></li>
+		<li><a class="active" href="/admin/users/givepermission">Assegna Permessi</a></li>
 		<!--
 		<li><a href="/login">Login Page</a></li>
 		-->
