@@ -1,12 +1,13 @@
 $(document).ready(function() {
 	$('#automobili').DataTable({
 		responsive: true,
-        fields: [
-			{
-				label:"Data",
-				type: "datetime"
-			}
-		]
+        columnDefs: [
+            {
+                target: 0,
+                render: DataTable.render.date(),
+            }
+        ],
+		"order": [[0, "desc"]]
 	});
 });
 

@@ -38,7 +38,7 @@
 								<tr>
 									<td><a href="progetti/detail/{{ $progetto->progetto }}">{{
 											$progetto->nome; }}</a></td>
-									<td>{{ date_format(date_create($progetto->data_creazione),'d/m/Y'); }}</td>
+									<td>{{ $progetto->data_creazione}}</td>
 									<td>{{ $progetto->stato; }}</td>
 									<td>{{ $progetto->name; }}</td>
 									<td>{{ $progetto->budget; }}</td>

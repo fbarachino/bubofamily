@@ -62,7 +62,7 @@
             		<tbody>
             		@foreach($lettureEnel as $lettura)
             			<tr>
-            				<td>{{ date_format(date_create($lettura->enel_date),'d/m/Y'); }}</td>
+            				<td>{{ $lettura->enel_date }}</td>
             				<td>{{ $lettura->enel_A; }}</td>
             				<td>{{ $lettura->enel_R; }}</td>
             				<td>{{ $lettura->enel_F1; }}</td>

@@ -20,22 +20,9 @@
 
         <!-- Custom Fonts -->
         <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<!-- Latest compiled and minified CSS
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
--->
-<!-- Latest compiled and minified JavaScript
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>-->
 
-<!-- (Optional) Latest compiled and minified JavaScript translation files
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>-->
-
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- Datatables with datetime and locales -->
+        <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/date-1.4.1/r-2.4.1/sb-1.4.2/sp-2.1.2/datatables.min.css" rel="stylesheet"/>
         @section('head_additional')
         @show
     </head>
@@ -116,11 +103,13 @@
         <!-- Metis Menu Plugin JavaScript -->
         <script src="/js/metisMenu.min.js"></script>
 
-        <!-- DataTables JavaScript -->
+        <!-- DataTables JavaScript
         <script src="/js/dataTables/jquery.dataTables.min.js"></script>
-        <script src="/js/dataTables/dataTables.bootstrap.min.js"></script>
+        <script src="/js/dataTables/dataTables.bootstrap.min.js"></script>-->
 
         <!-- Custom Theme JavaScript -->
+        <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/date-1.4.1/r-2.4.1/sb-1.4.2/sp-2.1.2/datatables.min.js"></script>
+        <script src="/js/momentjs.js"></script>
         <script src="/js/startmin.js"></script>
 	@section('script')
 	@show

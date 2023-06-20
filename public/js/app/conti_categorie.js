@@ -1,22 +1,12 @@
 $(document).ready(function() {
 	$('#listrapportoS').DataTable({
-		responsive: true,
-        fields: [
-			{
-				label:"Data",
-				type: "datetime"
-			}
-		]
+		"responsive": true,
+		"order": [[0, "asc"]]
 	});
 
 	$('#listrapportoE').DataTable({
-		responsive: true,
-        fields: [
-			{
-				label:"Data",
-				type: "datetime"
-			}
-		]
+		"responsive": true,
+		"order": [[0, "asc"]]
 	});
 
     $('#categorie').DataTable({

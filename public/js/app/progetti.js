@@ -1,13 +1,14 @@
 $(document).ready(function() {
 
 	$('#tab_progetti').DataTable({
-		responsive: true,
-		fields: [
-			{
-				label:"Data",
-				type: "datetime"
-			}
-		]
+		"responsive": true,
+        columnDefs: [
+            {
+                target: 1,
+                render: DataTable.render.date(),
+            }
+        ],
+		"order": [[1, "desc"]]
 	});
 });
 
