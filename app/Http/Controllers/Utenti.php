@@ -85,7 +85,5 @@ class Utenti extends Controller
 
         }
         return redirect('/admin/users/givepermission');
-
-        //return dd($user);
     }
 }
