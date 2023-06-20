@@ -24,7 +24,7 @@
 
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered table-hover"
-							id="automobili">
+							id="listaAutomobili">
 
 							<thead>
 								<tr>
@@ -147,7 +147,7 @@
 										type="text" class="form-control" id="note" name="note">
 								</div>
 							</div>
-					
+
 					</div>
 				</div>
 			</div>
