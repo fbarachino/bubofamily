@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>BuBo Family - made with <3 - </title>
+        <title>{{env('APP_NAME')}}</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -20,13 +20,13 @@
 
         <!-- Custom Fonts -->
         <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<!-- Latest compiled and minified CSS 
+<!-- Latest compiled and minified CSS
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 -->
-<!-- Latest compiled and minified JavaScript 
+<!-- Latest compiled and minified JavaScript
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>-->
 
-<!-- (Optional) Latest compiled and minified JavaScript translation files 
+<!-- (Optional) Latest compiled and minified JavaScript translation files
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>-->
 
 
@@ -71,7 +71,7 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                            <!-- input group 
+                            <!-- input group
                                 <!--<div class="input-group custom-search-form">
                                     <input type="text" class="form-control" placeholder="Search...">
                                     <span class="input-group-btn">
@@ -83,7 +83,7 @@
                                 <!-- /input-group -->
                             </li>
                             <!-- MENU -->
-                           @include('components.menu') 
+                           @include('components.menu')
                         <!-- / Menu -->
                         </ul>
                     </div>
@@ -98,7 +98,7 @@
                     @section('content')
                     	Contenuto
                     @show
-                    
+
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -115,7 +115,7 @@
 
         <!-- Metis Menu Plugin JavaScript -->
         <script src="/js/metisMenu.min.js"></script>
-        
+
         <!-- DataTables JavaScript -->
         <script src="/js/dataTables/jquery.dataTables.min.js"></script>
         <script src="/js/dataTables/dataTables.bootstrap.min.js"></script>
