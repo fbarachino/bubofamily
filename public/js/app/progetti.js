@@ -4,11 +4,11 @@ $(document).ready(function() {
 		"responsive": true,
         columnDefs: [
             {
-                target: 0,
+                target: 1,
                 render: DataTable.render.date(),
             }
         ],
-		"order": [[0, "desc"]]
+		"order": [[1, "desc"]]
 	});
 });
 

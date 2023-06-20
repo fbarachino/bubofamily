@@ -71,7 +71,7 @@
             			}
             			@endphp
             			<tr>
-            				<td>{{ date_format(date_create($lettura->gas_date),'d/m/Y'); }}</td>
+            				<td>{{ $lettura->gas_date }}</td>
             				<td>{{ $lettura->gas_lettura; }}</td>
             				@if(!is_null($dateprec))
                 				<td>{{ $diffdate ?? '' }}</td>
