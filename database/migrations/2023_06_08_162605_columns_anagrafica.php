@@ -13,14 +13,14 @@ class ColumnsAnagrafica extends Migration
      */
     public function up()
     {
-        Schema::table('anagraficas', function (Blueprint $table) {
-            //
-		$table->longText('ang_indirizzo');
+        /*Schema::table('anagraficas', function (Blueprint $table) {
+         /*   //
+	//		$table->longText('ang_indirizzo');
 		$table->string('ang_CAP');
 		$table->string('ang_Citta');  
 		$table->string('ang_Provincia'); 
 		$table->string('ang_telefono');
-        });
+        });*/
     }
 
     /**

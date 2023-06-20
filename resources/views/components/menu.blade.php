@@ -49,7 +49,21 @@
 @endcan @can('progetti')
 <li><a href="{{ route('progetti'); }}"><i class="fa fa-list fa-fw"></i>
 		Progetti <span class="fa arrow"></span></a></li>
-@endcan @can('amministrazione')
+
+@endcan
+@can('gruppi')
+<li><a href="{{ route('gruppi'); }}"><i class="fa fa-group fa-fw"></i>
+		Gruppi <span class="fa arrow"></span></a></li>
+@endcan
+@can('rivista')
+<li><a href="{{ route('rivista'); }}"><i class="fa fa-newspaper-o fa-fw"></i>
+		Rivista <span class="fa arrow"></span></a></li>
+@endcan
+@can('associazione')
+<li><a href="{{ route('associazione'); }}"><i class="fa fa-black-tie fa-fw"></i>
+		Associazione <span class="fa arrow"></span></a></li>
+@endcan
+@can('amministrazione')
 <li><a href="#"><i class="fa fa-gears fa-fw"></i>Amministrazione<span
 		class="fa arrow"></span></a>
 	<ul class="nav nav-second-level">
@@ -58,9 +72,9 @@
 		<li><a class="active" href="/admin/users/newRole">Gruppi</a></li>
 		<li><a class="active" href="/admin/users/newPermission">Permessi</a></li>
 		-->
-		<li><a class="active" href="/admin/users/assignRole">Assegna Ruoli</a></li>
-		<!--  
-		<li><a href="/login">Login Page</a></li> 
+		<li><a class="active" href="/admin/users/givepermission">Assegna Permessi</a></li>
+		<!--
+		<li><a href="/login">Login Page</a></li>
 		-->
 	</ul> <!-- /.nav-second-level --></li>
 @endcan
