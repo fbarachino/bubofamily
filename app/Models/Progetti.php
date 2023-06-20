@@ -66,4 +66,15 @@ class Progetti extends Model
         ]);
 
     }
+
+    public static function riapriProgetto($progetto_id)
+    {
+        DB::table('progettis')
+        ->where('id','=', $progetto_id)
+        ->update([
+            'stato'=>'aperto',
+            'data_fine'=>null,
+        ]);
+    }
+
 }

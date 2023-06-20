@@ -19,28 +19,28 @@ class ProgettiController extends Controller
             'progetti'=>Progetti::getProgetti()
         ]);
     }
-    
+
     public function nuovoProgetto()
     {
         return view('progetti.new',['coordinatori'=>User::getUsers()]);
     }
-    
+
     public function getCoordinatori()
     {
         return json_encode(User::getUsers());
     }
-    
+
     public function salvaProgetto(Request $request)
     {
         Progetti::saveProgetto($request);
         return redirect(Route('progetti'));
     }
-    
+
     public function deleteProgetto(Request $param) {
         Progetti::delProgetto($param['id']);
         return redirect(Route('progetti'));
     }
-    
+
 
     public function dettaglioProgetto($id)
     {
@@ -51,5 +51,22 @@ class ProgettiController extends Controller
         return view('progetti.dettaglio',['dettaglio'=>$progetto, 'righe'=>$righe, 'tot'=>$costo_tot]);
         //dd($righe);
     }
-    
+
+    public function chiudiProgetto(Request $id)
+    {
+        Progetti::chiudiProgetto($id['id']);
+        return redirect(Route('progetti'));
+    }
+
+    public function riapriProgetto(Request $id)
+    {
+        Progetti::riapriProgetto($id['id']);
+        return redirect(Route('progetti'));
+    }
+
+    public function stampaPDF(Request $id)
+    {
+
+    }
+
 }

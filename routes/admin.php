@@ -128,6 +128,8 @@ Route::group(['middleware'=>['permission:amministrazione']], function(){
     Route::post('users/new',[Utenti::class,'createUser']);
     Route::get('users/roles',[Utenti::class,'listRoles']);
     Route::get('users/delete/{id}',[Utenti::class,'deleteUser']);
+    Route::get('users/givepermission',[Utenti::class,'givePermissionToUser']);
+    Route::post('users/givepermission',[Utenti::class,'assignPermission']);
 });
 // PROGETTI
 Route::group(['middleware'=>['permission:progetti']], function(){
@@ -141,6 +143,10 @@ Route::group(['middleware'=>['permission:progetti']], function(){
     Route::get('progetti/detail/edit/{id}', [RigaProgettoController::class, 'editRiga']);
     Route::post('progetti/rigaupdate', [RigaProgettoController::class, 'updateRiga']);
     Route::get('progetti/coordinatori', [ProgettiController::class, 'getCoordinatori']);
+    Route::get('progetti/close',[ProgettiController::class, 'chiudiProgetto']);
+    Route::get('progetti/reopen',[ProgettiController::class, 'riapriProgetto']);
+
+
 });
 
 
