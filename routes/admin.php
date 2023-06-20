@@ -128,6 +128,7 @@ Route::group(['middleware'=>['permission:amministrazione']], function(){
     Route::post('users/new',[Utenti::class,'createUser']);
     Route::get('users/roles',[Utenti::class,'listRoles']);
     Route::get('users/delete/{id}',[Utenti::class,'deleteUser']);
+//});
     Route::get('users/givepermission',[Utenti::class,'givePermissionToUser']);
     Route::post('users/givepermission',[Utenti::class,'assignPermission']);
 });
