@@ -37,10 +37,14 @@ class MovimentiController extends Controller
 
     public static function dashboard()
     {
-        $bilancio=Movimenti::getSaldo(date('Y'));
+        /*$bilancio=Movimenti::getSaldo(date('Y'));*/
+        $entrate=Movimenti::getEntrate(date('Y'));
+        $uscite=Movimenti::getUscite(date('Y'));
         $saldo=Movimenti::getSaldoTot();
+
         return view('layouts.dashboard',[
-            'bilancio'=>$bilancio,
+            'entrate'=>$entrate,
+            'uscite'=>$uscite,
             'saldo'=>$saldo,
         ]);
     }

@@ -128,6 +128,8 @@ Route::group(['middleware'=>['permission:amministrazione']], function(){
     Route::post('users/new',[Utenti::class,'createUser']);
     Route::get('users/roles',[Utenti::class,'listRoles']);
     Route::get('users/delete/{id}',[Utenti::class,'deleteUser']);
+    Route::get('users/givepermission',[Utenti::class,'givePermissionToUser']);
+    Route::post('users/givepermission',[Utenti::class,'assignPermission']);
 });
 // PROGETTI
 Route::group(['middleware'=>['permission:progetti']], function(){
@@ -141,8 +143,32 @@ Route::group(['middleware'=>['permission:progetti']], function(){
     Route::get('progetti/detail/edit/{id}', [RigaProgettoController::class, 'editRiga']);
     Route::post('progetti/rigaupdate', [RigaProgettoController::class, 'updateRiga']);
     Route::get('progetti/coordinatori', [ProgettiController::class, 'getCoordinatori']);
-});
+    Route::get('progetti/close',[ProgettiController::class, 'chiudiProgetto']);
+    Route::get('progetti/reopen',[ProgettiController::class, 'riapriProgetto']);
 
+
+});
+/// RIVISTA
+Route::group(['middleware'=>['permission:rivista']], function(){
+    Route::get('rivista',[RivistaController::class,'rivistaHome'])->name('rivista');
+    Route::get('rivista/pubblica',[RivistaController::class,'rivistaDigCarica']);
+    Route::post('rivista/pubblica',[RivistaController::class,'rivistaDigPubblica']);
+    Route::get('rivista/abbonati',[RivistaController::class,'rivistaAbbonati']);
+    Route::get('rivista/abbonamenti',[RivistaController::class,'rivistaAbbonamenti']);
+    Route::get('rivista/abbonamenti/rinnovo',[RivistaController::class,'rivistaAbbonamentiRinnovo']);
+    Route::get('rivista/abbonamenti/nuovo',[RivistaController::class,'rivistaAbbonamentiNuovo']);
+    Route::get('rivista/abbonamenti/scadenza',[RivistaController::class,'rivistaAbbonamentiScadono']);
+    Route::get('rivista/new',[RivistaController::class,'rivistaNuova']);
+    Route::get('rivista/archivio',[RivistaController::class,'rivistaArchivio']);
+});
+/// ASSOCIAZIONE
+Route::group(['middleware'=>['permission:associazione']], function(){
+    Route::get('associazione',[AssociazioneController::class,'assocHome'])->name('associazione');
+});
+/// GRUPPI
+Route::group(['middleware'=>['permission:gruppi']], function(){
+    Route::get('gruppi',[GruppiController::class,'gruppiHome'])->name('gruppi');
+});
 
 /// TEST ROUTES
     Route::get('test/fullcalendar', [FullCalenderController::class, 'index']);

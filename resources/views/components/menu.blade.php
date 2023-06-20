@@ -49,7 +49,10 @@
 @endcan @can('progetti')
 <li><a href="{{ route('progetti'); }}"><i class="fa fa-list fa-fw"></i>
 		Progetti <span class="fa arrow"></span></a></li>
-@endcan @can('amministrazione')
+
+@endcan
+
+@can('amministrazione')
 <li><a href="#"><i class="fa fa-gears fa-fw"></i>Amministrazione<span
 		class="fa arrow"></span></a>
 	<ul class="nav nav-second-level">
@@ -58,9 +61,9 @@
 		<li><a class="active" href="/admin/users/newRole">Gruppi</a></li>
 		<li><a class="active" href="/admin/users/newPermission">Permessi</a></li>
 		-->
-		<li><a class="active" href="/admin/users/assignRole">Assegna Ruoli</a></li>
-		<!--  
-		<li><a href="/login">Login Page</a></li> 
+		<li><a class="active" href="/admin/users/givepermission">Assegna Permessi</a></li>
+		<!--
+		<li><a href="/login">Login Page</a></li>
 		-->
 	</ul> <!-- /.nav-second-level --></li>
 @endcan
