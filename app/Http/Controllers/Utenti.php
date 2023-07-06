@@ -86,5 +86,20 @@ class Utenti extends Controller
         }
         return redirect('/admin/users/givepermission');
     }
+
+    function giveRoleToUser()
+    {
+        $users=User::all();
+        $roles=Role::all();
+        return view('users.assignrole',['users'=>$users,'roles'=>$roles]);
+    }
+    
+    function assignRole(Request $request)
+    {
+       //$user=User::getUserbyId($request['user']);
+       $user=User::findOrFail($request['user']);
+       $user->assignRole($request['role']);
+       return redirect('/admin/users/giverole');
+    }
 }
 
