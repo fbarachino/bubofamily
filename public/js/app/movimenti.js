@@ -23,7 +23,8 @@ var strDate = d.getFullYear() + '-' +
 
 $(document).on('click', '.open_modal_spesa', function() {
 	console.log(strDate);
-	$('#form').find('input[type="text"], textarea, input[type="number"],input[type="date"],select').val("");
+	$("#categoria").empty();
+	$('#form').find('input[type="text"], textarea, input[type="number"],input[type="date"],option').val("");
 	$('#form').find('input[type="date"]').val(strDate);
 	$('#myModal').modal('show');
 	$('.modal-title').text(' Nuovo movimento in uscita');
@@ -40,7 +41,8 @@ $(document).on('click', '.open_modal_spesa', function() {
 
 $(document).on('click', '.open_modal_entrata', function() {
 	console.log(strDate);
-	$('#form').find('input[type="text"], textarea, input[type="number"],select').val("");
+	$("#categoria").empty();
+	$('#form').find('input[type="text"], textarea, input[type="number"],option').val("");
 	$('#form').find('input[type="date"]').val(strDate);
 	$('#myModal').modal('show');
 	$('.modal-title').text('Nuovo movimento in entrata');
@@ -58,6 +60,7 @@ $(document).on('click', '.open_modal_entrata', function() {
 $(document).on('click', '.open_modal_modifica', function() {
 	var url = "/admin/movimenti/modify";
 	var riga_id = $(this).val();
+	$("#categoria").empty();
 	$.getJSON(url + '/' + riga_id, function(data) {
 		// success data
 		console.log(data[0]);

@@ -22,7 +22,7 @@ class Categorie extends Model
 
     public static function listSpesa()
     {
-        return DB::table('categories')->where('cat_spesa','=',1)->get();
+        return DB::table('categories')->where('cat_uscita','=',1)->get(); 
     }
 
     public static function listEntrata()

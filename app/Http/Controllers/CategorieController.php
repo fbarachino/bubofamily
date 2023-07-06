@@ -54,7 +54,7 @@ class CategorieController extends Controller
         $categorie=Categorie::listSpesa();
         return json_encode($categorie);
     }
-
+ 
     public function apiListEntrata()
     {
         $categorie=Categorie::listEntrata();
