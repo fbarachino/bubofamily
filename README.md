@@ -1,4 +1,4 @@
-# Gestionale Per le associazioni
+# Gestionale per le famiglie
 Piccolo sistema di gestione. 
 Al momento sono presenti:
 
@@ -8,16 +8,14 @@ Al momento sono presenti:
  - Un sistema di gestione delle autovetture e relative operazioni effettuate su di esse. [Da rivedere]
  - Una rubrica telefonica e degli indirizzi
  - Una gestione dei progetti (ancora in sviluppo) [Da rivedere]
- - Una gestione degli utenti e dei gruppi e relativi permessi. [Da rivedere]
+ - Una gestione degli utenti e dei gruppi e relativi permessi. [Da migliorare]
 
 *Sviluppato in php, mysql, jquery su framework Laravel*.
 
 ## Sviluppatori (attualmente)
 Flavio Barachino <flavio.barachino@lavorain.cloud>
 
-## Consulenza e richiesta
-Mariano Benzi
 
 ### Vuoi partecipare?
 Scrivici con le tue proposte, le tue critiche, i tuoi suggerimenti.
-AdimGest <adimgest@lavorain.cloud>
+Gestionale <bubofamily@lavorain.cloud>
