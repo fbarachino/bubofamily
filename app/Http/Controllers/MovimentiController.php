@@ -146,7 +146,7 @@ class MovimentiController extends Controller
     public function deleteMovimenti(Request $request)
     {
         Movimenti::deleteMovimento($request['id']);
-        return redirect(route('movimenti'));
+        return redirect()->back();
 
     }
 
