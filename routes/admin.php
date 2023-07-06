@@ -146,6 +146,7 @@ Route::group(['middleware'=>['permission:progetti']], function(){
     Route::get('progetti/coordinatori', [ProgettiController::class, 'getCoordinatori']);
     Route::get('progetti/close',[ProgettiController::class, 'chiudiProgetto']);
     Route::get('progetti/reopen',[ProgettiController::class, 'riapriProgetto']);
+    Route::get('progetti/print',[ProgettiController::class,'stampaPDFProgetto']);
 
 
 });

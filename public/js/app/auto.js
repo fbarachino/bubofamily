@@ -1,4 +1,10 @@
 $(document).ready(function() {
+	$('#listaAutomobili').DataTable({
+		responsive: true
+	});
+});
+
+$(document).ready(function() {
 	$('#automobili').DataTable({
 		responsive: true,
         columnDefs: [
