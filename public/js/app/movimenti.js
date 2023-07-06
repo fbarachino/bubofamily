@@ -23,20 +23,36 @@ var strDate = d.getFullYear() + '-' +
 
 $(document).on('click', '.open_modal_spesa', function() {
 	console.log(strDate);
-	$('#form').find('input[type="text"], textarea, input[type="number"],input[type="date"]').val("");
+	$('#form').find('input[type="text"], textarea, input[type="number"],input[type="date"],select').val("");
 	$('#form').find('input[type="date"]').val(strDate);
 	$('#myModal').modal('show');
 	$('.modal-title').text(' Nuovo movimento in uscita');
 	$('#form').attr('action', '/admin/movimenti/spesa');
+	$.getJSON("/admin/service/catlistSpesa", {}, function(data) {
+		$.each(data, function(i, item) {
+			$("select[name='mov_fk_categoria']").append(
+				new Option(item.cat_name, item.id)
+			)
+		}
+		);
+	});
 });
 
 $(document).on('click', '.open_modal_entrata', function() {
 	console.log(strDate);
-	$('#form').find('input[type="text"], textarea, input[type="number"]').val("");
+	$('#form').find('input[type="text"], textarea, input[type="number"],select').val("");
 	$('#form').find('input[type="date"]').val(strDate);
 	$('#myModal').modal('show');
 	$('.modal-title').text('Nuovo movimento in entrata');
 	$('#form').attr('action', '/admin/movimenti/entrata');
+	$.getJSON("/admin/service/catlistEntrata", {}, function(data) {
+		$.each(data, function(i, item) {
+			$("select[name='mov_fk_categoria']").append(
+				new Option(item.cat_name, item.id)
+			)
+		}
+		);
+	});
 });
 
 $(document).on('click', '.open_modal_modifica', function() {
@@ -62,7 +78,7 @@ $(document).on('click', '.open_modal_modifica', function() {
 		$('#form').attr('action', '/admin/movimenti/modify');
 		$('#form').append('<input type="hidden" name="id" value="' + riga_id + '">');
 	});
-});
+
 
 $.getJSON("/admin/service/catlist", {}, function(data) {
 	$.each(data, function(i, item) {
@@ -71,6 +87,7 @@ $.getJSON("/admin/service/catlist", {}, function(data) {
 		)
 	}
 	);
+});
 });
 
 $.getJSON("/admin/service/taglist", {}, function(data) {

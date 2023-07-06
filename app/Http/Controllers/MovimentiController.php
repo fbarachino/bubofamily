@@ -53,7 +53,7 @@ class MovimentiController extends Controller
     {
         Movimenti::insSpesa($request);
         $mov=Movimenti::getList();
-        $categorie=Categorie::list();
+        $categorie=Categorie::listSpesa();
         $tags=tag::getList();
         return view('conti.movimenti.list',
             [
@@ -68,7 +68,7 @@ class MovimentiController extends Controller
     {
         Movimenti::insEntrata($request);
         $mov=Movimenti::getList();
-        $categorie=Categorie::list();
+        $categorie=Categorie::listEntrata();
         $tags=tag::getList();
         return view('conti.movimenti.list',
             [

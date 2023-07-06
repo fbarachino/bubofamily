@@ -17,7 +17,17 @@ class Categorie extends Model
     
     public static function list()
     {
-        return DB::table('categories')->orderBy('cat_name')->get();
+        return self::all();
+    }
+
+    public static function listSpesa()
+    {
+        return DB::table('categories')->where('cat_spesa','=',1)->get();
+    }
+
+    public static function listEntrata()
+    {
+        return DB::table('categories')->where('cat_entrata','=',1)->get();
     }
     
     public static function inserisci($name){
