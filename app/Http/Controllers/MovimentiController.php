@@ -140,13 +140,13 @@ class MovimentiController extends Controller
     public function updatePostMovimenti(Request $request)
     {
         Movimenti::updateMovimenti($request);
-        return redirect(route('movimenti'));
+        return redirect()->back();
     }
 
     public function deleteMovimenti(Request $request)
     {
         Movimenti::deleteMovimento($request['id']);
-        return redirect(route('movimenti'));
+        return redirect()->back();
 
     }
 

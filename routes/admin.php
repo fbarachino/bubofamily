@@ -116,14 +116,7 @@ Route::group(['middleware'=>['permission:contatti']], function(){
 
 // GRUPPI E PERMESSI
 Route::group(['middleware'=>['permission:amministrazione']], function(){
-    /*
-    Route::get('role/new/{ruolo}', [Utenti::class, 'createRole']);
-    Route::post('group/new', [Utenti::class, 'saveNuovoGruppo']);
-    Route::get('permesso/new/{permesso}', [Utenti::class, 'createPermission']);
-    Route::post('permesso/new', [Utenti::class, 'saveNuovoPermesso']);
-    Route::get('permesso/assign', [Utenti::class, 'vw_assignToGroup']);
-    Route::post('permesso/assign', [Utenti::class, 'assignPermissionToGroup']);
-    */
+    
     Route::get('users/new',[Utenti::class,'addUser']);
     Route::post('users/new',[Utenti::class,'createUser']);
     Route::get('users/roles',[Utenti::class,'listRoles']);
@@ -134,6 +127,7 @@ Route::group(['middleware'=>['permission:amministrazione']], function(){
     Route::get('users/giverole',[Utenti::class,'giveRoleToUser']);
     Route::post('users/giverole',[Utenti::class,'assignRole']);
 });
+
 // PROGETTI
 Route::group(['middleware'=>['permission:progetti']], function(){
     Route::get('progetti', [ProgettiController::class, 'listaProgetto'])->name('progetti');
@@ -149,9 +143,8 @@ Route::group(['middleware'=>['permission:progetti']], function(){
     Route::get('progetti/close',[ProgettiController::class, 'chiudiProgetto']);
     Route::get('progetti/reopen',[ProgettiController::class, 'riapriProgetto']);
     Route::get('progetti/print',[ProgettiController::class,'stampaPDFProgetto']);
-
-
 });
+
 /// RIVISTA
 Route::group(['middleware'=>['permission:rivista']], function(){
     Route::get('rivista',[RivistaController::class,'rivistaHome'])->name('rivista');
@@ -165,10 +158,12 @@ Route::group(['middleware'=>['permission:rivista']], function(){
     Route::get('rivista/new',[RivistaController::class,'rivistaNuova']);
     Route::get('rivista/archivio',[RivistaController::class,'rivistaArchivio']);
 });
+
 /// ASSOCIAZIONE
 Route::group(['middleware'=>['permission:associazione']], function(){
     Route::get('associazione',[AssociazioneController::class,'assocHome'])->name('associazione');
 });
+
 /// GRUPPI
 Route::group(['middleware'=>['permission:gruppi']], function(){
     Route::get('gruppi',[GruppiController::class,'gruppiHome'])->name('gruppi');
