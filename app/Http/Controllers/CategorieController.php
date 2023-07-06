@@ -48,4 +48,16 @@ class CategorieController extends Controller
         $categorie = Categorie::getById($id);
         return json_encode($categorie);
     }
+
+    public function apiListSpesa()
+    {
+        $categorie=Categorie::listSpesa();
+        return json_encode($categorie);
+    }
+ 
+    public function apiListEntrata()
+    {
+        $categorie=Categorie::listEntrata();
+        return json_encode($categorie);
+    }
 }

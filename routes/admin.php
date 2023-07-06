@@ -67,6 +67,8 @@ Route::group(['middleware'=>['permission:conti']], function(){
     Route::get('service/catlist', [CategorieController::class,'apiList']);
     Route::get('service/taglist', [TagController::class,'apiList']);
     Route::get('service/rolesList', [Utenti::class,'listRoles']);
+    Route::get('service/catlistSpesa', [CategorieController::class,'apiListSpesa']);
+    Route::get('service/catlistEntrata', [CategorieController::class,'apiListEntrata']);
 
 // TAGS
     Route::get('tags', [TagController::class,'listTags'])->name('tags');
