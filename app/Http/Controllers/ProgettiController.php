@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\RigaProgetto;
 use function GuzzleHttp\json_encode;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProgettiController extends Controller
 {
@@ -64,9 +65,14 @@ class ProgettiController extends Controller
         return redirect(Route('progetti'));
     }
 
-    public function stampaPDF(Request $id)
+    public function stampaPDFProgetto(Request $id)
     {
-
+        $progetto_id=$id['id'];
+        $progetto = Progetti::getProgettoById($progetto_id);
+        $righe = RigaProgetto::getRigheProgetto($progetto_id);
+        $costo_tot=RigaProgetto::getCostoRighe($progetto_id);
+        $pdf=Pdf::loadview('progetti.PDF.scheda',['dettaglio'=>$progetto,'righe'=>$righe, 'tot'=>$costo_tot]);  
+        return $pdf->stream();
     }
 
 }
