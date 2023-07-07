@@ -21,6 +21,7 @@
 							<thead>
 								<tr>
 									<th>Categoria</th>
+									<th>Classificazione</th>
 									<th>Azione</th>
 								</tr>
 							</thead>
@@ -30,6 +31,14 @@
 									<td><a
 										href="movimenti/report/movimentibycat?cat={{ $categoria->id }}">{{
 											$categoria->cat_name; }}</a></td>
+									<td>
+											@if($categoria->cat_entrata == 1)
+											Entrata ,
+											@endif
+											@if($categoria->cat_uscita == 1)
+											Uscita
+											@endif
+									</td>
 									<td>
 										<button class="btn btn-warning btn-detail open_modal"
 											value="{{$categoria->id}}">Edit</button>&nbsp; <a
