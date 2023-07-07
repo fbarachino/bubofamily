@@ -18,7 +18,7 @@ class CategorieController extends Controller
     
     public static function insCategorie(Request $request)
     {
-        Categorie::inserisci($request['cat_name']);
+        Categorie::inserisci($request);
         return view('conti.categorie.list',['categorie'=>Categorie::list()]);
     }
     

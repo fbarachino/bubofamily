@@ -47,38 +47,51 @@
 			</div>
 		</div>
 	</div>
-</div>
-<!-- MODAL MODIFICA -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Modifica Categoria</h4>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-md-8">
-						<form action="/admin/categorie/modify" method="POST">
-							@csrf <label for="H_cat_cat_name" class="form-label">Categoria</label>
-							<input type="text" class="form-control" id="H_cat_cat_name"
-								size="50" name="cat_name" value="" size="50">
 
+	<!-- MODAL MODIFICA -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Modifica Categoria</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-8">
+							<form action="/admin/categorie/modify" method="POST">
+								@csrf <label for="H_cat_cat_name" class="form-label">Categoria</label>
+								<input type="text" class="form-control" id="H_cat_cat_name"
+									size="50" name="cat_name" value="" size="50">
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-check form-switch">
+								<input class="form-check-input" type="checkbox" role="switch" id="cat_entrata" name="cat_entrata" >
+								<label class="form-check-label" for="cat_entrata">Entrata</label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-check form-switch">
+								<input class="form-check-input" type="checkbox" role="switch" id="cat_uscita" name="cat_uscita">
+								<label class="form-check-label" for="cat_uscita">Uscita</label>
+							</div>
+						</div>		
 					</div>
 				</div>
+				<div class="modal-footer">
+					<input type="hidden" name="id" id="H_cat_id">
+					<button type="submit" class="btn btn-primary">Modifica</button>
+				</div>
+				</form>
 			</div>
-			<div class="modal-footer">
-				<input type="hidden" name="id" id="H_cat_id">
-				<button type="submit" class="btn btn-primary">Modifica</button>
-			</div>
-			</form>
 		</div>
 	</div>
-</div>
-<!-- FINE MODAL MODIFICA -->
-<!-- MODAL INSERIMENTO -->
-	<div class="modal fade" id="myModal_new" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
+	<!-- FINE MODAL MODIFICA -->
+	<!-- MODAL INSERIMENTO -->
+	<div class="modal fade" id="myModal_new" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -89,10 +102,25 @@
 						<div class="col-md-8">
 							<!-- FORM INSERIMENTO NUOVA CATEGORIA -->
 							<form action="" method="POST">
-								@csrf <label for="categoria" class="form-label">Categoria</label>
+								@csrf 
+								<label for="categoria" class="form-label">Categoria</label>
 								<input type="text" class="form-control" id="categoria"
 									name="cat_name" size="50">
 
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-check form-switch">
+									<input class="form-check-input" type="checkbox" role="switch" id="cat_entrata" name="cat_entrata" >
+									<label class="form-check-label" for="cat_entrata">Entrata</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-check form-switch">
+									<input class="form-check-input" type="checkbox" role="switch" id="cat_uscita" name="cat_uscita">
+									<label class="form-check-label" for="cat_uscita">Uscita</label>
+								</div>
+							</div>		
 						</div>
 					</div>
 				</div>
@@ -103,11 +131,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
 <!-- FINE MODAL INSERIMENTO -->
-
-
-
-
 <!-- /.col-lg-12 -->
 
 @endsection

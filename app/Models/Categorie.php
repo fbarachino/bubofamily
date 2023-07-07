@@ -30,14 +30,35 @@ class Categorie extends Model
         return DB::table('categories')->where('cat_entrata','=',1)->get();
     }
     
-    public static function inserisci($name){
-       return DB::table('categories')->insert(['cat_name'=> $name]);
+    public static function inserisci($request){
+        if ($request['cat_entrata']=='on')
+        {
+            $entrata=1;
+        }
+        else
+        {
+            $entrata=0;
+        }
+
+        if ($request['cat_uscita']=='on')
+        {
+            $uscita=1;
+        }
+        else
+        {
+            $uscita=0;
+        }
+       return DB::table('categories')->insert([
+        'cat_name'=> $request['cat_name'],
+        'cat_entrata'=>$entrata,
+        'cat_uscita'=>$uscita
+        ]);
     }
     
     public static function deleteById($id){
-    DB::table('categories')
-    ->where('id','=', $id)
-    ->delete();
+        DB::table('categories')
+        ->where('id','=', $id)
+        ->delete();
     }
     
     public static function getById($id) {
@@ -46,11 +67,30 @@ class Categorie extends Model
         ->get();
     }
     
-    public static function updateNameById($id,$name) {
+    public static function updateNameById($request) {
+        if ($request['cat_entrata']=='on')
+        {
+            $entrata=1;
+        }
+        else
+        {
+            $entrata=0;
+        }
+
+        if ($request['cat_uscita']=='on')
+        {
+            $uscita=1;
+        }
+        else
+        {
+            $uscita=0;
+        }
         DB::table('categories')
-        ->where('id','=', $id)
+        ->where('id','=', $request['id'])
         ->update([
-            'cat_name' => $name,
+            'cat_name' => $request['name'],
+            'cat_entrata' => $entrata,
+            'cat_uscita'=>$uscita,
         ]);
         
     }
