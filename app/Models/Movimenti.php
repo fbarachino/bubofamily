@@ -10,6 +10,8 @@ use Rap2hpoutre\FastExcel\FastExcel;
 class Movimenti extends Model
 {
     use HasFactory;
+    protected $dates = ['mov_data'];
+    protected $casts = [ 'mov_data'=>'datetime'];
 
     public static function getList() {
         return DB::table('movimentis')
@@ -179,7 +181,8 @@ class Movimenti extends Model
                 if($line['DARE']<>'')
                 {
                 $dati=[
-                    'mov_data'=>self::dateFormat(0,$line['VALUTA']),
+                    'mov_data'=>self::dateFormat(0,$line['VALUTA']), //      date_format(date_create($movimento->mov_data),'d/m/Y'
+                //    'mov_data'=>date_format(date_create($line['VALUTA']),'Y-m-d'),
                     'mov_fk_categoria'=>1,
                     'mov_descrizione'=>$line['DESCRIZIONE OPERAZIONE'],
                     'mov_importo'=>'-'.trim(str_replace(',','.',(str_replace('.','',$line['DARE'])))),
@@ -191,6 +194,7 @@ class Movimenti extends Model
                 {
                     $dati=[
                         'mov_data'=>self::dateFormat(0,$line['VALUTA']),
+                        //'mov_data'=>date_format(date_create($line['VALUTA']),'Y-m-d'),
                         'mov_fk_categoria'=>1,
                         'mov_descrizione'=>$line['DESCRIZIONE OPERAZIONE'],
                         'mov_importo'=>trim(str_replace(',','.',(str_replace('.','',$line['AVERE'])))),
@@ -216,11 +220,11 @@ class Movimenti extends Model
 
         if($type)
         {
-            $string=$string->format('Y-m-d');
+           // $string=$string->format('Y-m-d');
             list($year,$month,$day) = explode('-',$string);
             return $day.'/'.$month.'/'.$year;
         } else {
-            $string=$string->format('d/m/Y');
+           // $string=$string->format('d/m/Y');
             list($day,$month,$year) =explode('/',$string);
             return $year.'-'.$month.'-'.$day;
         }

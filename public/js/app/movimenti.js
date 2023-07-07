@@ -24,24 +24,32 @@ var strDate = d.getFullYear() + '-' +
 $(document).on('click', '.open_modal_spesa', function() {
 	console.log(strDate);
 	$("#categoria").empty();
+	$("#tags").empty();
 	$('#form').find('input[type="text"], textarea, input[type="number"],input[type="date"],option').val("");
 	$('#form').find('input[type="date"]').val(strDate);
 	$('#myModal').modal('show');
 	$('.modal-title').text(' Nuovo movimento in uscita');
 	$('#form').attr('action', '/admin/movimenti/spesa');
-	$.getJSON("/admin/service/catlistSpesa", {}, function(data) {
-		$.each(data, function(i, item) {
+	$.getJSON("/admin/service/catlistSpesa", {}, function(cats) {
+		$.each(cats, function(i, cat) {
 			$("select[name='mov_fk_categoria']").append(
-				new Option(item.cat_name, item.id)
+				new Option(cat.cat_name, cat.id)
 			)
 		}
 		);
 	});
+	$.getJSON("/admin/service/taglist", {}, function(tags) {
+		$.each(tags, function(i, tag) {
+			$("select[name='mov_fk_tags']").append(
+				new Option(tag.tag_name, tag.id)
+			)
+		});
 });
-
+});
 $(document).on('click', '.open_modal_entrata', function() {
 	console.log(strDate);
 	$("#categoria").empty();
+	$("#tags").empty();
 	$('#form').find('input[type="text"], textarea, input[type="number"],option').val("");
 	$('#form').find('input[type="date"]').val(strDate);
 	$('#myModal').modal('show');
@@ -55,12 +63,20 @@ $(document).on('click', '.open_modal_entrata', function() {
 		}
 		);
 	});
+	$.getJSON("/admin/service/taglist", {}, function(data) {
+		$.each(data, function(i, item) {
+			$("select[name='mov_fk_tags']").append(
+				new Option(item.tag_name, item.id)
+			)
+		});
+});
 });
 
 $(document).on('click', '.open_modal_modifica', function() {
 	var url = "/admin/movimenti/modify";
 	var riga_id = $(this).val();
 	$("#categoria").empty();
+	$("#tags").empty();
 	$.getJSON(url + '/' + riga_id, function(data) {
 		// success data
 		console.log(data[0]);
@@ -80,23 +96,29 @@ $(document).on('click', '.open_modal_modifica', function() {
 		// $('.panel-heading').text('Modifica movimento');
 		$('#form').attr('action', '/admin/movimenti/modify');
 		$('#form').append('<input type="hidden" name="id" value="' + riga_id + '">');
+		$.getJSON("/admin/service/taglist", {}, function(data) {
+			$.each(data, function(i, item) {
+				$("select[name='mov_fk_tags']").append(
+					new Option(item.tag_name, item.id)
+				)
+			});
+		});
+		$.getJSON("/admin/service/catlist", {}, function(data) {
+			$.each(data, function(i, item) {
+				$("select[name='mov_fk_categoria']").append(
+					new Option(item.cat_name, item.id)
+				)
+			}
+			);
+		});
 	});
 
-
-$.getJSON("/admin/service/catlist", {}, function(data) {
-	$.each(data, function(i, item) {
-		$("select[name='mov_fk_categoria']").append(
-			new Option(item.cat_name, item.id)
-		)
-	}
-	);
-});
 });
 
-$.getJSON("/admin/service/taglist", {}, function(data) {
+/*$.getJSON("/admin/service/taglist", {}, function(data) {
 	$.each(data, function(i, item) {
 		$("select[name='mov_fk_tags']").append(
 			new Option(item.tag_name, item.id)
 		)
 	});
-});
+});*/

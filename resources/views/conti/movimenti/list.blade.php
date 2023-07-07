@@ -32,7 +32,7 @@
             		@foreach( $movimenti as $movimento )
             		<tr>
             			<!-- <td>{{  date_format(date_create($movimento->mov_data),'d/m/Y'); }}</td>-->
-            			<td>{{$movimento->mov_data}}</td>
+            			<td>{{ $movimento->mov_data}}</td>
                         <td>{{ $movimento->cat_name; }}</td>
             			<td>{{ $movimento->mov_descrizione; }}</td>
             			<td>&euro; {{ $movimento->mov_importo; }}</td>

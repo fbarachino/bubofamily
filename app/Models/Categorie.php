@@ -22,12 +22,12 @@ class Categorie extends Model
 
     public static function listSpesa()
     {
-        return DB::table('categories')->where('cat_uscita','=',1)->get(); 
+        return DB::table('categories')->where('cat_uscita','=',1)->orderBy('cat_name')->get(); 
     }
 
     public static function listEntrata()
     {
-        return DB::table('categories')->where('cat_entrata','=',1)->get();
+        return DB::table('categories')->where('cat_entrata','=',1)->orderBy('cat_name')->get();
     }
     
     public static function inserisci($request){
