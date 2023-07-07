@@ -59,8 +59,9 @@ class OnlySeeder extends Seeder
         $role_user->givePermissionTo('consumi');
         $role_user->givePermissionTo('conti');
         $role_user->givePermissionTo('progetti');
-            // Assegnazione permessi al ruolo guest
+        // Assegnazione permessi al ruolo guest
         $role_guest->givePermissionTo('affitti');
+        // Il ruolo admin ha già tutti i permessi da middleware
        
         $admin = User::create([            
             'name'=>'Amministratore',
