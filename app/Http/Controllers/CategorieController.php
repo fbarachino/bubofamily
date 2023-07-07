@@ -32,7 +32,7 @@ class CategorieController extends Controller
     
     public function updatePostCategorie(Request $request)
     {
-        Categorie::updateNameById($request['id'],$request['cat_name']);
+        Categorie::updateNameById($request);
         return redirect(route('categorie'));
     }
     

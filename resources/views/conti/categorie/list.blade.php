@@ -61,17 +61,19 @@
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
+		<form action="/admin/categorie/modify" method="POST">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">Modifica Categoria</h4>
 				</div>
 				<div class="modal-body">
+					
 					<div class="row">
 						<div class="col-md-8">
-							<form action="/admin/categorie/modify" method="POST">
-								@csrf <label for="H_cat_cat_name" class="form-label">Categoria</label>
-								<input type="text" class="form-control" id="H_cat_cat_name"
-									size="50" name="cat_name" value="" size="50">
+							
+								@csrf 
+								<label for="H_cat_cat_name" class="form-label">Categoria</label>
+								<input type="text" class="form-control" id="H_cat_cat_name"	size="50" name="cat_name">
 
 						</div>
 					</div>
@@ -94,8 +96,9 @@
 					<input type="hidden" name="id" id="H_cat_id">
 					<button type="submit" class="btn btn-primary">Modifica</button>
 				</div>
-				</form>
+				
 			</div>
+		</form>
 		</div>
 	</div>
 	<!-- FINE MODAL MODIFICA -->

@@ -80,39 +80,41 @@ $(document).on('click', '.open_modal_modifica', function() {
 	$.getJSON(url + '/' + riga_id, function(data) {
 		// success data
 		console.log(data[0]);
+		$.getJSON("/admin/service/taglist", {}, function(tags) {
+			$.each(tags, function(i, tag) {
+				$("select[name='mov_fk_tags']").append(
+					new Option(tag.tag_name, tag.id)
+				)
+				$('#tags')
+					.find('option:contains(' + data[0].tag_name + ')')
+					.prop('selected', true)
+					.trigger('change');
+			});
+		});
+		$.getJSON("/admin/service/catlist", {}, function(cats) {
+			$.each(cats, function(i, cat) {
+				$("select[name='mov_fk_categoria']").append(
+					new Option(cat.cat_name, cat.id)
+				)
+				$('#categoria')
+					.find('option:contains(' + data[0].cat_name + ')')
+					.prop('selected', true)
+					.trigger('change');
+			}
+			);
+		});
 		$('.modal-title').text('Modifica movimento');
 		$('#data').val(data[0].mov_data);
 		$('#descrizione').val(data[0].mov_descrizione);
 		$('#importo').val(data[0].mov_importo);
-		$('#tags')
-			.find('option:contains(' + data[0].tag_name + ')')
-			.prop('selected', true)
-			.trigger('change');
-		$('#categoria')
-			.find('option:contains(' + data[0].cat_name + ')')
-			.prop('selected', true)
-			.trigger('change');
+		
 		$('#myModal').modal('show');
 		// $('.panel-heading').text('Modifica movimento');
 		$('#form').attr('action', '/admin/movimenti/modify');
 		$('#form').append('<input type="hidden" name="id" value="' + riga_id + '">');
-		$.getJSON("/admin/service/taglist", {}, function(data) {
-			$.each(data, function(i, item) {
-				$("select[name='mov_fk_tags']").append(
-					new Option(item.tag_name, item.id)
-				)
-			});
-		});
-		$.getJSON("/admin/service/catlist", {}, function(data) {
-			$.each(data, function(i, item) {
-				$("select[name='mov_fk_categoria']").append(
-					new Option(item.cat_name, item.id)
-				)
-			}
-			);
-		});
+		
 	});
-
+		
 });
 
 /*$.getJSON("/admin/service/taglist", {}, function(data) {

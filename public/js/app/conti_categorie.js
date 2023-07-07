@@ -21,9 +21,13 @@ $(document).on('click','.open_modal',function(){
         //success data
         $('#cat_entrata').prop('checked', false);
         $('#cat_uscita').prop('checked', false);
+       
+       
         console.log(data[0]);
         console.log(data[0].cat_name);
-        $('#H_cat_cat_name').val(data[0].cat_name);
+
+       
+
         if (data[0].cat_uscita === 1)
         {
             // $('.myCheckbox').prop('checked', true);
@@ -34,6 +38,7 @@ $(document).on('click','.open_modal',function(){
             $('#cat_entrata').prop('checked', true);
         }
         $('#H_cat_id').val(data[0].id);
+        $('#H_cat_cat_name').val(data[0].cat_name);
         $('#myModal').modal('show');
     });
 });
