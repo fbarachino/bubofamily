@@ -123,20 +123,6 @@ class MovimentiController extends Controller
         ]);
     }
 
-    /*public function updateMovimenti(Request $request)
-    {
-        $id=$request['id'];
-        $mov=Movimenti::getMovimentoById($id);
-        $categorie=Categorie::list();
-        $tags=tag::getList();
-        return view('conti.movimenti.update',
-            [
-                'categorie'=> $categorie,
-                'movimenti'=> $mov,
-                'tags'=>$tags,
-            ]);
-    }*/
-
     public function updatePostMovimenti(Request $request)
     {
         Movimenti::updateMovimenti($request);
