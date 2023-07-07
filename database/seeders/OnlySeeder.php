@@ -18,7 +18,7 @@ class OnlySeeder extends Seeder
      */
     public function run()
     {
-/*        // Role Creation
+       // Role Creation
         $role_admin = Role::create([
             'name' => 'admin'
         ]);
@@ -61,23 +61,23 @@ class OnlySeeder extends Seeder
         $role_user->givePermissionTo('progetti');
             // Assegnazione permessi al ruolo guest
         $role_guest->givePermissionTo('affitti');
-*/        
+       
         $admin = User::create([            
             'name'=>'Amministratore',
             'email'=>'admin@localhost.local',
-            'password'=>Hash::make('Portalnet_2023'),
+            'password'=>Hash::make('admin'),
             ])->assignRole('admin');
         
         $user = User::create([
             'name'=>'Utente',
             'email'=>'user@localhost.local',
-            'password'=>Hash::make('user2023'),
+            'password'=>Hash::make('user'),
         ])->assignRole('user');
         
         $guest = User::create([
             'name'=>'Guest',
             'email'=>'guest@localhost.local',
-            'password'=>Hash::make('password'),
+            'password'=>Hash::make('guest'),
         ])->assignRole('guest');
     }
 }
