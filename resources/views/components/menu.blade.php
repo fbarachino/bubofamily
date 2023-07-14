@@ -51,7 +51,11 @@
 		Progetti <span class="fa arrow"></span></a></li>
 
 @endcan
+@can('tasks')
+<li><a href="{{ route('tasks'); }}"><i class="fa fa-list fa-fw"></i>
+		Attività <span class="fa arrow"></span></a></li>
 
+@endcan
 @can('amministrazione')
 <li><a href="#"><i class="fa fa-gears fa-fw"></i>Amministrazione<span
 		class="fa arrow"></span></a>

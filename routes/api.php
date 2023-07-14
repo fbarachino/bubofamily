@@ -20,6 +20,9 @@ use App\Http\Controllers\MovimentiController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['middleware'=>['permission:conti']], function(){
     Route::get('categories', [CategorieController::class,'apiList']);
     Route::get('tags', [TagController::class,'apiList']);
     Route::get('movements', [MovimentiController::class,'apiList']);
+});
