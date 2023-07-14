@@ -15,6 +15,7 @@ use App\Http\Controllers\AutoController;
 use App\Http\Controllers\AnagraficaController;
 use App\Http\Controllers\Utenti;
 use App\Http\Controllers\ProgettiController;
+use App\Http\Controllers\TaskController;
 use App\Mail\myTestEmail;
 
 /*
@@ -148,7 +149,7 @@ Route::group(['middleware'=>['permission:progetti']], function(){
 
 // TASKS
 Route::group(['middleware'=>['permission:tasks']], function(){
-    Route::get('tasks', [TaskController::class, 'listaTask'])->name('tasks');
+    Route::get('tasks', [TaskController::class, 'listTask'])->name('tasks');
 
 });
 
