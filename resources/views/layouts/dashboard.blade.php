@@ -8,7 +8,7 @@
 <div class="row">
 @hasanyrole('user|admin')
 <!-- WIDGET Bilancio -->
-	<div class="col-lg-4 col-md-8">
+	<div class="col-lg-3 col-md-8">
         <div class="panel panel-success">
             <div class="panel-heading">
                 <div class="row">
@@ -31,7 +31,7 @@
      	</div>
 	</div>
     <!-- WIDGET Bilancio -->
-	<div class="col-lg-4 col-md-8">
+	<div class="col-lg-3 col-md-8">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <div class="row">
@@ -55,7 +55,7 @@
 	</div>
 
 	<!-- WIDGET  -->
-	<div class="col-lg-4 col-md-8">
+	<div class="col-lg-3 col-md-8">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
@@ -77,7 +77,7 @@
            </a>
      	</div>
 	</div>
-    <div class="col-lg-4 col-md-8">
+    <div class="col-lg-3 col-md-8">
         <div class="panel panel-yellow">
             <div class="panel-heading">
                 <div class="row">
