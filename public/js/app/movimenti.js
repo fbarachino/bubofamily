@@ -117,10 +117,14 @@ $(document).on('click', '.open_modal_modifica', function() {
 		
 });
 
-/*$.getJSON("/admin/service/taglist", {}, function(data) {
+/*
+
+$.getJSON("/admin/service/taglist", {}, function(data) {
 	$.each(data, function(i, item) {
 		$("select[name='mov_fk_tags']").append(
 			new Option(item.tag_name, item.id)
 		)
 	});
-});*/
+});
+
+*/
