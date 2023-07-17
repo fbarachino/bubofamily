@@ -100,7 +100,48 @@
      	</div>
 	</div>
 	@endhasanyrole
+    
 </div>
+
+@can('tasks')
+<!-- Se ha i permessi task -->
+<div class="row">
+    <div class="col-lg-6 col-md-8">
+        <div class="chat-panel panel panel-default">
+            <div class="panel-heading">
+                Attività a me assegnate
+            </div>
+            <div class="panel-body">
+                <ul class="chat">
+                    @foreach($mieitask as $task)
+                    <li class="left" clearfix>{{ $task->titolo }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="panel-footer">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-8">
+        <div class="chat-panel panel panel-default">
+            <div class="panel-heading">
+                Attività da me assegnate ad altri
+            </div>
+            <div class="panel-body">
+                <ul class="chat">
+                    @foreach($assegnati as $assegnato)
+                    <li class="left" clearfix>{{ $assegnato->titolo }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="panel-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+@endcan
 @endsection
 
 @section('script')

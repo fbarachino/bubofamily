@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categorie;
 use App\Models\Movimenti;
 use App\Models\tag;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Rap2hpoutre\FastExcel\FastExcel;
@@ -41,11 +42,15 @@ class MovimentiController extends Controller
         $entrate=Movimenti::getEntrate(date('Y'));
         $uscite=Movimenti::getUscite(date('Y'));
         $saldo=Movimenti::getSaldoTot();
+        // $mieiTasks=Task::getTaskAssignedToUser(Auth::user()->id);
+        // $TasksAssegnati=Task::getTaskAssignedByUser(Auth::user()->id);
 
         return view('layouts.dashboard',[
             'entrate'=>$entrate,
             'uscite'=>$uscite,
             'saldo'=>$saldo,
+            'mieitask' => $mieiTasks,
+            'assegnati' => $TasksAssegnati,
         ]);
     }
 
