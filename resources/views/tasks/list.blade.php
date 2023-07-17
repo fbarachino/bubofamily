@@ -15,7 +15,29 @@
 	</div>
 	<div class ="row">
 		<div class="col">
-		
+			<div class="panel">
+				<div class="panel-header">
+					Tutte le Attività
+				</div>
+				<div class="panel-body">
+					<ul class="chat">
+					@foreach($tasks as $task)
+						<li class="left" clearfix>
+							<span class="chat-img pull-left">
+								<!-- rendere immagine dinamica -->
+								<img src="/images/default-logo.png" width="32" class="img-circle">
+							</span>
+							<div class="chat-body clearfix">
+								{{ $task->titolo}}
+							</div>
+						</li>
+					@endforeach	
+					</ul>
+				</div>
+				<div class="panel-footer">
+
+				</div>
+			</div>
 		</div>
 	</div>
 @endsection
