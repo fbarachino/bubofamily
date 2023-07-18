@@ -47,6 +47,10 @@ class Utenti extends Controller
         return view('users.list',['users'=>$users]);
     }
 
+    function getUsers(){
+        return User::getUsers();
+    }
+
     function listRoles(){
         $roles = Role::all();
         return $roles;

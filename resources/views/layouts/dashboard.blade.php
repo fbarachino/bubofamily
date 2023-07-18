@@ -109,12 +109,28 @@
     <div class="col-lg-6 col-md-8">
         <div class="chat-panel panel panel-default">
             <div class="panel-heading">
-                Attività a me assegnate
+                Attività da svolgere
             </div>
-            <div class="panel-body">
+            <div class="panel-body" id="mieitask">
                 <ul class="chat">
                     @foreach($mieitask as $task)
-                    <li class="left" clearfix>{{ $task->titolo }}</li>
+                    <span class="chat-img pull-left">
+                        <!-- rendere immagine dinamica -->
+                        <img src="{{ Gravatar::get(App\Models\User::getUserById($task->assegnato_a)->email)}}" width="32" class="img-circle">
+                    </span>
+                    <div class="chat-body clearfix">
+                    <li class="left clearfix">
+                        @if($task->stato==='Chiuso')
+                            <s>
+                                <a href="#{{ $task->id }}"> {{ $task->titolo }}</a>
+                            </s><br>
+                            <h6>{{$task->descrizione}}</h6>
+                        @else
+                        <b><a href="#{{ $task->id }}"> {{ $task->titolo }}</a></b><br>
+                        <h6>{{$task->descrizione}}</h6>
+                        @endif
+                    </li>
+                    </div>
                     @endforeach
                 </ul>
             </div>
@@ -126,12 +142,28 @@
     <div class="col-lg-6 col-md-8">
         <div class="chat-panel panel panel-default">
             <div class="panel-heading">
-                Attività da me assegnate ad altri
+                <i class="fa fa-arrow-circle-right"></i> Avvisi e informazioni
             </div>
             <div class="panel-body">
                 <ul class="chat">
                     @foreach($assegnati as $assegnato)
-                    <li class="left" clearfix>{{ $assegnato->titolo }}</li>
+                    <span class="chat-img pull-left">
+                        <!-- rendere immagine dinamica -->
+                        <img src="{{ Gravatar::get(App\Models\User::getUserById($assegnato->assegnato_a)->email)}}" width="32" class="img-circle">
+                    </span>
+                    <div class="chat-body clearfix">
+                        <li class="left clearfix">
+                            @if($assegnato->stato==='Chiuso')
+                            <s>
+                                 <a href="#{{ $assegnato->id }}"> {{ $assegnato->titolo }}</a>
+                            
+                            {{$assegnato->descrizione}}</s>
+                            @else
+                            <b><a href="#{{ $assegnato->id }}"> {{ $assegnato->titolo }}</a></b>
+                            <h6>{{$assegnato->descrizione}}</h6>
+                            @endif
+                        </li>
+                    </div>
                     @endforeach
                 </ul>
             </div>

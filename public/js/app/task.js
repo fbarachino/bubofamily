@@ -21,38 +21,35 @@ var strDate = d.getFullYear() + '-' +
     (day<10 ? '0' : '') + day;
 
 
-$(document).on('click', '.open_modal_spesa', function() {
+$(document).on('click', '.open_modal_new', function() {
 	console.log(strDate);
-	$("#categoria").empty();
-	$("#tags").empty();
+	$("#titolo").empty();
+	$("#descrizione").empty();
 	$('#form').find('input[type="text"], textarea, input[type="number"],input[type="date"],option').val("");
 	$('#form').find('input[type="date"]').val(strDate);
 	$('#myModal').modal('show');
-	$('.modal-title').text(' Nuovo movimento in uscita');
-	$('#form').attr('action', '/admin/movimenti/spesa');
-	$.getJSON("/admin/service/catlistSpesa", {}, function(cats) {
-		$.each(cats, function(i, cat) {
-			$("select[name='mov_fk_categoria']").append(
-				new Option(cat.cat_name, cat.id)
+	$('.modal-title').text(' Nuova attività');
+	$('#form').attr('action', '/admin/task/new');
+	$.getJSON("/admin/service/getUsers", {}, function(users) {
+		$.each(users, function(i, users) {
+			$("select[name='assegnato_a']").append(
+				new Option(users.name, users.id)
 			)
 		}
 		);
 	});
-	$.getJSON("/admin/service/taglist", {}, function(tags) {
-		$.each(tags, function(i, tag) {
-			$("select[name='mov_fk_tags']").append(
-				new Option(tag.tag_name, tag.id)
-			)
-		});
+	
 });
-});
+
+
+/*
 $(document).on('click', '.open_modal_entrata', function() {
 	console.log(strDate);
-	$("#categoria").empty();
+	$("#titolo").empty();
 	$("#tags").empty();
 	$('#form').find('input[type="text"], textarea, input[type="number"],option').val("");
 	$('#form').find('input[type="date"]').val(strDate);
-	$('#myModal').modal('show');
+	$('#myModal_new').modal('show');
 	$('.modal-title').text('Nuovo movimento in entrata');
 	$('#form').attr('action', '/admin/movimenti/entrata');
 	$.getJSON("/admin/service/catlistEntrata", {}, function(data) {

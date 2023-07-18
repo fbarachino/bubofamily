@@ -150,7 +150,8 @@ Route::group(['middleware'=>['permission:progetti']], function(){
 // TASKS
 Route::group(['middleware'=>['permission:tasks']], function(){
     Route::get('tasks', [TaskController::class, 'Task'])->name('tasks');
-
+    Route::post('task/new',[TaskController::class, 'newTask']);
+    Route::get('service/getUsers', [Utenti::class,'getUsers']);
 });
 
 // -- ONLY FOR TEST -- TO BE REMOVED //
