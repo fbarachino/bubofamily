@@ -146,29 +146,29 @@
             </div>
             <div class="panel-body">
                 <ul class="chat">
-                    @foreach($assegnati as $assegnato)
+                    @foreach($avvisi as $avviso)
                     <span class="chat-img pull-left">
                         <!-- rendere immagine dinamica -->
-                        <img src="{{ Gravatar::get(App\Models\User::getUserById($assegnato->assegnato_a)->email)}}" width="32" class="img-circle">
+                        <img src="{{ Gravatar::get(App\Models\User::getUserById($avviso->creato_da)->email)}}" width="32" class="img-circle">
                     </span>
                     <div class="chat-body clearfix">
                         <li class="left clearfix">
-                            @if($assegnato->stato==='Chiuso')
-                            <s>
-                                 <a href="#{{ $assegnato->id }}"> {{ $assegnato->titolo }}</a>
-                            
-                            {{$assegnato->descrizione}}</s>
-                            @else
-                            <b><a href="#{{ $assegnato->id }}"> {{ $assegnato->titolo }}</a></b>
-                            <h6>{{$assegnato->descrizione}}</h6>
-                            @endif
+                           
+                            <a href="#{{ $avviso->id }}"><i>{{date_format(date_create($avviso->creato_il),'d/m/Y')}}</i> - {{ $avviso->avviso }}</a>
+                           
                         </li>
                     </div>
                     @endforeach
                 </ul>
             </div>
             <div class="panel-footer">
-
+                <form action="{{ Route('newAvviso') }}" method="POST">
+                    @csrf
+                    <label for="avviso" class="form-label">Nuovo Avviso:</label>
+                    <textarea class="form-control" name="avviso"></textarea>
+                    <input type="hidden" name="creato_da" value="{{ Auth::user()->id }}">
+                    <input type="submit" name="submit" class="button btn-primary">
+                </form>
             </div>
         </div>
     </div>
@@ -177,5 +177,5 @@
 @endsection
 
 @section('script')
-<script src="/js/app/dashboard.js"></script>
+
 @endsection

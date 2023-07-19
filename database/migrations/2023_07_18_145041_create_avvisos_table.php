@@ -17,7 +17,9 @@ class CreateAvvisosTable extends Migration
             $table->id();
             $table->timestamps();
             $table->longtext('avviso');
-            $table->date('creato_il');
+            $table->date('creato_il')->nullable()->default(date('Y-m-d'));
+            $table->bigInteger('creato_da');
+            $table->boolean('urgente')->nullable()->default(false);
         });
     }
 

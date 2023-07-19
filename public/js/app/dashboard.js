@@ -4,10 +4,12 @@ $(document).ready(function() {
 		responsive: true
 	});
 	// Reload del div
+	/*
 	$.ajaxSetup({ cache: false });
 	setInterval(function() {
 		$('#mieitask').load('/admin');
 	}, 8000);
+	*/
 });
 
 

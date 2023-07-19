@@ -16,6 +16,7 @@ use App\Http\Controllers\AnagraficaController;
 use App\Http\Controllers\Utenti;
 use App\Http\Controllers\ProgettiController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\AvvisoController;
 use App\Mail\myTestEmail;
 
 /*
@@ -154,6 +155,10 @@ Route::group(['middleware'=>['permission:tasks']], function(){
     Route::get('service/getUsers', [Utenti::class,'getUsers']);
 });
 
+
+Route::group(['middleware'=>['permission:avvisi']], function(){
+    Route::post('avvisi/new',[AvvisoController::class,'saveAvviso'])->name('newAvviso');
+});
 // -- ONLY FOR TEST -- TO BE REMOVED //
 
 /// TEST ROUTES

@@ -25,7 +25,7 @@
 						<li class="left" clearfix>
 							<span class="chat-img pull-left">
 								<!-- rendere immagine dinamica -->
-								<img src="{{ Gravatar::get(App\Models\User::getUserById($task->assegnato_a)->email)}}" width="32" class="img-circle">
+								<img src="{{ Gravatar::get(App\Models\User::getUserById($task->assegnato_a)->email )}}" width="32" class="img-circle">
 							</span>
 							<div class="chat-body clearfix">
 								{{ $task->titolo}}
@@ -84,7 +84,7 @@
 					
 				</div>
 				<div class="modal-footer">
-					<input type="hidden" name="creato_da" value="{{ Auth::user()->id}}">
+					<input type="hidden" name="creato_da" value="{{ Auth::user()->id }}">
 					<input type="hidden" name="stato" value="Aperto">
 					<input type="hidden" name="creato_il" value="{{ date('Y-m-d'); }}">
 					<input type="hidden" name="chiuso_il" value="{{ date('Y-m-d'); }}">

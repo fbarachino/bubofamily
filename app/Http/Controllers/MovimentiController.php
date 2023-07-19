@@ -6,7 +6,7 @@ use App\Models\Categorie;
 use App\Models\Movimenti;
 use App\Models\tag;
 use App\Models\Task;
-// use App\Models\User;
+use App\Models\Avviso;
 // use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,14 +46,16 @@ class MovimentiController extends Controller
         $uscite=Movimenti::getUscite(date('Y'));
         $saldo=Movimenti::getSaldoTot();
         $mieiTasks=Task::getTaskAssignedToUser(Auth::id());
-        $TasksAssegnati=Task::getTaskAssignedByUser(Auth::id());
+        // $TasksAssegnati=Task::getTaskAssignedByUser(Auth::id());
+        $avvisi=Avviso::getAvvisi();
 
         return view('layouts.dashboard',[
             'entrate'=>$entrate,
             'uscite'=>$uscite,
             'saldo'=>$saldo,
             'mieitask' => $mieiTasks,
-            'assegnati' => $TasksAssegnati,
+           // 'assegnati' => $TasksAssegnati,
+           'avvisi'=>$avvisi,
         ]);
     }
 
