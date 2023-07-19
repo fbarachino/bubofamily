@@ -15,6 +15,8 @@ use App\Http\Controllers\AutoController;
 use App\Http\Controllers\AnagraficaController;
 use App\Http\Controllers\Utenti;
 use App\Http\Controllers\ProgettiController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\AvvisoController;
 use App\Mail\myTestEmail;
 
 /*
@@ -123,7 +125,6 @@ Route::group(['middleware'=>['permission:amministrazione']], function(){
     Route::post('users/new',[Utenti::class,'createUser']);
     Route::get('users/roles',[Utenti::class,'listRoles']);
     Route::get('users/delete/{id}',[Utenti::class,'deleteUser']);
-//});
     Route::get('users/givepermission',[Utenti::class,'givePermissionToUser']);
     Route::post('users/givepermission',[Utenti::class,'assignPermission']);
     Route::get('users/giverole',[Utenti::class,'giveRoleToUser']);
@@ -147,35 +148,24 @@ Route::group(['middleware'=>['permission:progetti']], function(){
     Route::get('progetti/print',[ProgettiController::class,'stampaPDFProgetto']);
 });
 
-/// RIVISTA
-Route::group(['middleware'=>['permission:rivista']], function(){
-    Route::get('rivista',[RivistaController::class,'rivistaHome'])->name('rivista');
-    Route::get('rivista/pubblica',[RivistaController::class,'rivistaDigCarica']);
-    Route::post('rivista/pubblica',[RivistaController::class,'rivistaDigPubblica']);
-    Route::get('rivista/abbonati',[RivistaController::class,'rivistaAbbonati']);
-    Route::get('rivista/abbonamenti',[RivistaController::class,'rivistaAbbonamenti']);
-    Route::get('rivista/abbonamenti/rinnovo',[RivistaController::class,'rivistaAbbonamentiRinnovo']);
-    Route::get('rivista/abbonamenti/nuovo',[RivistaController::class,'rivistaAbbonamentiNuovo']);
-    Route::get('rivista/abbonamenti/scadenza',[RivistaController::class,'rivistaAbbonamentiScadono']);
-    Route::get('rivista/new',[RivistaController::class,'rivistaNuova']);
-    Route::get('rivista/archivio',[RivistaController::class,'rivistaArchivio']);
+// TASKS
+Route::group(['middleware'=>['permission:tasks']], function(){
+    Route::get('tasks', [TaskController::class, 'Task'])->name('tasks');
+    Route::post('task/new',[TaskController::class, 'newTask']);
+    Route::get('service/getUsers', [Utenti::class,'getUsers']);
 });
 
-/// ASSOCIAZIONE
-Route::group(['middleware'=>['permission:associazione']], function(){
-    Route::get('associazione',[AssociazioneController::class,'assocHome'])->name('associazione');
-});
 
-/// GRUPPI
-Route::group(['middleware'=>['permission:gruppi']], function(){
-    Route::get('gruppi',[GruppiController::class,'gruppiHome'])->name('gruppi');
+Route::group(['middleware'=>['permission:avvisi']], function(){
+    Route::post('avvisi/new',[AvvisoController::class,'saveAvviso'])->name('newAvviso');
 });
+// -- ONLY FOR TEST -- TO BE REMOVED //
 
 /// TEST ROUTES
     Route::get('test/fullcalendar', [FullCalenderController::class, 'index']);
     Route::post('test/fullcalendar', [FullCalenderController::class, 'ajax']);
     Route::get('test/condominio',[CondominioController::class,'testPdf']);
-    Route::get('test/err403',[CondominioController::class,'err403']);
+    Route::get('test/err403',[CondominioController::class,'err403'])->name('errore-403');
     Route::get('test/user_role',[CondominioController::class,'user_role']);
     Route::get('test/userclass',[Utenti::class,'userClass']);
 
