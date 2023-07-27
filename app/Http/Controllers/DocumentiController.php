@@ -28,4 +28,9 @@ class DocumentiController extends Controller
             'documenti'=>$documenti
         ]);
     }
+
+    public function listaDocumenti()
+    {
+        return view('documenti.lista',['data'=>Documenti::all()]);
+    } 
 }
