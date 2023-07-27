@@ -20,6 +20,18 @@ class CreateDocumentisTable extends Migration
             $table->string('descrizione');
             $table->string('filename');
         });
+
+        /*
+        ISSUE #5 GITEA - proposta modifica
+        Schema::create('documentis', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('entita');
+            $table->bigInteger('entita_id');
+            $table->string('descrizione');
+            $table->string('filename');
+        });
+        */
     }
 
     /**
