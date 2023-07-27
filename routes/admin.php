@@ -17,6 +17,7 @@ use App\Http\Controllers\Utenti;
 use App\Http\Controllers\ProgettiController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\AvvisoController;
+use App\Http\Controllers\ContrattiController;
 use App\Mail\myTestEmail;
 
 /*
@@ -155,6 +156,11 @@ Route::group(['middleware'=>['permission:tasks']], function(){
     Route::get('service/getUsers', [Utenti::class,'getUsers']);
 });
 
+
+// CONTRATTI
+Route::group(['middleware'=>['permission:contratti']], function(){
+    Route::get('contratti', [ContrattiController::class, 'Contratti'])->name('contratti');
+});
 
 Route::group(['middleware'=>['permission:avvisi']], function(){
     Route::post('avvisi/new',[AvvisoController::class,'saveAvviso'])->name('newAvviso');

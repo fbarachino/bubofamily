@@ -158,7 +158,7 @@ class Movimenti extends Model
             if($line['Data valuta'])
             {
                 self::insEntrata([
-                    'mov_data'=>self::dateFormat(0,$line['Data valuta']),
+                    'mov_data'=>$line['Data valuta'],
                     'mov_fk_categoria'=>1,
                     'mov_descrizione'=>$line['Descrizione operazione'],
                     'mov_importo'=>trim(str_replace(',','.',(str_replace('.','',str_replace('€', '', $line['Importo']))))),
@@ -217,7 +217,7 @@ class Movimenti extends Model
 
     private static function dateFormat($type,$string)
     {
-
+        // $string=(string)$string;
         if($type)
         {
            // $string=$string->format('Y-m-d');

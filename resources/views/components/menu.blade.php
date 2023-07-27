@@ -21,7 +21,13 @@
 			</ul></li>
 
 	</ul> <!-- /.nav-second-level --></li>
-@endcan @can('consumi')
+@endcan 
+@can('contratti')
+<li><a href="{{ route('contratti'); }}"><i class="fa fa-list fa-fw"></i>
+		Contratti <span class="fa arrow"></span></a>
+</li>
+@endcan
+@can('consumi')
 <li><a href="#"><i class="fa fa-industry fa-fw"></i> Consumi <span
 		class="fa arrow"></span></a>
 
@@ -31,7 +37,8 @@
 		</li>
 		<li><a href="{{ route('enel'); }}"><i class="fa fa-flash  fa-fw"></i>Energia
 				Elettrica</a></li>
-	</ul></li>
+	</ul>
+</li>
 @endcan @can('automobili')
 <li><a href="{{ route('auto_list'); }}"><i class="fa fa-car fa-fw"></i>
 		Automobili <span class="fa arrow"></span></a></li>

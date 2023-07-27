@@ -15,7 +15,7 @@
 	</div>
 	<div class ="row">
 		<div class="col">
-			<div class="panel">
+			<div class="panel panel-default ">
 				<div class="panel-header">
 					Tutte le Attività
 				</div>
@@ -43,7 +43,7 @@
 </div>
 	<!-- HIDDEN -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog draggable" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">Nuova Attività</h4>
@@ -51,7 +51,7 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-md-10">
-							<!-- FORM INSERIMENTO NUOVA CATEGORIA -->
+							<!-- FORM INSERIMENTO NUOVA ATTIVITA -->
 							<form action="" method="POST" id="form">
 								@csrf 
 								<label for="titolo" class="form-label">Titolo:</label>
