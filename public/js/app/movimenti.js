@@ -11,6 +11,8 @@ $(document).ready(function() {
 	});
 });
 
+$(".draggable").draggable();
+
 var d = new Date();
 
 var month = d.getMonth()+1;
