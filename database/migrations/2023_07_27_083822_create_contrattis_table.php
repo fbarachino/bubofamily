@@ -26,6 +26,7 @@ class CreateContrattisTable extends Migration
             $table->date('scadenzapagamento');
             $table->string('stato', 100)->default('attivo');
             $table->longText('note')->nullable();
+            $table->string('filename',255)->nullable();
         });
     }
 
