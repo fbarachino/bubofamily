@@ -44,7 +44,7 @@ class Documenti extends Model
         self::create([
             'entità'=>$req['entita'],           // aggiunto per determinare il tipo di entità a cui si riferisce il documento
             'entita_id'=>$req['entita_id'],     // aggiunto per identificare il record al quale associare il documento (al posto di id_movimento)
-            'descrizione'=>$descrizione,
+            'descrizione'=>$req['descrizione'],
             'filename'=>$filename
         ]);
     }
