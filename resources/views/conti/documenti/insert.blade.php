@@ -21,6 +21,10 @@
                 	</div>
                 	<div class="mb-3">
                 		<input type="hidden" name="movimenti_id" value="{{ $id }}">
+						<!-- {issue #5}
+						<input type="hidden" name="entita" value="Movimenti">
+						<input type="hidden" name="entita_id" value="{{$id}}">
+						-->
                 		<button type="submit" class="btn btn-primary">Submit</button>
                 	</div>
             	</form>

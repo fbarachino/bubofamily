@@ -95,20 +95,21 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="/js/jquery.min.js"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script src="/js/bootstrap.min.js"></script>
 
         <!-- Metis Menu Plugin JavaScript -->
         <script src="/js/metisMenu.min.js"></script>
-
+        
+        <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/date-1.4.1/r-2.4.1/sb-1.4.2/sp-2.1.2/datatables.min.js"></script>
         <!-- DataTables JavaScript
         <script src="/js/dataTables/jquery.dataTables.min.js"></script>
         <script src="/js/dataTables/dataTables.bootstrap.min.js"></script>-->
 
         <!-- Custom Theme JavaScript -->
-        <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/date-1.4.1/r-2.4.1/sb-1.4.2/sp-2.1.2/datatables.min.js"></script>
+        
         <script src="/js/momentjs.js"></script>
         <script src="/js/startmin.js"></script>
 	@section('script')

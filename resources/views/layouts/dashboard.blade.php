@@ -8,7 +8,7 @@
 <div class="row">
 @hasanyrole('user|admin')
 <!-- WIDGET Bilancio -->
-	<div class="col-lg-3 col-md-8">
+	<div class="col-lg-3 col-md-8 draggable">
         <div class="panel panel-success">
             <div class="panel-heading">
                 <div class="row">
@@ -31,7 +31,7 @@
      	</div>
 	</div>
     <!-- WIDGET Bilancio -->
-	<div class="col-lg-3 col-md-8">
+	<div class="col-lg-3 col-md-8 draggable">
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <div class="row">
@@ -55,7 +55,7 @@
 	</div>
 
 	<!-- WIDGET  -->
-	<div class="col-lg-3 col-md-8">
+	<div class="col-lg-3 col-md-8 draggable">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
@@ -77,7 +77,7 @@
            </a>
      	</div>
 	</div>
-    <div class="col-lg-3 col-md-8">
+    <div class="col-lg-3 col-md-8 draggable">
         <div class="panel panel-yellow">
             <div class="panel-heading">
                 <div class="row">
@@ -106,7 +106,7 @@
 @can('tasks')
 <!-- Se ha i permessi task -->
 <div class="row">
-    <div class="col-lg-6 col-md-8">
+    <div class="col-lg-6 col-md-8 draggable">
         <div class="chat-panel panel panel-default">
             <div class="panel-heading">
                 Attività da svolgere
@@ -139,8 +139,8 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-8">
-        <div class="chat-panel panel panel-default">
+    <div class="col-lg-6 col-md-8 draggable">
+        <div class="chat-panel panel panel-default" >
             <div class="panel-heading">
                 <i class="fa fa-arrow-circle-right"></i> Avvisi e informazioni
             </div>
@@ -177,5 +177,5 @@
 @endsection
 
 @section('script')
-
+<script src="js/app/dashboard.js"></script> 
 @endsection

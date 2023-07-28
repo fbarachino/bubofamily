@@ -10,7 +10,7 @@ $(document).ready(function() {
 		"order": [[0, "desc"]]
 	});
 });
-
+$(".draggable").draggable();
 var d = new Date();
 
 var month = d.getMonth()+1;

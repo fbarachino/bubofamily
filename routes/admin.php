@@ -17,6 +17,7 @@ use App\Http\Controllers\Utenti;
 use App\Http\Controllers\ProgettiController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\AvvisoController;
+use App\Http\Controllers\ContrattiController;
 use App\Mail\myTestEmail;
 
 /*
@@ -51,6 +52,8 @@ Route::group(['middleware'=>['permission:conti']], function(){
     Route::get('movimenti/report/movimenti_categoria', [MovimentiController::class,'listMovPerCateg']);
     Route::get('movimenti/report/movimentibycat', [MovimentiController::class,'listMovbyCat']);
     Route::get('movimenti/docs', [DocumentiController::class,'fileForm'])->name('documenti');
+    // {issue #5}
+    // Route::get('movimenti/docs', [DocumentiController::class,'fileMovimentiForm'])->name('documenti');
     Route::post('movimenti/docs', [DocumentiController::class,'storeFile']);
     Route::get('movimenti/import', [MovimentiController::class,'importFile'])->name('importING');
     Route::post('movimenti/import', [MovimentiController::class,'importEC_ING']);
@@ -155,6 +158,11 @@ Route::group(['middleware'=>['permission:tasks']], function(){
     Route::get('service/getUsers', [Utenti::class,'getUsers']);
 });
 
+
+// CONTRATTI
+Route::group(['middleware'=>['permission:contratti']], function(){
+    Route::get('contratti', [ContrattiController::class, 'Contratti'])->name('contratti');
+});
 
 Route::group(['middleware'=>['permission:avvisi']], function(){
     Route::post('avvisi/new',[AvvisoController::class,'saveAvviso'])->name('newAvviso');
