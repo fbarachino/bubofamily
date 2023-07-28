@@ -8,15 +8,15 @@
 <div class="container">
 	<!-- Content here -->
 	<div class="row">
-		<div class="col-xs-12">
-			<button class="btn btn-primary open_modal_new"><i
+		<div class="col-xs-12 ">
+			<button class="btn btn-primary open_modal_new "><i
 				class="fa fa-pencil-square-o fw"></i>Nuova Attività</button>
 		</div>
 	</div>
 	<div class ="row">
 		<div class="col">
 			<div class="panel panel-default ">
-				<div class="panel-header">
+				<div class="panel panel-heading">
 					Tutte le Attività
 				</div>
 				<div class="panel-body">
