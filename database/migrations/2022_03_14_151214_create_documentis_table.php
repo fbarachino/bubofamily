@@ -22,7 +22,7 @@ class CreateDocumentisTable extends Migration
         });
 
         /*
-        ISSUE #5 GITEA - proposta modifica
+        {issue #5} GITEA - proposta modifica
         Schema::create('documentis', function (Blueprint $table) {
             $table->id();
             $table->timestamps();

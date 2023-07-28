@@ -17,7 +17,7 @@ class Documenti extends Model
         return $quanti;
     }
 
-    // Proposta modifica issue #5 gitea (generalizzazione del documento)
+    // Proposta modifica {issue #5} gitea (generalizzazione del documento)
     /*
     public static function countDocument($id,$entity)
     {
@@ -36,7 +36,7 @@ class Documenti extends Model
         ]);
     }
 
-    // Proposta modifica issue #5 gitea (generalizzazione del documento)
+    // Proposta modifica {issue #5} gitea (generalizzazione del documento)
     /*
     public static function store($req) {
         $movimento_id=$req->input('id');
@@ -57,7 +57,7 @@ class Documenti extends Model
         ->get();
     }
 
-    // Proposta modifica issue #5 gitea (generalizzazione del documento)
+    // Proposta modifica issue {#5 gitea} (generalizzazione del documento)
     /*
     public static function getList($id,$entity)
     {

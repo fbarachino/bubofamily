@@ -30,7 +30,7 @@ class DocumentiController extends Controller
     }
 
     /*
-    // isssue #5 Proposta cambiamento per generalizzazione documenti
+    // {issue #5} Proposta cambiamento per generalizzazione documenti
     // NB: cambiare anche in routes/admin.php il riferimento alla funzione da richiamare
     public function fileMovimentiForm(Request $request){
         $documenti = Documenti::getList($request->input('id'),'Movimenti');  

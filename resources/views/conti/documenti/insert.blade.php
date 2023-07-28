@@ -21,7 +21,7 @@
                 	</div>
                 	<div class="mb-3">
                 		<input type="hidden" name="movimenti_id" value="{{ $id }}">
-						<!-- {ISSUE #5}
+						<!-- {issue #5}
 						<input type="hidden" name="entita" value="Movimenti">
 						<input type="hidden" name="entita_id" value="{{$id}}">
 						-->
