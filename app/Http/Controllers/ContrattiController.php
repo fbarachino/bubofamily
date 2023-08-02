@@ -10,6 +10,13 @@ class ContrattiController extends Controller
     //
     public function contratti()
     {
-        return view('contratti.lista',['data'=>Contratti::all()]);
+        return view('contratti.lista',['data'=>Contratti::getAllContratto()]);
     }
+
+    public function newContratto(Request $request)
+    {
+        Contratti::storeContratto($request);
+        return redirect()->back();
+    }
+
 }

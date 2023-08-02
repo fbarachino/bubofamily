@@ -1,5 +1,6 @@
 @extends('admin')
 @section('content')
+
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Riepilogo</h1>
@@ -139,12 +140,12 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-8 draggable">
+    <div class="col-lg-6 col-md-8 draggable ">
         <div class="chat-panel panel panel-default" >
             <div class="panel-heading">
                 <i class="fa fa-arrow-circle-right"></i> Avvisi e informazioni
             </div>
-            <div class="panel-body">
+            <div class="panel-body ">
                 <ul class="chat">
                     @foreach($avvisi as $avviso)
                     <span class="chat-img pull-left">
@@ -172,8 +173,27 @@
             </div>
         </div>
     </div>
+    
+    
+</div>
+<div class="row">
+    <div class="col-lg-3 col-md-8 draggable">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">Notizie</div>
+            </div>
+            <div class="panel-body">
+               <!--<ul class="contenuto">
+                  
+                   
+               </ul>-->
+            </div>
+            <div class=panel-footer></div>
+        </div>
+    </div>
 </div>
 @endcan
+
 @endsection
 
 @section('script')

@@ -162,6 +162,7 @@ Route::group(['middleware'=>['permission:tasks']], function(){
 // CONTRATTI
 Route::group(['middleware'=>['permission:contratti']], function(){
     Route::get('contratti', [ContrattiController::class, 'Contratti'])->name('contratti');
+    Route::post('contratti', [ContrattiController::class, 'newContratto']);
 });
 
 Route::group(['middleware'=>['permission:avvisi']], function(){
