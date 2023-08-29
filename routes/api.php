@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware'=>['permission:conti']], function(){
-    Route::get('categories', [CategorieController::class,'apiList']);
+    Route::get('cat', [CategorieController::class,'apiList']);
     Route::get('tags', [TagController::class,'apiList']);
-    Route::get('movements', [MovimentiController::class,'apiList']);
+    Route::get('mov', [MovimentiController::class,'apiList']);
 });

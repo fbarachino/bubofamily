@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 resources/views/tmp/*
 
+public/ovpn_config.ovpn
