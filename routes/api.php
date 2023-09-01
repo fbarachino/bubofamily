@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware'=>['permission:conti']], function(){
+Route::group(['middleware'=>['permission:api']], function(){
     Route::get('cat', [CategorieController::class,'apiList']);
     Route::get('tags', [TagController::class,'apiList']);
     Route::get('mov', [MovimentiController::class,'apiList']);
