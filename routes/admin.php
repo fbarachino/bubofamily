@@ -180,5 +180,5 @@ Route::group(['middleware'=>['permission:avvisi']], function(){
 
     Route::get('testmail',function(){
         $name='Flavio';
-        Mail::to('git@lavorain.cloud')->send(new myTestEmail($name));
+        Mail::to('flavio.barachino@lavorain.cloud')->send(new myTestEmail($name));
     });
