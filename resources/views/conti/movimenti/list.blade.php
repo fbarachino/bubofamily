@@ -103,7 +103,9 @@
 											name="mov_importo" aria-describedby="importo">
 									</div>
 								</div>
+                                <!-- Inserimento della parte di collegamento a progetto/contratto -->
 
+                                <!-- Fine Inserimento della parte di collegamento a progetto/contratto -->
 								<div class="col-xs-7">
 									<label for="tags" class="form-label">Tag</label> <select
 										name="mov_fk_tags" class="form-control" id="tags"></select>
