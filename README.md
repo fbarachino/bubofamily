@@ -1,4 +1,8 @@
 # Gestionale per le famiglie
+
+QUesto progetto nasce sia come esercizio per utilizzare Laravel, che come esigenza personale.
+Nato come sola gestione finanziaria per un utilizzo domestico, piano piano si sono aggiunte delle necessità e idee che hanno reso il "piccolo" gestionale di diventare ciò che è ora. L'obiettivo finale è di creare un sistema di gestione centrale per tutte le esigenze e necessità che si incontrano nel gestire una famiglia ( o almeno quelle parametrizzabili )
+
 Piccolo sistema di gestione. 
 Al momento sono presenti:
 
